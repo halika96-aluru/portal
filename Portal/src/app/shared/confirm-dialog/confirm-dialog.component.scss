@@ -1,0 +1,12 @@
+.mat-dialog-action{
+    &[align="end"]{
+        justify-content: flex-end;
+    }
+    &[align="center"]{
+        justify-content: center;
+    }
+}
+
+.mat-dialog-title{
+    font-size: initial !important;
+}
