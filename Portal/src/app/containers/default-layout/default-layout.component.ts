@@ -8,7 +8,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-layout',
   templateUrl: './default-layout.component.html'
 })
 export class DefaultLayoutComponent implements OnDestroy {

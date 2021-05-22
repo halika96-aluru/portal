@@ -33,7 +33,6 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { MatDialogModule, MatIconModule, MatTableDataSource, MatTableModule } from '@angular/material';
 import { EmbeddedReportComponent } from './views/embedded-report/embedded-report.component';
-import { RedirectComponent } from './views/redirect/redirect.component';
 
 //import { ConfirmDialogComponent } from '../shared/confirm-dialog/confirm-dialog.component';
 // import { DashboardComponent } from './views/dashboard/dashboard.component';
@@ -118,8 +117,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MatDialogModule,
     MsalModule
   ],
-  declarations: [
-    RedirectComponent,
+  declarations: [   
     AppComponent,
    ...APP_CONTAINERS, 
    
