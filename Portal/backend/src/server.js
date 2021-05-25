@@ -11,7 +11,7 @@ const bodyParser = require("body-parser");
 const app = express();
 let cors = require('cors');
 app.use(cors())
-
+let html_to_pdf = require('html-pdf-node');
 // Prepare server for Bootstrap, jQuery and PowerBI files
 app.use('/js', express.static('./node_modules/bootstrap/dist/js/')); // Redirect bootstrap JS
 app.use('/js', express.static('./node_modules/jquery/dist/')); // Redirect JS jQuery
@@ -31,6 +31,31 @@ app.use(bodyParser.urlencoded({
 
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/../views/index.html'));
+});
+
+app.get('/template', function (req, res) {
+    res.sendFile(path.join(__dirname + '/../templates/index.html'));
+});
+
+app.get('/report', function(req,res){
+    
+
+    const puppeteer = require('puppeteer');
+
+    (async () => {
+      const browser = await puppeteer.launch();
+      const page = await browser.newPage();
+      await page.goto('http://localhost:5300/template', {
+        waitUntil: 'networkidle2',
+      });
+      await page.waitFor(20000);
+      await page.screenshot({ path: 'example.png' });
+      await page._client.send('Page.setDownloadBehavior', {behavior: 'allow', downloadPath: '/'});
+      console.log('download');
+      await browser.close();
+      res.setHeader('Content-type', 'image/png');
+      res.download('example.png'); // Set disposition and send it.
+    })();
 });
 
 app.get('/getEmbedToken', async function (req, res) {
