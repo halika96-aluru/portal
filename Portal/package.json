@@ -18,7 +18,7 @@
   "copyright": "Copyright 2019 creativeLabs Łukasz Holeczek",
   "license": "MIT",
   "scripts": {
-    "ng": "ng",   
+    "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build --prod --aot --buildOptimizer --commonChunk --vendorChunk --optimization --progress",
     "test": "ng test",
