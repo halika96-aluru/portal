@@ -9,5 +9,7 @@
     "pbiUsername": "ajay@powerbiaxes.onmicrosoft.com",
     "pbiPassword": "Bear@123",
     "clientSecret": "5ce82718-dcc9-4f5f-8bf4-fe28b957dd76",
-    "tenantId": "267dcacd-0757-456e-93ab-89d7068ef6b4"
+    "tenantId": "267dcacd-0757-456e-93ab-89d7068ef6b4",
+    "userName": ""
+
 }

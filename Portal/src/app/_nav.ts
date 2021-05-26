@@ -167,8 +167,8 @@ export const navItems: NavData[] = [
     icon: 'fa fa-clipboard',
     children: [
       {
-        name: 'Reports List',
-        url: '/reports/list',
+        name: 'List',
+        url: 'reports/list',
       }
     ]
   },

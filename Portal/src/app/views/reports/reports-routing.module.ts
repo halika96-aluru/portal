@@ -7,13 +7,20 @@ const routes: Routes = [
   {
     path: '', 
     data: {title: 'Reports'},
+    component: ReportsComponent,
 
     children: [
       {
         path: 'list',
+        data: {title: 'List'},
         component: ReportsListComponent,
       }
     ]
+  },
+  {
+    path: '', 
+    redirectTo: '/reports',
+    pathMatch: 'full'
   }
 ];
 

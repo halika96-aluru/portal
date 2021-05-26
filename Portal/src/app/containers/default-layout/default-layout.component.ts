@@ -40,22 +40,7 @@ export class DefaultLayoutComponent implements OnDestroy {
     console.log(RoleName);
 
     var navToRemove:any = [];
-    if(RoleName === 'Site Engineer'){
-      this.constructNavs("Components,Vechiles,Stock")
-    }
-    else if(RoleName === 'Petrol Bunk Engineer'){
-
-      //this.constructNavs("Components,Fuel Stock")
-      this.lstNavs = navItems;
-    }
-    else if(RoleName === 'Crusher Engineer'){
-
-      this.constructNavs("Components,Crusher")
-      //this.lstNavs = navItems;
-    }
-    else{
-      this.lstNavs = navItems;
-    }
+    this.lstNavs = navItems;    
   }
 
   constructNavs(items){

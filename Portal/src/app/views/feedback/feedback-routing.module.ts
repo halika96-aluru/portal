@@ -4,14 +4,16 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { FeedbacksComponent } from './feedbacks/feedbacks.component';
 
 const routes: Routes = [
-  {path:'', component: FeedbackComponent, children: [
+  {path:'',  data: {title: 'Feedback'}, component: FeedbackComponent, children: [
     {
       path: 'list',
+      data: {title: 'List'},
       component: FeedbacksComponent,
     },
     {
       path: '',
-      component: FeedbacksComponent,
+      redirectTo: 'list',
+      pathMatch: 'full'
     }
   ]},
 ];

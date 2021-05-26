@@ -8,11 +8,7 @@ import { AuthGuard } from '../auth.guard';
 import { MsalGuard } from '@azure/msal-angular';
 
 export const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
-  },
+ 
   // {
   //   path: 'login',
   //   component: LoginComponent,
@@ -32,11 +28,7 @@ export const routes: Routes = [
         path: 'dashboard',
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
-     
-      {
-        path: 'complaints',
-        loadChildren: () => import('./views/complaints/complaints.module').then(m => m.ComplaintsModule)
-      },
+          
 
       {
         path: 'requests',
@@ -53,10 +45,7 @@ export const routes: Routes = [
       {
         path: 'reports',
         loadChildren: () => import('./views/reports/reports.module').then(m => m.ReportsModule)
-      },
-      {
-        path: 'code', redirectTo: '/dashboard', pathMatch: 'full'
-      },
+      },      
       {
         path: '', redirectTo: '/dashboard', pathMatch: 'full'
       },

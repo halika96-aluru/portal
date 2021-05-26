@@ -11,6 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: 'list',
+        data: {title: 'List'},
         component: RequestsListComponent,
       }
     ]
