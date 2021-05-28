@@ -6,9 +6,11 @@
 let path = require('path');
 let embedToken = require(__dirname + '/embedConfigService.js');
 const utils = require(__dirname + "/utils.js");
+const powerbi = require("../api/powerBIEmbedAPI");
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
+
 let cors = require('cors');
 app.use(cors())
 let html_to_pdf = require('html-pdf-node');
@@ -22,11 +24,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const port = process.env.PORT || 5300;
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+// app.use(bodyParser.urlencoded({
+//     extended: true
+// }));
+
+app.use('/powerbi', powerbi);
 
 
 app.get('/', function (req, res) {
@@ -35,27 +39,6 @@ app.get('/', function (req, res) {
 
 app.get('/template', function (req, res) {
     res.sendFile(path.join(__dirname + '/../templates/index.html'));
-});
-
-app.get('/report', function(req,res){
-    
-
-    const puppeteer = require('puppeteer');
-
-    (async () => {
-      const browser = await puppeteer.launch();
-      const page = await browser.newPage();
-      await page.goto('http://localhost:5300/template', {
-        waitUntil: 'networkidle2',
-      });
-      await page.waitFor(20000);
-      await page.screenshot({ path: 'example.png' });
-      await page._client.send('Page.setDownloadBehavior', {behavior: 'allow', downloadPath: '/'});
-      console.log('download');
-      await browser.close();
-      res.setHeader('Content-type', 'image/png');
-      res.download('example.png'); // Set disposition and send it.
-    })();
 });
 
 app.get('/getEmbedToken', async function (req, res) {

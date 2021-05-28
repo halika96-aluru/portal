@@ -5,9 +5,13 @@ import { AdminsModule } from './admins.module';
 import { DepartmentsComponent } from './departments/departments.component';
 
 const routes: Routes = [
-
-  {path: 'departments', component: DepartmentsComponent}
-
+{
+  path: '', 
+  data: {title: 'Admins'}, 
+  children: [
+  {path: 'departments', data: {title: 'Departments'}, component: DepartmentsComponent}
+  ]
+}
 ];
 
 @NgModule({

@@ -33,7 +33,7 @@ export const navItems: NavData[] = [
   {
     name: 'Dashboard',
     url: '/dashboard',
-    icon: 'fa fa-bar-chart'
+    icon: 'fa fa-th'
   },
   {
     name: 'Users',
@@ -164,43 +164,47 @@ export const navItems: NavData[] = [
   {
     name: 'Reports',
     url: '/reports',
-    icon: 'fa fa-clipboard',
+    icon: 'fa fa-bar-chart',
     children: [
       {
         name: 'List',
         url: 'reports/list',
+        icon: 'fa fa-list',
       }
     ]
   },
    {
     name: 'Admins',
     url: '/Admins',
-    icon: 'fa fa-bar-chart',
+    icon: 'fa fa-cogs',
     children: [
       {
         name: 'Departments',
         url: '/admins/departments',
+        icon: 'fa fa-sitemap',
       }
     ]
   },
   {
     name: 'Requests',
     url: '/requests',
-    icon: 'fa fa-bar-chart',
+    icon: 'fa fa-envelope-open-o',
     children: [
       {
         name: 'Reqests List',
-        url: '/requests/list',
+        url: '/requests/list',        
+        icon: 'fa fa-list',
       }
     ]
   },
   {
     name: 'Feedback',
     url: '/feedback',
-    icon: 'fa fa-bar-chart',
+    icon: 'fa fa-pencil-square-o',
     children: [
       {
         name: 'Feedbacks',
+        icon: 'fa fa-list',
         url: '/feedback/list',
       }
     ]
@@ -208,6 +212,6 @@ export const navItems: NavData[] = [
   {
     name: 'Settings',
     url: '/settings',
-    icon: 'fa fa-bar-chart'
+    icon: 'fa fa-wrench'
   },
 ];

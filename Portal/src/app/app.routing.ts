@@ -39,7 +39,7 @@ export const routes: Routes = [
         loadChildren: () => import('./views/feedback/feedback.module').then(m => m.FeedbackModule)
       },
       {
-        path: 'admin',
+        path: 'admins',
         loadChildren: () => import('./views/admins/admins.module').then(m => m.AdminsModule)
       },
       {
