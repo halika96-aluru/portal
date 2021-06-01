@@ -1,17 +1,16 @@
-const UsersController = require('./controllers/users.controller');
+//const UsersController = require('./controllers/users.controller');
 // const PermissionMiddleware = require('../common/middlewares/auth.permission.middleware');
-const ValidationMiddleware = require('../common/middlewares/auth.validation.middleware');
-const config = require('../common/config/env.config');
+//const ValidationMiddleware = require('../common/middlewares/auth.validation.middleware');
+// const config = require('../common/config/env.config');
+const powerbiapi = require('../api/powerBIEmbedAPI');
+const express = require("express");
+const router = express.Router();
 
-const ADMIN = config.permissionLevels.ADMIN;
-const PAID = config.permissionLevels.PAID_USER;
-const FREE = config.permissionLevels.NORMAL_USER;
+router.get('/getEmbedToken/:reportId', [
+    //ValidationMiddleware.validJWTNeeded,
+    // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
+    powerbiapi.getEmbebToken
 
-exports.routesConfig = function (app) {
-    app.post('/getEmbedToken/:reportId', [        
-        ValidationMiddleware.validJWTNeeded,
-        // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
-        UsersController.list
+]);
 
-    ]);      
-};
+module.exports = router;

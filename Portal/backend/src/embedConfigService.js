@@ -10,6 +10,7 @@ const PowerBiReportDetails = require(__dirname + "/../models/embedReportConfig.j
 const EmbedConfig = require(__dirname + "/../models/embedConfig.js");
 const fetch = require('node-fetch');
 
+
 /**
  * Generate embed token and embed urls for reports
  * @return Details like Embed URL, Access token and Expiry
@@ -319,7 +320,6 @@ async function getRequestHeader() {
             'error': errorResponse
         };
     }
-
     // Extract AccessToken from the response
     const token = tokenResponse.accessToken;
     return {

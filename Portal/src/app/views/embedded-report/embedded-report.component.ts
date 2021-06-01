@@ -53,7 +53,7 @@ export class EmbeddedReportComponent implements OnInit {
     //   filterType: model.FilterType.BasicFilter,         
     // }
     
-    this.httpClient.get('http://localhost:5300/getEmbedToken').subscribe((res: any) => {
+    this.httpClient.get('http://localhost:5300/powerbi/getEmbedToken/3').subscribe((res: any) => {
         console.log(res);       
         const model:any = pbi.models;
         const basicFilter = {
@@ -112,14 +112,14 @@ export class EmbeddedReportComponent implements OnInit {
       setTimeout(() => {
        report =  powerbi.embed(this.embeddedReport.nativeElement, embedConfig);
 
-       report.on('loaded', () => {
-        report.getFilters()
-            .then((filters:any) => {
-                filters.push(basicFilter);
-                filters.push(basicFilter2);
-                return report.setFilters(filters);
-            });
-      }, 1200);
+      //  report.on('loaded', () => {
+      //   report.getFilters()
+      //       .then((filters:any) => {
+      //           filters.push(basicFilter);
+      //           filters.push(basicFilter2);
+      //           return report.setFilters(filters);
+      //       });
+      // }, 1200);
     });
   }, 
     err => {

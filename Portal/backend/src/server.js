@@ -6,7 +6,7 @@
 let path = require('path');
 let embedToken = require(__dirname + '/embedConfigService.js');
 const utils = require(__dirname + "/utils.js");
-const powerbi = require("../api/powerBIEmbedAPI");
+const powerbiRouter = require("../routes/powerbiEmbedRoutes");
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
@@ -30,7 +30,7 @@ const port = process.env.PORT || 5300;
 //     extended: true
 // }));
 
-app.use('/powerbi', powerbi);
+app.use('/powerbi', powerbiRouter);
 
 
 app.get('/', function (req, res) {
@@ -44,13 +44,13 @@ app.get('/template', function (req, res) {
 app.get('/getEmbedToken', async function (req, res) {
 
     // Validate whether all the required configurations are provided in config.json
-    configCheckResult = utils.validateConfig();
-    if (configCheckResult) {
-        return {
-            "status": 400,
-            "error": configCheckResult
-        };
-    }
+    // configCheckResult = utils.validateConfig();
+    // if (configCheckResult) {
+    //     return {
+    //         "status": 400,
+    //         "error": configCheckResult
+    //     };
+    // }
     // Get the details like Embed URL, Access token and Expiry
     let result = await embedToken.getEmbedInfo();
 
