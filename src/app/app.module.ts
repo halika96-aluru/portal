@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { LocationStrategy, HashLocationStrategy, CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import { LoginComponent } from './views/login/login.component';
 
@@ -115,11 +115,12 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MatTableModule,
     MatIconModule,
     MatDialogModule,
-    MsalModule
+    MsalModule,
+    CommonModule
   ],
   declarations: [   
     AppComponent,
-   ...APP_CONTAINERS, 
+   ...APP_CONTAINERS 
    
     // AppComponent,
     // ...APP_CONTAINERS,

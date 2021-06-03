@@ -24,3 +24,14 @@ exports.getReportParams = async (reportId) => {
     console.log('******************************************', report);
     return report;
 };
+
+exports.getReports = async () => {
+   
+    // join  report 
+    let reports = await contex.Reports.findAll({
+        where: {   IsActive:{ [Op.eq]: true } }
+    });
+
+    console.log('reports', reports);
+    return reports;
+};

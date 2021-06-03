@@ -1,1 +1,17 @@
-<p>reports-list works!</p>
+<p>Reports List!</p>
+<table class="table table-striped">
+    <thead>
+      <tr>      
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of reports; let i = index" >       
+        <td>{{item.Id}}</td>
+        <td>{{item.ReportName}}</td>
+        <td>{{item.ReportDescription}}</td>
+      </tr>     
+    </tbody>
+  </table>
