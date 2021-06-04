@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 declare var powerbi: any;
 import * as pbi from 'powerbi-client';
@@ -12,12 +12,12 @@ import * as pbi from 'powerbi-client';
 export class EmbeddedReportComponent implements OnInit {
 
   @ViewChild('embeddedReport') embeddedReport!: ElementRef;
+  @Input() reportId: number = 3;
  
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
-    //this.config = config;
-
+    //this.config = config;    
     this.getEmbedToken();
    
       // this.httpClient.get<any>(`${Constants.apiRoot}PowerBI/EmbedConfig`).subscribe(config => {
@@ -53,7 +53,7 @@ export class EmbeddedReportComponent implements OnInit {
     //   filterType: model.FilterType.BasicFilter,         
     // }
     
-    this.httpClient.get('http://localhost:5300/powerbi/getEmbedToken/3').subscribe((res: any) => {
+    this.httpClient.get(`http://localhost:5300/powerbi/getEmbedToken/${this.reportId}`).subscribe((res: any) => {
         console.log(res);       
         const model:any = pbi.models;
         const basicFilter = {
@@ -91,10 +91,10 @@ export class EmbeddedReportComponent implements OnInit {
             navContentPaneEnabled: true,
             panes: {
                 filters: {
-                    visible: false
+                    visible: true
                 },
                 pageNavigation: {
-                    visible: false
+                    visible: true
                 }
             },
             selection: {

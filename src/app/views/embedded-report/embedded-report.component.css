@@ -27,11 +27,11 @@ section#report-container {
     height: calc(0.5625 * 61vw); /* 16:9 aspect ratio */
 }
 
-@media only screen and (max-width: 575px) {
+/* @media only screen and (max-width: 575px) {
     section#report-container {
-        height: calc(0.5625 * 100vw); /* 16:9 aspect ratio */
-    }
-}
+        height: calc(0.5625 * 100vw); /* 16:9 aspect ratio 
+    //}
+//} */
 
 footer > p {
     font: 1em "segoe ui", arial, sans-serif;
@@ -39,4 +39,8 @@ footer > p {
 
 iframe {
     border: none;
+}
+
+section {
+    min-width: 80vw;
 }

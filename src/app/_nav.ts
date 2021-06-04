@@ -169,8 +169,9 @@ export const navItems: NavData[] = [
       {
         name: 'List',
         url: 'reports/list',
-        icon: 'fa fa-list',
-      }
+        icon: 'fa fa-list',        
+      }     
+
     ]
   },
    {

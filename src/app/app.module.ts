@@ -32,7 +32,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { MatDialogModule, MatIconModule, MatTableDataSource, MatTableModule } from '@angular/material';
-import { EmbeddedReportComponent } from './views/embedded-report/embedded-report.component';
+import { SharedModule } from '../shared/shared.module';
 
 //import { ConfirmDialogComponent } from '../shared/confirm-dialog/confirm-dialog.component';
 // import { DashboardComponent } from './views/dashboard/dashboard.component';
@@ -77,6 +77,10 @@ export function MSALInstanceFactory(): IPublicClientApplication {
 export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   const protectedResourceMap = new Map<string, Array<string>>();
   protectedResourceMap.set('https://graph.microsoft.com/v1.0/me', ['user.read']);
+  protectedResourceMap.set('https://graph.microsoft.com/v1.0/users', ['user.read']);
+  // protectedResourceMap.set('http://localhost:5300', ['api://*******/app']);
+  // protectedResourceMap.set('http://localhost:5300/',['3632fbf3-1149-4ad5-8fc5-9d8b79cd8e15']);
+  //['https://localhost:44367/api/', ['d5179ea0-d0f2-42e1-ac8e-5be86d0d5980']]
 
   return {
     interactionType: InteractionType.Redirect,
@@ -99,6 +103,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    SharedModule,
     AppRoutingModule,
     AppAsideModule,
     AppBreadcrumbModule.forRoot({}),
@@ -115,7 +120,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MatTableModule,
     MatIconModule,
     MatDialogModule,
-    MsalModule,
+    MsalModule,   
     CommonModule
   ],
   declarations: [   
@@ -132,11 +137,6 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     useClass: HashLocationStrategy
     
   }, AuthGuard,
-  [{
-    provide : HTTP_INTERCEPTORS,
-    useClass : TokenInterceptorService,
-    multi: true
-  }],
   {
     provide: HTTP_INTERCEPTORS,
     useClass: MsalInterceptor,

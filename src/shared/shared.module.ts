@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {JwPaginationComponent} from 'jw-angular-pagination';
 import { ConfirmDialogComponent } from '../app/shared/confirm-dialog/confirm-dialog.component';
+import { EmbeddedReportComponent } from '../app/views/embedded-report/embedded-report.component';
 //import { MatDatepickerModule,MatNativeDateModule,MatFormFieldModule, MatInputModule } from '@angular/material';
 
 @NgModule({
-  declarations: [JwPaginationComponent, ConfirmDialogComponent],
+  declarations: [JwPaginationComponent, ConfirmDialogComponent, EmbeddedReportComponent],
   imports: [
     CommonModule,
     // MatDatepickerModule,
@@ -15,7 +16,8 @@ import { ConfirmDialogComponent } from '../app/shared/confirm-dialog/confirm-dia
   ],
   exports:[
     JwPaginationComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    EmbeddedReportComponent
     // MatDatepickerModule,
     // MatNativeDateModule,
     // MatFormFieldModule,

@@ -128,32 +128,37 @@ async function getEmbedParamsForSingleReport(workspaceId, reportId, additionalDa
  async function getEmbedTokenForSingleReportSingleWorkspace(reportId, datasetIds, targetWorkspaceId, params) {
 
     // Add report id in the request
+    //     let formData = {
+    //     'reports': [{
+    //         'id': reportId
+    //     }],
+    // ,
+    //     "identities": [{
+    //         "username": "john@powerbiaxes.onmicrosoft.com",
+    //         "roles": [],
+    //         "datasets": []          
+    //     }]        
+    // };
     let formData = {
         'reports': [{
             'id': reportId
-        }],
-        "identities": [{
-            "username": "john@powerbiaxes.onmicrosoft.com",
-            "roles": [],
-            "datasets": []          
         }]
     };
 
-    if(params && params.length){
-        formData['identities'][0]['roles'] = [];
-        params.forEach( (c) => {
-            formData['identities'][0]['roles'].push(c.FilterValue);
-        });                    
-    }
+    // if(params && params.length){
+    //     formData['identities'][0]['roles'] = [];
+    //     params.forEach( (c) => {
+    //         formData['identities'][0]['roles'].push(c.FilterValue);
+    //     });                    
+    // }
 
     // Add dataset ids in the request
     formData['datasets'] = [];
-    formData['identities'][0]['datasets'] = [];
+    
     for (const datasetId of datasetIds) {
         formData['datasets'].push({
             'id': datasetId
-        });
-        formData['identities'][0]['datasets'].push(datasetId);
+        });      
     }
 
     // Add targetWorkspace id in the request

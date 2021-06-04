@@ -7,6 +7,6 @@ exports.getEmbebToken = async (req, res) => {
     let params = await reportService.getReportParams(req.params.reportId);
     console.log(params);
     powerbiService.getEmbedInfo(params.PBIWorkspaceId, params.PBIReportId, params.ReportFilters).then((result) => {
-     res.status(result.status).send(result);
+     res.send(result);
     });
 };

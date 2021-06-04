@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ReportService } from '../../services/reportService';
 
 @Component({
@@ -8,7 +9,7 @@ import { ReportService } from '../../services/reportService';
 })
 export class ReportsListComponent implements OnInit {
   reports: any = [];
-  constructor(private reportService: ReportService) { }
+  constructor(private reportService: ReportService, private router: Router) { }
 
   ngOnInit(): void {
     this.getReprots();
@@ -20,6 +21,10 @@ export class ReportsListComponent implements OnInit {
         this.reports = res;
       }
     })
+  }
+
+  loadReport(reportId){
+    this.router.navigate(['/reports/details', reportId])
   }
 
 

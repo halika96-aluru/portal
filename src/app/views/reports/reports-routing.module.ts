@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EmbeddedReportComponent } from '../embedded-report/embedded-report.component';
 import { ReportsListComponent } from '../reports-list/reports-list.component';
+import { DisplayReportComponent } from './display-report/display-report.component';
 import { ReportsComponent } from './reports/reports.component';
 
 const routes: Routes = [
@@ -13,7 +15,17 @@ const routes: Routes = [
       {
         path: 'list',
         data: {title: 'List'},
-        component: ReportsListComponent,
+        component: ReportsListComponent,        
+      },
+      {
+        path: 'details/:id',
+        data: {title: 'details'},
+        component: DisplayReportComponent,
+      },
+      {
+        path: '', 
+        redirectTo: 'list',
+        pathMatch: 'full'
       }
     ]
   },
