@@ -1,10 +1,10 @@
 var contex = require("./sequalize.service");
-var ReportFilters = contex.ReportFilters;
+var ReportFilters = contex.getContext().ReportFilters;
 const { Op } = require("sequelize");
 
 exports.getWorkspaceByReportId = async (reportId) => {
     let keys = Object.keys(model);
-    let report = await contex.Constants.findAll({
+    let report = await contex.getContext().Constants.findAll({
         where: {
             reportId:reportId
     }
@@ -16,7 +16,7 @@ exports.getWorkspaceByReportId = async (reportId) => {
 exports.getReportParams = async (reportId) => {
    
     // join  report 
-    let report = await contex.Reports.findOne({
+    let report = await contex.getContext().Reports.findOne({
         where: {   Id:{ [Op.eq]: reportId } },
         include: [{ model: ReportFilters, as: 'ReportFilters'}]
     });
@@ -28,7 +28,7 @@ exports.getReportParams = async (reportId) => {
 exports.getReports = async () => {
    
     // join  report 
-    let reports = await contex.Reports.findAll({
+    let reports = await contex.getContext().Reports.findAll({
         where: {   IsActive:{ [Op.eq]: true } }
     });
 
