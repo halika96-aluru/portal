@@ -53,7 +53,7 @@ export class EmbeddedReportComponent implements OnInit {
     //   filterType: model.FilterType.BasicFilter,         
     // }
     
-    this.httpClient.get(`http://localhost:5300/powerbi/getEmbedToken/${this.reportId}`).subscribe((res: any) => {
+    this.httpClient.get(`http://localhost:8080/powerbi/getEmbedToken/${this.reportId}`).subscribe((res: any) => {
         console.log(res);       
         const model:any = pbi.models;
         const basicFilter = {

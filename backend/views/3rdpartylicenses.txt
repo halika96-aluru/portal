@@ -248,7 +248,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 core-js
 MIT
-Copyright (c) 2014-2019 Denis Pushkarev
+Copyright (c) 2014-2020 Denis Pushkarev
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -322,7 +322,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-lodash
+lodash-es
 MIT
 Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
 
@@ -463,7 +463,9 @@ THE SOFTWARE.
 
 perfect-scrollbar
 MIT
-The MIT License (MIT) Copyright (c) 2012-2017 Hyunje Jun and other contributors
+The MIT License (MIT)
+
+Copyright (c) 2012-2019 Hyunje Jun, MDBootstrap.com and other contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
