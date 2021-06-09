@@ -29,7 +29,7 @@ app.use('/css', express.static('./node_modules/bootstrap/dist/css/')); // Redire
 app.use('/public', express.static('./public/')); // Use custom JS and CSS files
 app.use(express.static(__dirname + '/../views'));
 
-const port = process.env.PORT || 5300;
+const port = process.env.PORT || 8080;
 
 // app.use(bodyParser.json());
 
