@@ -3,7 +3,7 @@ const { Op } = require("sequelize");
 
 exports.fillConstants = async (model) => {
     let keys = Object.keys(model);
-    let items = await contex.Constants.findAll({
+    let items = await contex.getContext().Constants.findAll({
         where: {
             ConstantName:{
         [Op.in]: keys

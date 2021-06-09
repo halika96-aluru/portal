@@ -16,6 +16,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 
+
+
 let cors = require('cors');
 app.use(cors())
 let html_to_pdf = require('html-pdf-node');
@@ -25,7 +27,7 @@ app.use('/js', express.static('./node_modules/jquery/dist/')); // Redirect JS jQ
 app.use('/js', express.static('./node_modules/powerbi-client/dist/')) // Redirect JS PowerBI
 app.use('/css', express.static('./node_modules/bootstrap/dist/css/')); // Redirect CSS bootstrap
 app.use('/public', express.static('./public/')); // Use custom JS and CSS files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname + '/../views'));
 
 const port = process.env.PORT || 5300;
 
@@ -47,6 +49,8 @@ app.use('/departments', deprtmentRoutes);
 
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/../views/index.html'));
+    //res.sendFile(path.join(__dirname + '/../templates/index.html'));
+
 });
 
 app.get('/template', function (req, res) {

@@ -1,7 +1,9 @@
+const Sequelize = require('sequelize');
 //
 // Database Setup
 //
-const Sequelize = require('sequelize');
+function getContext(){
+
 const sequelize = new Sequelize('RFM', 'sa', 'Root@123', {
     host: 'localhost',
     dialect: 'mssql',
@@ -23,5 +25,7 @@ sequelize.authenticate()
 var initModels = require("../models/init-models");
 
 var contex = initModels(sequelize);
+return contex;
+}
 
-exports.contex = contex;
+exports.getContext = getContext;

@@ -1,4 +1,4 @@
-var contex = require("./sequalize.service").contex;
+var contex = require("./sequalize.service");
 var ReportFilters = contex.ReportFilters;
 const { Op } = require("sequelize");
 

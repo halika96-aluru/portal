@@ -1,4 +1,4 @@
-var contex = require("./sequalize.service").contex;
+var contex = require("./sequalize.service");
 const { Op } = require("sequelize");
 
 exports.getReportRequests = async () => {
