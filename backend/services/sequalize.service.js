@@ -4,8 +4,8 @@ const Sequelize = require('sequelize');
 //
 function getContext(){
 
-const sequelize = new Sequelize('RFM', 'sa', 'Root@123', {
-    host: 'localhost',
+const sequelize = new Sequelize('PortalDB', 'PortalAdmin', 'Portal@123', {
+    host: 'rcoedemodb.database.windows.net',
     dialect: 'mssql',
     dialectOptions: {
         options: {
