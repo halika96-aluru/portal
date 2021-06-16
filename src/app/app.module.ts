@@ -21,7 +21,7 @@ import {
   AppBreadcrumbModule,
   AppHeaderModule,
   AppFooterModule,
-  AppSidebarModule,
+  AppSidebarModule,  
 } from '@coreui/angular';
 
 // Import routing module
@@ -33,6 +33,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { MatDialogModule, MatIconModule, MatTableDataSource, MatTableModule } from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
+import { LoginComponent } from './views/login/login.component';
+import { RedirectComponent } from './views/redirect/redirect.component';
 
 //import { ConfirmDialogComponent } from '../shared/confirm-dialog/confirm-dialog.component';
 // import { DashboardComponent } from './views/dashboard/dashboard.component';
@@ -57,7 +59,7 @@ export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
       clientId: '3632fbf3-1149-4ad5-8fc5-9d8b79cd8e15',
-      redirectUri: '/',
+      redirectUri: '/dashboard',
       postLogoutRedirectUri: '/'
     },
     cache: {
@@ -78,7 +80,7 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   const protectedResourceMap = new Map<string, Array<string>>();
   protectedResourceMap.set('https://graph.microsoft.com/v1.0/me', ['user.read']);
   protectedResourceMap.set('https://graph.microsoft.com/v1.0/users', ['user.read']);
-  // protectedResourceMap.set('http://localhost:5300', ['api://*******/app']);
+  protectedResourceMap.set('http://localhost:5300', ['api://*******/app']);
   // protectedResourceMap.set('http://localhost:5300/',['3632fbf3-1149-4ad5-8fc5-9d8b79cd8e15']);
   //['https://localhost:44367/api/', ['d5179ea0-d0f2-42e1-ac8e-5be86d0d5980']]
 
@@ -125,7 +127,9 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
   ],
   declarations: [   
     AppComponent,
-   ...APP_CONTAINERS 
+   ...APP_CONTAINERS,
+   LoginComponent,
+   RedirectComponent 
    
     // AppComponent,
     // ...APP_CONTAINERS,

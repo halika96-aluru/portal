@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DefaultLayoutComponent } from './containers';
 import { AuthGuard } from '../auth.guard';
 import { MsalGuard } from '@azure/msal-angular';
+import { LoginComponent } from './views/login/login.component';
 
 export const routes: Routes = [
  
@@ -17,7 +18,7 @@ export const routes: Routes = [
   //   }
  // },
   {
-    path: '',
+    path: '',  canActivate : [MsalGuard],
     component: DefaultLayoutComponent,
     data: {
       title: 'Home'
@@ -27,15 +28,14 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
-      },
-          
+      },          
 
       {
-        path: 'requests',
+        path: 'requests', 
         loadChildren: () => import('./views/requests/requests.module').then(m => m.RequestsModule)
       },
       {
-        path: 'feedback', canActivate : [MsalGuard],
+        path: 'feedback',
         loadChildren: () => import('./views/feedback/feedback.module').then(m => m.FeedbackModule)
       },
       {
@@ -51,6 +51,9 @@ export const routes: Routes = [
       },
       
     ]
+  },
+  {
+    path: 'login', component: LoginComponent,
   }
 ];
 
