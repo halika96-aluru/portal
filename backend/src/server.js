@@ -39,7 +39,7 @@ const port = process.env.PORT || 8080;
 
 app.use('/powerbi', powerbiRouter);
 app.use('/users', usersRoutes);
-app.use('/reports', reportRoutes);
+app.use('/api/reports', reportRoutes);
 app.use('/requests', requestRoutes);
 app.use('/feedbacks', feedbackRoutes);
 app.use('/departments', deprtmentRoutes);

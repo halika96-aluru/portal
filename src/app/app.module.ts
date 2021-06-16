@@ -35,6 +35,7 @@ import { MatDialogModule, MatIconModule, MatTableDataSource, MatTableModule } fr
 import { SharedModule } from '../shared/shared.module';
 import { LoginComponent } from './views/login/login.component';
 import { RedirectComponent } from './views/redirect/redirect.component';
+import { CanActivateMainRoute } from './services/CanActivateMainRoute';
 
 //import { ConfirmDialogComponent } from '../shared/confirm-dialog/confirm-dialog.component';
 // import { DashboardComponent } from './views/dashboard/dashboard.component';
@@ -58,9 +59,9 @@ export function loggerCallback(logLevel: LogLevel, message: string) {
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
-      clientId: '3632fbf3-1149-4ad5-8fc5-9d8b79cd8e15',
-      redirectUri: '/dashboard',
-      postLogoutRedirectUri: '/'
+      clientId: '6878a486-4dea-4baa-9713-8f99f9d63052',
+      redirectUri: '/',
+      postLogoutRedirectUri: 'http://localhost:4200/login'
     },
     cache: {
       cacheLocation: BrowserCacheLocation.LocalStorage,
@@ -79,9 +80,9 @@ export function MSALInstanceFactory(): IPublicClientApplication {
 export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   const protectedResourceMap = new Map<string, Array<string>>();
   protectedResourceMap.set('https://graph.microsoft.com/v1.0/me', ['user.read']);
-  protectedResourceMap.set('https://graph.microsoft.com/v1.0/users', ['user.read']);
-  protectedResourceMap.set('http://localhost:5300', ['api://*******/app']);
-  // protectedResourceMap.set('http://localhost:5300/',['3632fbf3-1149-4ad5-8fc5-9d8b79cd8e15']);
+  protectedResourceMap.set('https://graph.microsoft.com/v1.0/users', ['user.read']); 
+  protectedResourceMap.set('http://localhost:8080/api', ['api://6878a486-4dea-4baa-9713-8f99f9d63052/api.access']);
+  
   //['https://localhost:44367/api/', ['d5179ea0-d0f2-42e1-ac8e-5be86d0d5980']]
 
   return {
@@ -160,7 +161,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
   },
   MsalService,
   MsalGuard,
-  MsalBroadcastService
+  MsalBroadcastService,
+  CanActivateMainRoute
 
   ],
   bootstrap: [ AppComponent, MsalRedirectComponent ],

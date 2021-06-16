@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { MsalService } from '@azure/msal-angular';
 import { ApiService } from './services/api.service';
 
 @Component({
@@ -8,17 +9,16 @@ import { ApiService } from './services/api.service';
   template: '<router-outlet></router-outlet>'
 })
 export class AppComponent implements OnInit {
-  constructor(private router: Router, private service : ApiService) { }
+  constructor(private router: Router) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
         return;
       }
       window.scrollTo(0, 0);
     });
-    if(!this.service.LoggedIn()){
-      this.router.navigateByUrl('/login');
-    }
+  
+   
   }
 }

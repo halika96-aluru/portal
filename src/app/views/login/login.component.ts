@@ -1,5 +1,7 @@
+import { trigger } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MsalBroadcastService, MsalGuardConfiguration, MsalService, MSAL_GUARD_CONFIG } from '@azure/msal-angular';
 import { AuthenticationResult, InteractionStatus, InteractionType, PopupRequest, RedirectRequest } from '@azure/msal-browser';
 import { Subject } from 'rxjs';
@@ -17,7 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
-    private httpClient: HttpClient,
+    private httpClient: HttpClient, private router: Router,
     private msalBroadcastService: MsalBroadcastService
   ) {}
 
@@ -47,32 +49,42 @@ export class LoginComponent implements OnInit {
      * Note: Basic usage demonstrated. Your app may require more complicated account selection logic
      */
     let activeAccount = this.authService.instance.getActiveAccount();
-
+    debugger;
+    console.log(activeAccount);
     if (!activeAccount && this.authService.instance.getAllAccounts().length > 0) {
       let accounts = this.authService.instance.getAllAccounts();
       this.authService.instance.setActiveAccount(accounts[0]);
     }
   }
   login() {
-    if (this.msalGuardConfig.interactionType === InteractionType.Popup) {
-      if (this.msalGuardConfig.authRequest){
-        this.authService.loginPopup({...this.msalGuardConfig.authRequest} as PopupRequest)
-          .subscribe((response: AuthenticationResult) => {
-            this.authService.instance.setActiveAccount(response.account);
-          });
-        } else {
-          this.authService.loginPopup()
-            .subscribe((response: AuthenticationResult) => {
-              this.authService.instance.setActiveAccount(response.account);
-            });
-      }
-    } else {
-      if (this.msalGuardConfig.authRequest){
-        this.authService.loginRedirect({...this.msalGuardConfig.authRequest} as RedirectRequest);
-      } else {
-        this.authService.loginRedirect();
-      }
-    }
+    // this.router.navigateByUrl('/dashboard');
+    this.router.navigate(['dashboard']);
+    debugger;
+    // if (this.msalGuardConfig.interactionType === InteractionType.Popup) {
+    //   if (this.msalGuardConfig.authRequest){
+    //     this.authService.loginPopup({...this.msalGuardConfig.authRequest} as PopupRequest)
+    //       .subscribe((response: AuthenticationResult) => {
+    //         this.authService.instance.setActiveAccount(response.account);
+    //       });
+    //     } else {
+    //       this.authService.loginPopup()
+    //         .subscribe((response: AuthenticationResult) => {
+    //           this.authService.instance.setActiveAccount(response.account);
+    //         });
+    //   }
+    // } else {
+    //   if (this.msalGuardConfig.authRequest){
+    //     let req = {...this.msalGuardConfig.authRequest} as RedirectRequest
+      
+    //     if(!req.redirectUri || req.redirectUri == '/'){
+    //      // req.redirectUri = window.location.origin + '/#/dashboard';
+    //     }
+    //     alert('authrequest' + JSON.stringify(req));
+    //     this.authService.loginRedirect(req);
+    //   } else {
+    //     this.authService.loginRedirect();
+    //   }
+    // }
   }
 
 
