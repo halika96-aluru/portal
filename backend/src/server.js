@@ -39,7 +39,7 @@ const port = process.env.PORT || 8080;
 
 app.use('/powerbi', powerbiRouter);
 app.use('/users', usersRoutes);
-app.use('/reports', reportRoutes);
+app.use('/api/reports', reportRoutes);
 app.use('/requests', requestRoutes);
 app.use('/feedbacks', feedbackRoutes);
 app.use('/departments', deprtmentRoutes);
@@ -73,5 +73,4 @@ app.get('/getEmbedToken', async function (req, res) {
     // result.status specified the statusCode that will be sent along with the result object
     res.status(result.status).send(result);
 });
-
 app.listen(port, () => console.log(`Listening on port ${port}`));

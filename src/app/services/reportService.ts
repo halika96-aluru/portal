@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ReportService {
 
-  baseUri:string = 'http://localhost:8080/reports/';
+  baseUri:string = 'http://localhost:8080/api/reports/';
   headers: HttpHeaders;
   constructor(private http: HttpClient) {
     this.headers = new HttpHeaders({
