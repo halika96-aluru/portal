@@ -1,6 +1,6 @@
 import { trigger } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
-import { Component, Inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { MsalBroadcastService, MsalGuardConfiguration, MsalService, MSAL_GUARD_CONFIG } from '@azure/msal-angular';
 import { AuthenticationResult, InteractionStatus, InteractionType, PopupRequest, RedirectRequest } from '@azure/msal-browser';
@@ -12,7 +12,7 @@ import { filter, takeUntil } from 'rxjs/operators';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterViewInit, OnChanges {
   private readonly _destroying$ = new Subject<void>();
   isIframe = false;
   loginDisplay = false;
@@ -23,19 +23,42 @@ export class LoginComponent implements OnInit {
     private msalBroadcastService: MsalBroadcastService
   ) {}
 
-  ngOnInit(): void {
-    this.isIframe = window !== window.parent && !window.opener; // Remove this line to use Angular Universal
 
-    this.msalBroadcastService.inProgress$
-      .pipe(
-        filter((status: InteractionStatus) => status === InteractionStatus.None),
-        takeUntil(this._destroying$)
-      )
-      .subscribe((result) => {
-        console.log(result);
-        this.setLoginDisplay();
-        this.checkAndSetActiveAccount();
-      })
+  ngAfterViewInit(): void {
+   console.log('view intit');
+  }
+
+  ngOnChanges(changes: SimpleChanges){
+
+    let activeAccount = this.authService.instance.getActiveAccount();
+    
+    console.log(activeAccount);
+    if (!activeAccount && this.authService.instance.getAllAccounts().length > 0) {
+      let accounts = this.authService.instance.getAllAccounts();
+      activeAccount = (accounts[0]);
+    }
+
+    if(activeAccount){
+      this.router.navigateByUrl('/dashboard');
+    }        
+  }
+
+
+
+
+  ngOnInit(): void {
+    // this.isIframe = window !== window.parent && !window.opener; // Remove this line to use Angular Universal
+
+    // this.msalBroadcastService.inProgress$
+    //   .pipe(
+    //     filter((status: InteractionStatus) => status === InteractionStatus.None),
+    //     takeUntil(this._destroying$)
+    //   )
+    //   .subscribe((result) => {
+    //     console.log(result);
+    //     this.setLoginDisplay();
+    //     this.checkAndSetActiveAccount();
+    //   })
   }
   
   setLoginDisplay() {
@@ -57,9 +80,9 @@ export class LoginComponent implements OnInit {
     }
   }
   login() {
-    // this.router.navigateByUrl('/dashboard');
-    this.router.navigate(['dashboard']);
-    debugger;
+    this.router.navigateByUrl('/dashboard');
+    // this.router.navigate(['dashboard']);
+    // debugger;
     // if (this.msalGuardConfig.interactionType === InteractionType.Popup) {
     //   if (this.msalGuardConfig.authRequest){
     //     this.authService.loginPopup({...this.msalGuardConfig.authRequest} as PopupRequest)
