@@ -13,4 +13,11 @@ router.get('/getUsers', [
 
 ]);
 
+router.get('/addUser/:email', [
+    //ValidationMiddleware.validJWTNeeded,
+    // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
+    usersApi.addUser
+
+]);
+
 module.exports = router;
