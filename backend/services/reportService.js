@@ -35,3 +35,34 @@ exports.getReports = async () => {
     console.log('reports', reports);
     return reports;
 };
+
+exports.getReportsByuser = async (email) => {
+   
+    let user = await contex.getContext().Users.findAll({
+        where: {   IsActive:{ [Op.eq]: true }, UserName: { [Op.eq]: email } }
+    });
+    console.log('user obj', user)
+    // join  report 
+    let reports = await contex.getContext().Reports.findAll({
+
+        include: [            
+            {
+              model: contex.getContext().ReportAccess,   
+              include: [
+                {
+                  model: contex.getContext().Users,   
+                  where: {
+                    UserId: {
+                      [Op.ne]: user.Id
+                    }
+                  }
+                }
+              ]
+            }
+          ],       
+        where: {   IsActive:{ [Op.eq]: true } }
+    });
+    
+    console.log('reports', reports);
+    return reports;
+};
