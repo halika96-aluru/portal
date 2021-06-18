@@ -4,6 +4,7 @@ import { navItems } from '../../_nav';
 import { ActivatedRoute , Router } from '@angular/router';
 import { JwPaginationComponent } from 'jw-angular-pagination';
 import { AuthenticationService } from '../../services/authentication.service';
+import { MsalBroadcastService } from '@azure/msal-angular';
 
 
 
@@ -23,10 +24,32 @@ export class DefaultLayoutComponent implements OnDestroy {
   private router: Router;
   public filterdData : any [];
   public lstNavs = [];
+  public profile={};
   
 
-  constructor(private authService: AuthenticationService, @Inject(DOCUMENT) _document?: any) {
+  constructor(private authService: AuthenticationService, private broadcastService : MsalBroadcastService,
+    
+     @Inject(DOCUMENT) _document?: any, 
+  ) {
 
+
+
+    this.broadcastService.msalSubject$.subscribe((x) => {
+
+      if(x.eventType == "msal:acquireTokenStart"){
+
+        this.profile = (x.payload as any).account;
+      }
+      // 'msal:loginSuccess',
+      console.log("login success.", x);
+      //alert("success");
+    });
+
+    this.broadcastService.inProgress$.subscribe((x) => {
+      // 'msal:loginSuccess',
+      console.log("api progress.", x);
+      // alert("sucprogresscess");
+    });
 
     this.changes = new MutationObserver((mutations) => {
       this.sidebarMinimized = _document.body.classList.contains('sidebar-minimized');
@@ -41,7 +64,9 @@ export class DefaultLayoutComponent implements OnDestroy {
     console.log(RoleName);
 
     var navToRemove:any = [];
-    this.lstNavs = navItems;    
+    this.lstNavs = navItems;  
+    
+    
   }
 
   constructNavs(items){

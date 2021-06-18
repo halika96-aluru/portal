@@ -13,12 +13,13 @@ router.get('/getReports', [
 
 ]);
 
-router.get('/getUserReports', [
+router.get('/getUserReports/:email', [
     //ValidationMiddleware.validJWTNeeded,
     // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
     reportapi.getUserReports
 
 ]);
+
 
 
 module.exports = router;

@@ -1,5 +1,5 @@
 const reportService = require('../services/reportService');
-const graphService =  require('../services/graphService');
+// const graphService =  require('../services/graphService');
 
 exports.getReports = async (req, res) => {      
     console.log('request header', req.headers['authorization']);
@@ -14,8 +14,9 @@ exports.getUserReports = async (req, res) => {
     if (authHeader[0] !== 'Bearer') {
         return res.status(401).send();
     } 
-    user = graphService.getUserDetailsByToken(authHeader[1]);
-    reportService.getReports(user.email).then((result) => {
+    // user = graphService.getUserDetailsByToken(authHeader[1]);
+    // let userInfo = await graphService.getUserDetails(req.params.email);
+    reportService.getReportsByuser(req.params.email).then((result) => {
      res.status(200).send(result);
     });
 };

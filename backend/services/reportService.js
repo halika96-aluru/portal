@@ -37,32 +37,31 @@ exports.getReports = async () => {
 };
 
 exports.getReportsByuser = async (email) => {
-   
-    let user = await contex.getContext().Users.findAll({
+   try {
+    let user = await contex.getContext().Users.findOne({
         where: {   IsActive:{ [Op.eq]: true }, UserName: { [Op.eq]: email } }
     });
+    var ReportAccess = require('../models/ReportAccess');
     console.log('user obj', user)
     // join  report 
-    let reports = await contex.getContext().Reports.findAll({
+    let reports = await contex.getContext().ReportAccess.findAll({
 
         include: [            
             {
-              model: contex.getContext().ReportAccess,   
-              include: [
-                {
-                  model: contex.getContext().Users,   
-                  where: {
-                    UserId: {
-                      [Op.ne]: user.Id
-                    }
-                  }
-                }
-              ]
+              model: contex.getContext().Reports,
+              as: 'Report',
+              require: true   
             }
           ],       
-        where: {   IsActive:{ [Op.eq]: true } }
+        where: { IsActive:{ [Op.eq]: true },  [Op.or]: [{UserId:  user.UserId}]   }
     });
+
+    let reportsList = reports.map(c => c.Report);
     
     console.log('reports', reports);
-    return reports;
+    return reportsList;
+  } catch(e){
+    console.log(e);
+  }
+
 };

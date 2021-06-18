@@ -17,7 +17,11 @@ export class ReportService {
 
    }
 
-   getReportss(): Observable<any>{
+   getReports(): Observable<any>{
     return this.http.get<any>( this.baseUri + "getReports");
+   }
+
+   getUserReports(username): Observable<any>{
+    return this.http.get<any>( this.baseUri + "getUserReports/"+ username);
    }
 }

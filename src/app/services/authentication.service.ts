@@ -11,14 +11,26 @@ import { AuthenticationResult, InteractionType, PopupRequest, RedirectRequest } 
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<any>;
     public currentUser: Observable<any>;
+    public user:any = {};
 
     constructor(@Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
+      private broadcastService : MsalBroadcastService,
       private authService: MsalService,
       private httpClient: HttpClient,
       private msalBroadcastService: MsalBroadcastService
       ) {
         this.currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
+
+        this.broadcastService.msalSubject$.subscribe((x) => {
+          console.log("auth service login success.", x);
+          if(x.eventType == "msal:acquireTokenStart"){
+            this.user = (<any>x.payload).account;
+          }
+          // 'msal:loginSuccess',
+         
+          //alert("success");
+        });
     }
 
     public get currentUserValue(): any {
