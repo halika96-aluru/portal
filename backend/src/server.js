@@ -53,8 +53,7 @@ app.get('/', function (req, res) {
 
 });
 
-app.get('/template', function (req, res) {
-    throw Error('exception raised');
+app.get('/template', function (req, res) {    
     res.sendFile(path.join(__dirname + '/../templates/index.html'));
 });
 
