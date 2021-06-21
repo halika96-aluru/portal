@@ -47,13 +47,14 @@ app.use('/departments', deprtmentRoutes);
 
 
 
-app.get('/', function (req, res) {
+app.get('/', function (req, res) {   
     res.sendFile(path.join(__dirname + '/../views/index.html'));
     //res.sendFile(path.join(__dirname + '/../templates/index.html'));
 
 });
 
 app.get('/template', function (req, res) {
+    throw Error('exception raised');
     res.sendFile(path.join(__dirname + '/../templates/index.html'));
 });
 
@@ -73,4 +74,32 @@ app.get('/getEmbedToken', async function (req, res) {
     // result.status specified the statusCode that will be sent along with the result object
     res.status(result.status).send(result);
 });
+
+// catch 404 
+app.use(function(req, res, next) {
+    console.log('env', req.app.get('env'));
+    res.status(404);    
+    res.format({
+      html: function () {
+        res.render('404', { url: req.url })
+      },
+      json: function () {
+        res.json({ error: 'Not found' })
+      },
+      default: function () {
+        res.type('txt').send('Not found')
+      }
+    })
+  });
+  
+  // error handler
+  app.use(function(err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+    // render the error page
+    res.status(err.status || 500);
+    res.send(err);   
+  });
+
 app.listen(port, () => console.log(`Listening on port ${port}`));

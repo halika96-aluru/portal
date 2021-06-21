@@ -5,7 +5,7 @@ const Sequelize = require('sequelize');
 function getContext(){
 
 const sequelize = new Sequelize('PortalDB', 'PortalAdmin', 'Portal@123', {
-    host: 'rcoedemodb.database.windows.net',
+    host: 'rcoedemodbxyzpqr.database.windows.net',
     dialect: 'mssql',
     dialectOptions: {
         options: {
@@ -19,7 +19,7 @@ sequelize.authenticate()
     console.log('Connection has been established successfully.');
   })
   .catch(err => {
-    console.error('Unable to connect to the database:', err);
+    console.error('Unable to connect to the database:', err);    
   });
 
 var initModels = require("../models/init-models");
