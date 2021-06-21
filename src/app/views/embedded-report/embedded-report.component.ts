@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 declare var powerbi: any;
 import * as pbi from 'powerbi-client';
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -53,7 +54,7 @@ export class EmbeddedReportComponent implements OnInit {
     //   filterType: model.FilterType.BasicFilter,         
     // }
     
-    this.httpClient.get(`http://localhost:8080/api/powerbi/getEmbedToken/${this.reportId}`).subscribe((res: any) => {
+    this.httpClient.get(`${environment.baseApiUrl}powerbi/getEmbedToken/${this.reportId}`).subscribe((res: any) => {
         console.log(res);       
         const model:any = pbi.models;
         const basicFilter = {

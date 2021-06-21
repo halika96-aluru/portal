@@ -8,8 +8,7 @@ exports.getWorkspaceByReportId = async (reportId) => {
         where: {
             reportId:reportId
     }
-    });
-    console.log('******************************************');
+    }); 
     return report.workspaceId;
 };
 
@@ -19,9 +18,7 @@ exports.getReportParams = async (reportId) => {
     let report = await contex.getContext().Reports.findOne({
         where: {   Id:{ [Op.eq]: reportId } },
         include: [{ model: ReportFilters, as: 'ReportFilters'}]
-    });
-
-    console.log('******************************************', report);
+    });    
     return report;
 };
 
@@ -30,9 +27,7 @@ exports.getReports = async () => {
     // join  report 
     let reports = await contex.getContext().Reports.findAll({
         where: {   IsActive:{ [Op.eq]: true } }
-    });
-
-    console.log('reports', reports);
+    }); 
     return reports;
 };
 
