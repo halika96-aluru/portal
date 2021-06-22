@@ -8,10 +8,10 @@ exports.getReports = async (req, res) => {
 };
 
 exports.getUserReports = async (req, res) => {          
-    let authHeader = req.headers['authorization'].split(' ');
-    if (authHeader[0] !== 'Bearer') {
-        return res.status(401).send();
-    } 
+    // let authHeader = req.headers['authorization'].split(' ');
+    // if (authHeader[0] !== 'Bearer') {
+    //     return res.status(401).send();
+    // } 
     // user = graphService.getUserDetailsByToken(authHeader[1]);
     // let userInfo = await graphService.getUserDetails(req.params.email);
     reportService.getReportsByuser(req.params.email).then((result) => {

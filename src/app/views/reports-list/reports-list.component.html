@@ -8,10 +8,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="cursor-pointer" *ngFor="let item of reports; let i = index" (click)="loadReport(item.Id)" >       
-        <td>{{item.Id}}</td>
-        <td>{{item.ReportName}}</td>
-        <td>{{item.ReportDescription}}</td>
+      <tr class="cursor-pointer" *ngFor="let item of reports; let i = index" (click)="loadReport(item.id)" >       
+        <td>{{item.id}}</td>
+        <td>{{item.reportName}}</td>
+        <td>{{item.reportDescription}}</td>
       </tr>     
     </tbody>
   </table>

@@ -1,10 +1,10 @@
 var contex = require("./sequalize.service");
-var ReportFilters = contex.getContext().ReportFilters;
+//var ReportFilters = contex.getContext().reportFilters;
 const { Op } = require("sequelize");
 
 exports.getWorkspaceByReportId = async (reportId) => {
     let keys = Object.keys(model);
-    let report = await contex.getContext().Constants.findAll({
+    let report = await contex.getContext().reports.findAll({
         where: {
             reportId:reportId
     }
@@ -15,9 +15,9 @@ exports.getWorkspaceByReportId = async (reportId) => {
 exports.getReportParams = async (reportId) => {
    
     // join  report 
-    let report = await contex.getContext().Reports.findOne({
+    let report = await contex.getContext().reports.findOne({
         where: {   id:{ [Op.eq]: reportId } },
-        include: [{ model: ReportFilters, as: 'ReportFilters'}]
+        include: [{ model: contex.getContext().reportFilters, as: 'reportFilters'}]
     });    
     return report;
 };
@@ -25,7 +25,7 @@ exports.getReportParams = async (reportId) => {
 exports.getReports = async () => {
    
     // join  report 
-    let reports = await contex.getContext().Reports.findAll({
+    let reports = await contex.getContext().reports.findAll({
         where: {   isActive:{ [Op.eq]: true } }
     }); 
     return reports;
@@ -33,25 +33,25 @@ exports.getReports = async () => {
 
 exports.getReportsByuser = async (email) => {
    try {
-    let user = await contex.getContext().Users.findOne({
-        where: {   isActive:{ [Op.eq]: true }, UserName: { [Op.eq]: email } }
+    let user = await contex.getContext().users.findOne({
+        where: {   isActive:{ [Op.eq]: true }, username: { [Op.eq]: email } }
     });
-    var ReportAccess = require('../models/ReportAccess');
+    //var ReportAccess = require('../models/ReportAccess');
     console.log('user obj', user)
     // join  report 
-    let reports = await contex.getContext().ReportAccess.findAll({
+    let reports = await contex.getContext().reportAccess.findAll({
 
         include: [            
             {
-              model: contex.getContext().Reports,
-              as: 'Report',
+              model: contex.getContext().reports,
+              as: 'report',
               require: true   
             }
           ],       
         where: { isActive:{ [Op.eq]: true },  [Op.or]: [{userId:  user.userId}]   }
     });
-
-    let reportsList = reports.map(c => c.Report);
+    console.log('reports  ', reports);
+    let reportsList = reports.map(c => c.report);
     
     console.log('reports', reports);
     return reportsList;
