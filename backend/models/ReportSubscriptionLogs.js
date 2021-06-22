@@ -1,39 +1,49 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('ReportSubscriptionLogs', {
-    Id: {
+  return sequelize.define('reportSubscriptionLogs', {
+    id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    ReportSubscriptionId: {
+    reportSubscriptionId: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: 'ReportSubscription',
-        key: 'Id'
-      }
+        key: 'report_subscription_id'
+      },
+      field: 'report_subscription_id'
     },
-    GeneratedTime: {
+    generatedTime: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      field: 'generated_time'
     },
-    CreatedBy: {
+    createdBy: {
       type: DataTypes.STRING(50),
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('suser_sname'),
+      field: 'created_by'
     },
-    CreateDate: {
+    createdDate: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('getutcdate'),
+      field: 'created_date'
     },
-    ModifiedBy: {
+    modifiedBy: {
       type: DataTypes.STRING(50),
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('suser_sname'),
+      field: 'modified_by'
     },
-    ModifiedDate: {
+    modifiedDate: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('getutcdate'),
+      field: 'modified_date'
     }
   }, {
     sequelize,
@@ -45,7 +55,7 @@ module.exports = function(sequelize, DataTypes) {
         name: "PK_ReportSubscriptionLogs",
         unique: true,
         fields: [
-          { name: "Id" },
+          { name: "id" },
         ]
       },
     ]

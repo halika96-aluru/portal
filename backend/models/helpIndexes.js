@@ -1,17 +1,30 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('departments', {
-    departmentId: {
+  return sequelize.define('helpIndexes', {
+    helpIndexId: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      field: 'department_id'
+      field: 'help_index_id'
     },
-    departmentName: {
+    helpSectionId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'help_section',
+        key: 'help_section_id'
+      },
+      field: 'help_section_id'
+    },
+    title: {
       type: DataTypes.STRING(256),
-      allowNull: true,
-      field: 'department_name'
+      allowNull: false
+    },
+    helpContent: {
+      type: DataTypes.STRING(256),
+      allowNull: false,
+      field: 'help_content'
     },
     isActive: {
       type: DataTypes.BOOLEAN,
@@ -19,7 +32,7 @@ module.exports = function(sequelize, DataTypes) {
       field: 'is_active'
     },
     createdBy: {
-      type: DataTypes.STRING(256),
+      type: DataTypes.STRING(50),
       allowNull: false,
       defaultValue: Sequelize.Sequelize.fn('suser_sname'),
       field: 'created_by'
@@ -31,7 +44,7 @@ module.exports = function(sequelize, DataTypes) {
       field: 'created_date'
     },
     modifiedBy: {
-      type: DataTypes.STRING(256),
+      type: DataTypes.STRING(50),
       allowNull: false,
       defaultValue: Sequelize.Sequelize.fn('suser_sname'),
       field: 'modified_by'
@@ -44,15 +57,15 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     sequelize,
-    tableName: 'Departments',
+    tableName: 'help_indexes',
     schema: 'dbo',
     timestamps: false,
     indexes: [
       {
-        name: "PK_Departments",
+        name: "pk_help_indexes",
         unique: true,
         fields: [
-          { name: "department_id" },
+          { name: "help_index_id" },
         ]
       },
     ]

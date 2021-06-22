@@ -12,7 +12,7 @@ exports.fillConstants = async (model) => {
     });
        
     items.forEach((i) => {
-      model[i.ConstantName] = i.ConstantValue;
+      model[i.constantName] = i.constantValue;
     });
     return model;
 };

@@ -1,17 +1,21 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('departments', {
-    departmentId: {
+  return sequelize.define('userActionTypes', {
+    id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
-      field: 'department_id'
+      primaryKey: true
     },
-    departmentName: {
+    actionName: {
       type: DataTypes.STRING(256),
       allowNull: true,
-      field: 'department_name'
+      field: 'action_name'
+    },
+    actionDesc: {
+      type: DataTypes.STRING(256),
+      allowNull: true,
+      field: 'action_Desc'
     },
     isActive: {
       type: DataTypes.BOOLEAN,
@@ -19,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
       field: 'is_active'
     },
     createdBy: {
-      type: DataTypes.STRING(256),
+      type: DataTypes.STRING(50),
       allowNull: false,
       defaultValue: Sequelize.Sequelize.fn('suser_sname'),
       field: 'created_by'
@@ -31,7 +35,7 @@ module.exports = function(sequelize, DataTypes) {
       field: 'created_date'
     },
     modifiedBy: {
-      type: DataTypes.STRING(256),
+      type: DataTypes.STRING(50),
       allowNull: false,
       defaultValue: Sequelize.Sequelize.fn('suser_sname'),
       field: 'modified_by'
@@ -44,15 +48,15 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     sequelize,
-    tableName: 'Departments',
+    tableName: 'User_action_types',
     schema: 'dbo',
     timestamps: false,
     indexes: [
       {
-        name: "PK_Departments",
+        name: "PK_User_action_types",
         unique: true,
         fields: [
-          { name: "department_id" },
+          { name: "id" },
         ]
       },
     ]

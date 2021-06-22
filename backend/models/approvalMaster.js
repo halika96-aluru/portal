@@ -1,25 +1,34 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('departments', {
-    departmentId: {
+  return sequelize.define('approvalMaster', {
+    approvalId: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      field: 'department_id'
+      field: 'approval_id'
     },
-    departmentName: {
-      type: DataTypes.STRING(256),
+    approvalUserId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'approval_user_id'
+    },
+    reportId: {
+      type: DataTypes.INTEGER,
       allowNull: true,
-      field: 'department_name'
+      references: {
+        model: 'Reports',
+        key: 'id'
+      },
+      field: 'report_id'
     },
     isActive: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.SMALLINT,
       allowNull: false,
       field: 'is_active'
     },
     createdBy: {
-      type: DataTypes.STRING(256),
+      type: DataTypes.STRING(50),
       allowNull: false,
       defaultValue: Sequelize.Sequelize.fn('suser_sname'),
       field: 'created_by'
@@ -31,7 +40,7 @@ module.exports = function(sequelize, DataTypes) {
       field: 'created_date'
     },
     modifiedBy: {
-      type: DataTypes.STRING(256),
+      type: DataTypes.STRING(50),
       allowNull: false,
       defaultValue: Sequelize.Sequelize.fn('suser_sname'),
       field: 'modified_by'
@@ -44,15 +53,15 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     sequelize,
-    tableName: 'Departments',
+    tableName: 'Approval_master',
     schema: 'dbo',
     timestamps: false,
     indexes: [
       {
-        name: "PK_Departments",
+        name: "PK_Approval_master",
         unique: true,
         fields: [
-          { name: "department_id" },
+          { name: "approval_id" },
         ]
       },
     ]

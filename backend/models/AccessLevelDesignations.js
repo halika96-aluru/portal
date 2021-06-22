@@ -1,51 +1,63 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('AccessLevelDesignations', {
-    Id: {
+  return sequelize.define('accessLevelDesignations', {
+    id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    AlId: {
+    accessLevelId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'AccessLevel',
-        key: 'Id'
-      }
+        key: 'access_level_id'
+      },
+      field: 'access_level_id'
     },
-    DepartmentId: {
+    departmentId: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: 'Departments',
-        key: 'DepartmentID'
-      }
+        key: 'department_id'
+      },
+      field: 'department_id'
     },
-    DesignationId: {
+    designationId: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      field: 'designation_id'
     },
-    IsActive: {
+    isActive: {
       type: DataTypes.SMALLINT,
-      allowNull: false
+      allowNull: false,
+      field: 'is_active'
     },
-    CreatedBy: {
+    createdBy: {
       type: DataTypes.STRING(50),
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('suser_sname'),
+      field: 'created_by'
     },
-    CreateDate: {
+    createdDate: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('getutcdate'),
+      field: 'created_date'
     },
-    ModifiedBy: {
+    modifiedBy: {
       type: DataTypes.STRING(50),
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('suser_sname'),
+      field: 'modified_by'
     },
-    ModifiedDate: {
+    modifiedDate: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('getutcdate'),
+      field: 'modified_date'
     }
   }, {
     sequelize,
@@ -57,7 +69,7 @@ module.exports = function(sequelize, DataTypes) {
         name: "PK_AccessLevelDesignations",
         unique: true,
         fields: [
-          { name: "Id" },
+          { name: "id" },
         ]
       },
     ]

@@ -1,47 +1,59 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('GroupMembers', {
-    Id: {
+  return sequelize.define('groupMembers', {
+    groupMemberId: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      field: 'group_member_id'
     },
-    UserId: {
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'Users',
-        key: 'Id'
-      }
+        key: 'user_id'
+      },
+      field: 'user_id'
     },
-    TeamId: {
+    userGroupId: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: 'UserGroups',
-        key: 'TeamID'
-      }
+        key: 'user_group_id'
+      },
+      field: 'user_group_Id'
     },
-    IsActive: {
+    isActive: {
       type: DataTypes.SMALLINT,
-      allowNull: false
+      allowNull: false,
+      field: 'is_active'
     },
-    CreatedBy: {
+    createdBy: {
       type: DataTypes.STRING(50),
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('suser_sname'),
+      field: 'created_by'
     },
-    CreateDate: {
+    createdDate: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('getutcdate'),
+      field: 'created_date'
     },
-    ModifiedBy: {
+    modifiedBy: {
       type: DataTypes.STRING(50),
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('suser_sname'),
+      field: 'modified_by'
     },
-    ModifiedDate: {
+    modifiedDate: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('getutcdate'),
+      field: 'modified_date'
     }
   }, {
     sequelize,
@@ -53,7 +65,7 @@ module.exports = function(sequelize, DataTypes) {
         name: "PK_GroupMembers",
         unique: true,
         fields: [
-          { name: "Id" },
+          { name: "group_member_id" },
         ]
       },
     ]

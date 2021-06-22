@@ -1,59 +1,68 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('User_actions', {
+  return sequelize.define('userActions', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    ReportId: {
+    reportId: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: 'Reports',
-        key: 'Id'
-      }
+        key: 'id'
+      },
+      field: 'report_id'
     },
-    page_name: {
+    pageName: {
       type: DataTypes.STRING(256),
-      allowNull: true
+      allowNull: true,
+      field: 'page_name'
     },
-    ActionType: {
+    actionType: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: 'User_action_types',
-        key: 'Id'
-      }
+        key: 'id'
+      },
+      field: 'action_type'
     },
-    ActionDesc: {
+    actionDesc: {
       type: DataTypes.STRING(256),
-      allowNull: true
+      allowNull: true,
+      field: 'action_desc'
     },
-    old_value: {
+    oldValue: {
       type: DataTypes.STRING(256),
-      allowNull: true
+      allowNull: true,
+      field: 'old_value'
     },
-    new_value: {
+    newValue: {
       type: DataTypes.STRING(256),
-      allowNull: true
+      allowNull: true,
+      field: 'new_value'
     },
     timestamp: {
       type: DataTypes.STRING(256),
       allowNull: true
     },
-    user_browser_details: {
+    userBrowserDetails: {
       type: DataTypes.STRING(256),
-      allowNull: true
+      allowNull: true,
+      field: 'user_browser_details'
     },
-    CreatedBy: {
+    createdBy: {
       type: DataTypes.STRING(256),
-      allowNull: false
+      allowNull: false,
+      field: 'created_by'
     },
-    CreateDate: {
+    createdDate: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      field: 'created_date'
     }
   }, {
     sequelize,

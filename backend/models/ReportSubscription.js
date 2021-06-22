@@ -1,71 +1,87 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('ReportSubscription', {
-    Id: {
+  return sequelize.define('reportSubscription', {
+    reportSubscriptionId: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      field: 'report_subscription_id'
     },
-    ReportId: {
+    reportId: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: 'Reports',
-        key: 'Id'
-      }
+        key: 'id'
+      },
+      field: 'report_id'
     },
-    UserId: {
+    useridEmail: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: 'Users',
-        key: 'Id'
-      }
+        key: 'user_id'
+      },
+      field: 'userid_email'
     },
-    Frequency: {
+    frequency: {
       type: DataTypes.STRING(256),
       allowNull: true
     },
-    WeekDay: {
+    weekday: {
       type: DataTypes.STRING(256),
       allowNull: true
     },
-    DateOfMonth: {
+    dateOfMonth: {
       type: DataTypes.STRING(256),
-      allowNull: true
+      allowNull: true,
+      field: 'date_of_month'
     },
-    SheduledTime: {
+    sheduledTime: {
       type: DataTypes.TIME,
-      allowNull: true
+      allowNull: true,
+      field: 'sheduled_time'
     },
-    StartDate: {
+    startDate: {
       type: DataTypes.DATEONLY,
-      allowNull: true
+      allowNull: true,
+      field: 'start_date'
     },
-    EndDate: {
+    endDate: {
       type: DataTypes.DATEONLY,
-      allowNull: true
+      allowNull: true,
+      field: 'end_date'
     },
-    IsActive: {
+    isActive: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: false,
+      field: 'is_active'
     },
-    CreatedBy: {
+    createdBy: {
       type: DataTypes.STRING(50),
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('suser_sname'),
+      field: 'created_by'
     },
-    CreateDate: {
+    createdDate: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('getutcdate'),
+      field: 'created_date'
     },
-    ModifiedBy: {
+    modifiedBy: {
       type: DataTypes.STRING(50),
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('suser_sname'),
+      field: 'modified_by'
     },
-    ModifiedDate: {
+    modifiedDate: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('getutcdate'),
+      field: 'modified_date'
     }
   }, {
     sequelize,
@@ -77,7 +93,7 @@ module.exports = function(sequelize, DataTypes) {
         name: "PK_ReportSubscription",
         unique: true,
         fields: [
-          { name: "Id" },
+          { name: "report_subscription_id" },
         ]
       },
     ]

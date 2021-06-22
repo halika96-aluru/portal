@@ -1,51 +1,60 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('UserGroups', {
-    TeamID: {
+  return sequelize.define('userGroups', {
+    userGroupId: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      field: 'user_group_id'
     },
-    TeamName: {
+    userGroupName: {
       type: DataTypes.STRING(256),
-      allowNull: false
+      allowNull: false,
+      field: 'user_group_name'
     },
-    DeptId: {
+    deptId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'Departments',
-        key: 'DepartmentID'
-      }
+        key: 'department_id'
+      },
+      field: 'dept_id'
     },
-    ParentId: {
+    parentId: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      field: 'parent_id'
     },
     isActive: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: false,
+      field: 'is_active'
     },
-    CreatedBy: {
+    createdBy: {
       type: DataTypes.STRING(250),
       allowNull: false,
-      defaultValue: Sequelize.Sequelize.fn('suser_sname')
+      defaultValue: Sequelize.Sequelize.fn('suser_sname'),
+      field: 'created_by'
     },
-    CreateDate: {
+    createdDate: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.Sequelize.fn('getutcdate')
+      defaultValue: Sequelize.Sequelize.fn('getutcdate'),
+      field: 'created_date'
     },
-    ModifiedBy: {
+    modifiedBy: {
       type: DataTypes.STRING(250),
       allowNull: false,
-      defaultValue: Sequelize.Sequelize.fn('suser_sname')
+      defaultValue: Sequelize.Sequelize.fn('suser_sname'),
+      field: 'modified_by'
     },
-    ModifiedDate: {
+    modifiedDate: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.Sequelize.fn('getutcdate')
+      defaultValue: Sequelize.Sequelize.fn('getutcdate'),
+      field: 'modified_date'
     }
   }, {
     sequelize,
@@ -57,7 +66,7 @@ module.exports = function(sequelize, DataTypes) {
         name: "PK_UserGroups",
         unique: true,
         fields: [
-          { name: "TeamID" },
+          { name: "user_group_id" },
         ]
       },
     ]

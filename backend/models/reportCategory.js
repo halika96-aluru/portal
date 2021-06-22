@@ -1,20 +1,32 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('departments', {
-    departmentId: {
-      autoIncrement: true,
+  return sequelize.define('reportCategory', {
+    categoryId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      field: 'department_id'
+      field: 'category_id'
     },
-    departmentName: {
+    categoryName: {
       type: DataTypes.STRING(256),
       allowNull: true,
-      field: 'department_name'
+      field: 'category_name'
+    },
+    departmentId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'Departments',
+        key: 'department_id'
+      },
+      field: 'department_id'
+    },
+    description: {
+      type: DataTypes.STRING(256),
+      allowNull: false
     },
     isActive: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.SMALLINT,
       allowNull: false,
       field: 'is_active'
     },
@@ -26,7 +38,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     createdDate: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: Sequelize.Sequelize.fn('getutcdate'),
       field: 'created_date'
     },
@@ -44,15 +56,15 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     sequelize,
-    tableName: 'Departments',
+    tableName: 'ReportCategory',
     schema: 'dbo',
     timestamps: false,
     indexes: [
       {
-        name: "PK_Departments",
+        name: "PK_ReportCategoryMaster",
         unique: true,
         fields: [
-          { name: "department_id" },
+          { name: "category_id" },
         ]
       },
     ]

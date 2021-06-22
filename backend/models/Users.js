@@ -1,72 +1,83 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Users', {
-    UserId: {
+  return sequelize.define('users', {
+    userId: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      field: 'user_id'
     },
-    FirstName: {
+    username: {
       type: DataTypes.STRING(256),
       allowNull: true
     },
-    LastName: {
+    email: {
       type: DataTypes.STRING(256),
       allowNull: true
     },
-    Email: {
-      type: DataTypes.STRING(256),
-      allowNull: true
-    },
-    UserName: {
-      type: DataTypes.STRING(256),
-      allowNull: true
-    },
-    DepartmentId: {
+    departmentId: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: 'Departments',
-        key: 'DepartmentID'
-      }
+        key: 'department_id'
+      },
+      field: 'department_id'
     },
-    CoWorkerId: {
+    coworkerId: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      field: 'coworker_id'
     },
-    Designation: {
+    reportingManagerId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      field: 'reporting_manager_id'
+    },
+    designation: {
       type: DataTypes.STRING(256),
       allowNull: true
     },
-    ReportingManagerId: {
-      type: DataTypes.INTEGER,
-      allowNull: true
+    firstName: {
+      type: DataTypes.STRING(256),
+      allowNull: true,
+      field: 'first_name'
     },
-    IsActive: {
+    lastName: {
+      type: DataTypes.STRING(256),
+      allowNull: true,
+      field: 'last_name'
+    },
+    isActive: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
+      defaultValue: false,
+      field: 'is_active'
     },
-    ModifiedDate: {
+    modifiedDate: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.Sequelize.fn('getutcdate')
+      defaultValue: Sequelize.Sequelize.fn('getutcdate'),
+      field: 'modified_date'
     },
-    CreateDate: {
+    createdDate: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.Sequelize.fn('getutcdate')
+      defaultValue: Sequelize.Sequelize.fn('getutcdate'),
+      field: 'created_date'
     },
-    ModifiedBy: {
+    modifiedBy: {
       type: DataTypes.STRING(256),
       allowNull: true,
-      defaultValue: Sequelize.Sequelize.fn('suser_sname')
+      defaultValue: Sequelize.Sequelize.fn('suser_sname'),
+      field: 'modified_by'
     },
-    CreatedBy: {
+    createdBy: {
       type: DataTypes.STRING(256),
       allowNull: true,
-      defaultValue: Sequelize.Sequelize.fn('suser_sname')
+      defaultValue: Sequelize.Sequelize.fn('suser_sname'),
+      field: 'created_by'
     }
   }, {
     sequelize,
@@ -78,7 +89,7 @@ module.exports = function(sequelize, DataTypes) {
         name: "PK_Users",
         unique: true,
         fields: [
-          { name: "Id" },
+          { name: "user_id" },
         ]
       },
     ]

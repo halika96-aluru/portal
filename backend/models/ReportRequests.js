@@ -1,51 +1,64 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('ReportRequests', {
-    Id: {
+  return sequelize.define('reportRequests', {
+    reportRequestId: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      field: 'report_request_id'
     },
-    ReportId: {
+    reportId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'Reports',
-        key: 'Id'
-      }
+        key: 'id'
+      },
+      field: 'report_id'
     },
-    RequestedBy: {
+    requestedBy: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      field: 'requested_by'
     },
-    ApprovedBy: {
+    approvedBy: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      field: 'approved_by'
     },
-    Comments: {
+    comments: {
       type: DataTypes.STRING(256),
       allowNull: false
     },
-    IsActive: {
+    isActive: {
       type: DataTypes.SMALLINT,
-      allowNull: false
+      allowNull: false,
+      field: 'is_active'
     },
-    CreatedBy: {
+    createdBy: {
       type: DataTypes.STRING(50),
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('suser_sname'),
+      field: 'created_by'
     },
-    CreateDate: {
+    createdDate: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('getutcdate'),
+      field: 'created_date'
     },
-    ModifiedBy: {
+    modifiedBy: {
       type: DataTypes.STRING(50),
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('suser_sname'),
+      field: 'modified_by'
     },
-    ModifiedDate: {
+    modifiedDate: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('getutcdate'),
+      field: 'modified_date'
     }
   }, {
     sequelize,
@@ -57,7 +70,7 @@ module.exports = function(sequelize, DataTypes) {
         name: "PK_ReportRequests",
         unique: true,
         fields: [
-          { name: "Id" },
+          { name: "report_request_id" },
         ]
       },
     ]

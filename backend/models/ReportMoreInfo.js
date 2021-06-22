@@ -1,47 +1,57 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('ReportMoreInfo', {
-    Id: {
+  return sequelize.define('reportMoreInfo', {
+    id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    ReportId: {
+    reportId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'Reports',
-        key: 'Id'
-      }
+        key: 'id'
+      },
+      field: 'report_id'
     },
-    Title: {
+    title: {
       type: DataTypes.STRING(256),
       allowNull: true
     },
-    Description: {
+    description: {
       type: DataTypes.STRING(256),
       allowNull: true
     },
-    IsActive: {
+    isActive: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: false,
+      field: 'is_active'
     },
-    CreatedBy: {
+    createdBy: {
       type: DataTypes.STRING(50),
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('suser_sname'),
+      field: 'created_by'
     },
-    CreateDate: {
+    createDate: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('getutcdate'),
+      field: 'create_date'
     },
-    ModifiedBy: {
+    modifiedBy: {
       type: DataTypes.STRING(50),
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('suser_sname'),
+      field: 'modified_by'
     },
-    ModifiedDate: {
+    modifiedDate: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('getutcdate'),
+      field: 'modified_date'
     }
   }, {
     sequelize,
@@ -53,7 +63,7 @@ module.exports = function(sequelize, DataTypes) {
         name: "PK_ReportMoreInfo",
         unique: true,
         fields: [
-          { name: "Id" },
+          { name: "id" },
         ]
       },
     ]

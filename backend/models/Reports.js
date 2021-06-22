@@ -1,92 +1,108 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Reports', {
-    Id: {
+  return sequelize.define('reports', {
+    id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    PBIReportId: {
+    pbiReportId: {
       type: DataTypes.STRING(256),
-      allowNull: false
+      allowNull: false,
+      field: 'pbi_report_id'
     },
-    ReportName: {
+    reportName: {
       type: DataTypes.STRING(512),
-      allowNull: false
+      allowNull: false,
+      field: 'report_name'
     },
-    PBIReportAppId: {
+    pbiReportAppId: {
       type: DataTypes.STRING(256),
-      allowNull: false
+      allowNull: false,
+      field: 'pbi_report_app_id'
     },
-    ReportPrefix: {
+    reportPrefix: {
       type: DataTypes.STRING(256),
-      allowNull: true
+      allowNull: true,
+      field: 'report_prefix'
     },
-    PBIWorkspaceId: {
+    pbiWorkspaceId: {
       type: DataTypes.STRING(256),
-      allowNull: false
+      allowNull: false,
+      field: 'pbi_workspace_id'
     },
-    DepartmentId: {
+    departmentId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'Departments',
-        key: 'DepartmentID'
-      }
+        key: 'department_id'
+      },
+      field: 'department_id'
     },
-    CategoryId: {
+    categoryId: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'ReportCategoryMaster',
-        key: 'CategoryId'
-      }
+        model: 'ReportCategory',
+        key: 'category_id'
+      },
+      field: 'category_id'
     },
-    ReportDescription: {
+    reportDescription: {
       type: DataTypes.STRING(256),
-      allowNull: true
+      allowNull: true,
+      field: 'report_description'
     },
-    ReportType: {
+    reportType: {
       type: DataTypes.SMALLINT,
       allowNull: true,
-      comment: "1 --> powerBI  2 ---> Cognos"
+      comment: "1 --> powerBI  2 ---> Cognos",
+      field: 'report_type'
     },
-    CognosLink: {
+    cognosLink: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: false,
+      field: 'cognos_link'
     },
-    Notes: {
-      type: DataTypes.BLOB,
+    notes: {
+      type: DataTypes.TEXT,
       allowNull: true
     },
-    HasDataLevelSecurity: {
+    hasDataLevelSecurity: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: false,
+      field: 'has_data_level_security'
     },
-    IsActive: {
+    isActive: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: false,
+      field: 'is_active'
     },
-    CreatedBy: {
+    createdBy: {
       type: DataTypes.STRING(256),
       allowNull: false,
-      defaultValue: Sequelize.Sequelize.fn('suser_sname')
+      defaultValue: Sequelize.Sequelize.fn('suser_sname'),
+      field: 'created_by'
     },
-    CreateDate: {
+    createdDate: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.Sequelize.fn('getutcdate')
+      defaultValue: Sequelize.Sequelize.fn('getutcdate'),
+      field: 'created_date'
     },
-    ModifiedBy: {
+    modifiedBy: {
       type: DataTypes.STRING(256),
       allowNull: false,
-      defaultValue: Sequelize.Sequelize.fn('suser_sname')
+      defaultValue: Sequelize.Sequelize.fn('suser_sname'),
+      field: 'modified_by'
     },
-    ModifiedDate: {
+    modifiedDate: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.Sequelize.fn('getutcdate')
+      defaultValue: Sequelize.Sequelize.fn('getutcdate'),
+      field: 'modified_date'
     }
   }, {
     sequelize,
@@ -98,7 +114,7 @@ module.exports = function(sequelize, DataTypes) {
         name: "PK_Reports",
         unique: true,
         fields: [
-          { name: "Id" },
+          { name: "id" },
         ]
       },
     ]

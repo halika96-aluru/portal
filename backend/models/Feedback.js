@@ -1,43 +1,57 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Feedback', {
-    Id: {
+  return sequelize.define('feedback', {
+    feedbackId: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      field: 'feedback_id'
     },
-    DepartmentId: {
+    departmentId: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: 'Departments',
-        key: 'DepartmentID'
-      }
+        key: 'department_id'
+      },
+      field: 'department_id'
     },
-    Topic: {
+    topic: {
       type: DataTypes.STRING(256),
       allowNull: true
     },
-    Feedback: {
+    feedback: {
       type: DataTypes.STRING(256),
       allowNull: false
     },
-    CreatedBy: {
+    status: {
+      type: DataTypes.SMALLINT,
+      allowNull: false
+    },
+    createdBy: {
       type: DataTypes.STRING(50),
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('suser_sname'),
+      field: 'created_by'
     },
-    CreateDate: {
+    createdDate: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('getutcdate'),
+      field: 'created_date'
     },
-    ModifiedBy: {
+    modifiedBy: {
       type: DataTypes.STRING(50),
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('suser_sname'),
+      field: 'modified_by'
     },
-    ModifiedDate: {
+    modifiedDate: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('getutcdate'),
+      field: 'modified_date'
     }
   }, {
     sequelize,
@@ -49,7 +63,7 @@ module.exports = function(sequelize, DataTypes) {
         name: "PK_Feedback",
         unique: true,
         fields: [
-          { name: "Id" },
+          { name: "feedback_id" },
         ]
       },
     ]

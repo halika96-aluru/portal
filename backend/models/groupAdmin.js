@@ -1,17 +1,47 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('departments', {
-    departmentId: {
+  return sequelize.define('groupAdmin', {
+    groupAdminId: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      field: 'department_id'
+      field: 'group_admin_id'
     },
-    departmentName: {
-      type: DataTypes.STRING(256),
+    userGroupId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'user_group_id'
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'user_id'
+    },
+    limitToUserGroup: {
+      type: DataTypes.INTEGER,
       allowNull: true,
-      field: 'department_name'
+      field: 'limit_to_user_group'
+    },
+    isEnableToCrtUserGroups: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      field: 'is_enable_to_crt_user_groups'
+    },
+    isEnableToCrtUserRoles: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      field: 'is_enable_to_crt_user_roles'
+    },
+    isEnableToAddNewReport: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      field: 'is_enable_to_add_new_report'
+    },
+    isAbleToReportRequestAccess: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      field: 'is_able_to_report_request_access'
     },
     isActive: {
       type: DataTypes.BOOLEAN,
@@ -44,15 +74,15 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     sequelize,
-    tableName: 'Departments',
+    tableName: 'group_admin',
     schema: 'dbo',
     timestamps: false,
     indexes: [
       {
-        name: "PK_Departments",
+        name: "pk_group_admin",
         unique: true,
         fields: [
-          { name: "department_id" },
+          { name: "group_admin_id" },
         ]
       },
     ]

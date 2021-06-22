@@ -1,43 +1,52 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Constants', {
-    ConstantID: {
+  return sequelize.define('constants', {
+    constantId: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      field: 'constant_id'
     },
-    ConstantName: {
+    constantName: {
       type: DataTypes.STRING(256),
-      allowNull: false
+      allowNull: false,
+      field: 'constant_name'
     },
-    ConstantValue: {
+    constantValue: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: false,
+      field: 'constant_value'
     },
-    IsActive: {
+    isActive: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: false,
+      defaultValue: false,
+      field: 'is_active'
     },
-    CreatedBy: {
+    createdBy: {
       type: DataTypes.STRING(256),
       allowNull: false,
-      defaultValue: Sequelize.Sequelize.fn('suser_sname')
+      defaultValue: Sequelize.Sequelize.fn('suser_sname'),
+      field: 'created_by'
     },
-    CreateDate: {
+    createdDate: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.Sequelize.fn('getutcdate')
+      defaultValue: Sequelize.Sequelize.fn('getutcdate'),
+      field: 'created_date'
     },
-    ModifiedBy: {
+    modifiedBy: {
       type: DataTypes.STRING(256),
       allowNull: false,
-      defaultValue: Sequelize.Sequelize.fn('suser_sname')
+      defaultValue: Sequelize.Sequelize.fn('suser_sname'),
+      field: 'modified_by'
     },
-    ModifiedDate: {
+    modifiedDate: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.Sequelize.fn('getutcdate')
+      defaultValue: Sequelize.Sequelize.fn('getutcdate'),
+      field: 'modified_date'
     }
   }, {
     sequelize,
@@ -49,7 +58,7 @@ module.exports = function(sequelize, DataTypes) {
         name: "PK_Constants",
         unique: true,
         fields: [
-          { name: "ConstantID" },
+          { name: "constant_id" },
         ]
       },
     ]
