@@ -36,6 +36,7 @@ import { SharedModule } from '../shared/shared.module';
 import { LoginComponent } from './views/login/login.component';
 import { RedirectComponent } from './views/redirect/redirect.component';
 import { CanActivateMainRoute } from './services/CanActivateMainRoute';
+import { environment } from '../environments/environment';
 
 //import { ConfirmDialogComponent } from '../shared/confirm-dialog/confirm-dialog.component';
 // import { DashboardComponent } from './views/dashboard/dashboard.component';
@@ -59,7 +60,7 @@ export function loggerCallback(logLevel: LogLevel, message: string) {
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
-      clientId: '6878a486-4dea-4baa-9713-8f99f9d63052',
+      clientId: environment.appId,
       redirectUri: '/',
       postLogoutRedirectUri: 'http://localhost:4200/login'
     },
