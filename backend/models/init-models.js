@@ -15,6 +15,7 @@ var _reportRequests = require("./reportRequests");
 var _reportSubscription = require("./reportSubscription");
 var _reportSubscriptionLogs = require("./reportSubscriptionLogs");
 var _reports = require("./reports");
+var _testTable = require("./testTable");
 var _userGroups = require("./userGroups");
 var _userActionTypes = require("./userActionTypes");
 var _userActions = require("./userActions");
@@ -42,6 +43,7 @@ function initModels(sequelize) {
   var reportSubscription = _reportSubscription(sequelize, DataTypes);
   var reportSubscriptionLogs = _reportSubscriptionLogs(sequelize, DataTypes);
   var reports = _reports(sequelize, DataTypes);
+  var testTable = _testTable(sequelize, DataTypes);
   var userGroups = _userGroups(sequelize, DataTypes);
   var userActionTypes = _userActionTypes(sequelize, DataTypes);
   var userActions = _userActions(sequelize, DataTypes);
@@ -118,6 +120,7 @@ function initModels(sequelize) {
     reportSubscription,
     reportSubscriptionLogs,
     reports,
+    testTable,
     userGroups,
     userActionTypes,
     userActions,

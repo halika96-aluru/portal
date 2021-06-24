@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
     actionDesc: {
       type: DataTypes.STRING(256),
       allowNull: true,
-      field: 'action_Desc'
+      field: 'action_desc'
     },
     isActive: {
       type: DataTypes.BOOLEAN,

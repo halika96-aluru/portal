@@ -30,7 +30,7 @@ export const routes: Routes = [
     children: [
 
       {
-        path: 'dashboard',canActivateChild: [MsalGuard],
+        path: 'dashboard',
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
 
@@ -51,7 +51,7 @@ export const routes: Routes = [
         loadChildren: () => import('./views/reports/reports.module').then(m => m.ReportsModule)
       },
       {
-        path: '', redirectTo: '/login', pathMatch: 'full',
+        path: '', redirectTo: '/dashboard', pathMatch: 'full',
       },
       {
         path: 'code',
