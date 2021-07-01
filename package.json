@@ -19,7 +19,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "nodemon ./backend/src/server.js",
+    "start": "node ./backend/src/server.js",
     "build:client": "ng build --prod --aot --buildOptimizer --commonChunk --vendorChunk --optimization --progress",
     "test:client": "ng test",
     "lint": "ng lint",
