@@ -4,14 +4,9 @@
 // ----------------------------------------------------------------------------
 
 let path = require('path');
-let embedToken = require(__dirname + '/embedConfigService.js');
-const utils = require(__dirname + "/utils.js");
+const utils = require("./utils.js");
 const powerbiRouter = require("./routes/powerbiEmbedRoutes");
-const usersRoutes = require("./routes/userRoutes");
-const deprtmentRoutes = require("./routes/departmentRoutes");
-const feedbackRoutes = require("./routes/feedbackRoutes");
 const reportRoutes = require("./routes/reportRoutes");
-const requestRoutes = require("./routes/requestRoutes");
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
@@ -38,11 +33,7 @@ const port = process.env.PORT || 8080;
 // }));
 
 app.use('/api/powerbi', powerbiRouter);
-app.use('/users', usersRoutes);
 app.use('/api/reports', reportRoutes);
-app.use('/requests', requestRoutes);
-app.use('/feedbacks', feedbackRoutes);
-app.use('/departments', deprtmentRoutes);
 
 
 
@@ -57,22 +48,22 @@ app.get('/template', function (req, res) {
     res.sendFile(path.join(__dirname + '/../templates/index.html'));
 });
 
-app.get('/getEmbedToken', async function (req, res) {
+// app.get('/getEmbedToken', async function (req, res) {
 
-    // Validate whether all the required configurations are provided in config.json
-    // configCheckResult = utils.validateConfig();
-    // if (configCheckResult) {
-    //     return {
-    //         "status": 400,
-    //         "error": configCheckResult
-    //     };
-    // }
-    // Get the details like Embed URL, Access token and Expiry
-    let result = await embedToken.getEmbedInfo();
+//     // Validate whether all the required configurations are provided in config.json
+//     // configCheckResult = utils.validateConfig();
+//     // if (configCheckResult) {
+//     //     return {
+//     //         "status": 400,
+//     //         "error": configCheckResult
+//     //     };
+//     // }
+//     // Get the details like Embed URL, Access token and Expiry
+//     let result = await embedToken.getEmbedInfo();
 
-    // result.status specified the statusCode that will be sent along with the result object
-    res.status(result.status).send(result);
-});
+//     // result.status specified the statusCode that will be sent along with the result object
+//     res.status(result.status).send(result);
+// });
 
 // catch 404 
 app.use(function(req, res, next) {

@@ -11,7 +11,7 @@ const getAccessToken = async function () {
     let AuthenticationContext = adal.AuthenticationContext;
 
     // Create a config variable that store credentials from config.json
-    let config = require(__dirname + "/../config/config.json");
+    let config = require(__dirname + "/../config.json");
     
     // let constants =  require("../api/contants");
     //config = await constants.fillConstants(config);

@@ -19,19 +19,18 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "node ./backend/src/server.js",
+    "prodstart": "node ./backend/server.js",
     "build:client": "ng build --prod --aot --buildOptimizer --commonChunk --vendorChunk --optimization --progress",
     "test:client": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev2": "nodemon ./backend/src/server.js",
-    "start:server": "nodemon ./backend/src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",   
+    "startserver": "nodemon ./backend/server.js",
     "buildclient": "ng build",
     "runclient": "ng serve --proxy-config proxy.conf.json",
-    "devstart": "nodemon --inspect ./backend/src/server.js",
+    "devstart": "nodemon --inspect ./backend/server.js",
     "dev": "npm run buildclient & concurrently --kill-others \"npm run runclient\" \"npm run devstart\"",
-    "startapp": "concurrently --kill-others \"npm run runclient\" \"npm run devstart\""
+    "start": "concurrently --kill-others \"npm run runclient\" \"npm run devstart\""
   },
   "private": true,
   "dependencies": {
