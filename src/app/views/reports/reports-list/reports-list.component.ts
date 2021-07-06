@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../../services/authentication.service';
-import { ReportService } from '../../services/reportService';
+import { AuthenticationService } from '../../../services/authentication.service';
+import { ReportService } from '../../../services/reportService';
 
 @Component({
   selector: 'app-reports-list',

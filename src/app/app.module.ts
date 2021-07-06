@@ -34,7 +34,7 @@ import { ChartsModule } from 'ng2-charts';
 import { MatDialogModule, MatIconModule, MatTableDataSource, MatTableModule } from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
 import { LoginComponent } from './views/login/login.component';
-import { RedirectComponent } from './views/redirect/redirect.component';
+
 import { CanActivateMainRoute } from './services/CanActivateMainRoute';
 import { environment } from '../environments/environment';
 
@@ -130,12 +130,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
   declarations: [   
     AppComponent,
    ...APP_CONTAINERS,
-   LoginComponent,
-   RedirectComponent 
-   
-    // AppComponent,
-    // ...APP_CONTAINERS,
-    //LoginComponent
+   LoginComponent
     
   ],
   providers: [{

@@ -7,7 +7,7 @@ import { DefaultLayoutComponent } from './containers';
 import { AuthGuard } from '../auth.guard';
 import { MsalGuard } from '@azure/msal-angular';
 import { LoginComponent } from './views/login/login.component';
-import { CanActivateMainRoute } from './services/CanActivateMainRoute'
+
 
 export const routes: Routes = [
 
@@ -32,19 +32,6 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
-      },
-
-      {
-        path: 'requests',canActivateChild: [MsalGuard],
-        loadChildren: () => import('./views/requests/requests.module').then(m => m.RequestsModule)
-      },
-      {
-        path: 'feedback',canActivateChild: [MsalGuard],
-        loadChildren: () => import('./views/feedback/feedback.module').then(m => m.FeedbackModule)
-      },
-      {
-        path: 'admins',canActivateChild: [MsalGuard],
-        loadChildren: () => import('./views/admins/admins.module').then(m => m.AdminsModule)
       },
       {
         path: 'reports',canActivateChild: [MsalGuard],

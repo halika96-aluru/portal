@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EmbeddedReportComponent } from '../embedded-report/embedded-report.component';
-import { ReportsListComponent } from '../reports-list/reports-list.component';
+import { ReportsListComponent } from './reports-list/reports-list.component';
 import { DisplayReportComponent } from './display-report/display-report.component';
 import { ReportsComponent } from './reports/reports.component';
 

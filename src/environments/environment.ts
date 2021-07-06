@@ -5,8 +5,6 @@
 
 export const environment = {
   production: false,
-  //mockApiUrl: 'http://34.227.93.219:8080/api/'
-  mockApiUrl: 'https://quj8scqmf4.execute-api.us-west-2.amazonaws.com/Dev/',
   baseApiUrl: 'http://localhost:8080/api/',
   appId: '6878a486-4dea-4baa-9713-8f99f9d63052'
 };
