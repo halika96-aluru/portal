@@ -4,7 +4,7 @@ import {JwPaginationComponent} from 'jw-angular-pagination';
 import { ConfirmDialogComponent } from '../app/shared/confirm-dialog/confirm-dialog.component';
 import { EmbeddedReportComponent } from '../app/views/embedded-report/embedded-report.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { MatTableModule, MatTabsModule } from '@angular/material';
+import { MatButtonModule, MatButtonToggleModule, MatTableModule, MatTabsModule, MatCommonModule, MatInputModule } from '@angular/material';
 //import { MatDatepickerModule,MatNativeDateModule,MatFormFieldModule, MatInputModule } from '@angular/material';
 
 @NgModule({
@@ -20,8 +20,12 @@ import { MatTableModule, MatTabsModule } from '@angular/material';
     JwPaginationComponent,
     ConfirmDialogComponent,
     EmbeddedReportComponent,
+    MatInputModule,
+    MatCommonModule,
     MatTableModule,
     MatTabsModule,
+    MatButtonModule,
+    MatButtonToggleModule,
     // MatDatepickerModule,
     // MatNativeDateModule,
     // MatFormFieldModule,
