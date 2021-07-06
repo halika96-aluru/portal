@@ -35,20 +35,24 @@ export const routes: Routes = [
       },
 
       {
-        path: 'requests',canActivateChild: [MsalGuard],
+        path: 'requests',
         loadChildren: () => import('./views/requests/requests.module').then(m => m.RequestsModule)
       },
       {
-        path: 'feedback',canActivateChild: [MsalGuard],
+        path: 'feedback',
         loadChildren: () => import('./views/feedback/feedback.module').then(m => m.FeedbackModule)
       },
       {
-        path: 'admins',canActivateChild: [MsalGuard],
+        path: 'admins',
         loadChildren: () => import('./views/admins/admins.module').then(m => m.AdminsModule)
       },
       {
-        path: 'reports',canActivateChild: [MsalGuard],
+        path: 'reports',
         loadChildren: () => import('./views/reports/reports.module').then(m => m.ReportsModule)
+      },
+      {
+        path: 'settings',
+        loadChildren: () => import('./views/settings/settings.module').then(m => m.SettingsModule)
       },
       {
         path: '', redirectTo: '/dashboard', pathMatch: 'full',
