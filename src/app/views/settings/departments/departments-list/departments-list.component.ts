@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AfterViewInit,  ViewChild} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { Router } from '@angular/router';
 
 export interface Departments {
   departmentPrefix:string,
@@ -40,7 +41,7 @@ export class DepartmentsListComponent implements OnInit {
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatSort) sort: MatSort;
-  constructor() { }
+  constructor(private router: Router) { }
  
 
   ngOnInit(): void {
@@ -48,5 +49,9 @@ export class DepartmentsListComponent implements OnInit {
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+  }
+
+  addDepartment(){
+    this.router.navigate(['/settings/departments/adddepartment']);
   }
 }

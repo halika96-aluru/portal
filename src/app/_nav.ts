@@ -213,6 +213,7 @@ export const navItems: NavData[] = [
   {
     name: 'Settings',
     url: '/settings',
-    icon: 'fa fa-wrench'
+    icon: 'fa fa-wrench',
+    
   },
 ];
