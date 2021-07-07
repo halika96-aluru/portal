@@ -42,7 +42,7 @@ app.use('/users', usersRoutes);
 app.use('/api/reports', reportRoutes);
 app.use('/requests', requestRoutes);
 app.use('/feedbacks', feedbackRoutes);
-app.use('/departments', deprtmentRoutes);
+app.use('/api/departments', deprtmentRoutes);
 
 
 
