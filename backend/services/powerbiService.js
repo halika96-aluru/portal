@@ -1,5 +1,5 @@
-const powerbiService = require('../services/powerbiEmbedService');
-const reportService = require('../services/reportService');
+const powerbiService = require('./powerbiService');
+const reportService = require('./reportService');
 
 exports.getEmbebToken = async (req, res) => {
     
