@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DepartmentsComponent } from './departments/departments.component';
 import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
-  { path: '',  component: SettingsComponent}
+  { path: 'departments',  data: {title: 'Departments'}, component: DepartmentsComponent },
+  { path: '', redirectTo: 'departments', pathMatch: 'full' }
 ];
 
 @NgModule({

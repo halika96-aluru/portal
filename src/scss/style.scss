@@ -104,7 +104,7 @@ table{
 }
 tr.mat-header-row, th.mat-header-cell{
   height: 48px;
-  background-color: wheat;
+  // background-color: wheat;
   // $maincolor;
   
 }
@@ -156,4 +156,16 @@ a{
 .sidebar .nav-link:hover{
   background-color: $maincolor !important;
   color:$textcolor !important;
+}
+
+.cw-mat-tab-group {
+    
+  mat-tab-group {   
+  .mat-tab-header {
+      background: #fff !important;
+  }
+  .mat-tab-header, .mat-tab-nav-bar {
+       border-width: 0px;
+  }
+  }   
 }
