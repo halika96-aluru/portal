@@ -10,6 +10,7 @@ import { DepartmentsComponent } from './departments/departments.component';
 import { AddDepartmentComponent } from './departments/add-department/add-department.component';
 import { DepartmentStatsComponent } from './departments/department-stats/department-stats.component';
 import { DepartmentSettingsComponent } from './departments/department-settings/department-settings.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -24,6 +25,7 @@ import { DepartmentSettingsComponent } from './departments/department-settings/d
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     SharedModule,
     SettingsRoutingModule
   ]

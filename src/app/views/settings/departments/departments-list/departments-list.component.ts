@@ -5,16 +5,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { Router } from '@angular/router';
 import { DepartmentsService } from '../../../../services/departments.service';
-
-export interface Departments {
-  departmentId: number,
-  departmentPrefix:string,
-  departmentName:string,
-  departmentDescription: string, 
-  admin: string,
-  createdOn: string,  
-}
-
+import { Department } from '../models/department';
 
 
 @Component({
@@ -26,9 +17,9 @@ export class DepartmentsListComponent implements OnInit {
 
 
   displayedColumns: string[] = ['departmentId','departmentPrefix', 'departmentName','departmentDescription', 'createdDate'];
-  departments:Departments[] = [];
+  departments:Department[] = [];
   // dataSource = new MatTableDataSource(this.departments);
-  dataSource: MatTableDataSource<Departments> = new MatTableDataSource(this.departments);
+  dataSource: MatTableDataSource<Department> = new MatTableDataSource(this.departments);
  
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

@@ -13,4 +13,11 @@ router.get('/getDepartments', [
 
 ]);
 
+router.post('/addDepartment', [
+    //ValidationMiddleware.validJWTNeeded,
+    // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
+    departmentsService.getDepartments
+
+]);
+
 module.exports = router;
