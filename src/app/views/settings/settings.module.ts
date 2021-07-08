@@ -10,6 +10,8 @@ import { DepartmentsComponent } from './departments/departments.component';
 import { AddDepartmentComponent } from './departments/add-department/add-department.component';
 import { DepartmentStatsComponent } from './departments/department-stats/department-stats.component';
 import { DepartmentSettingsComponent } from './departments/department-settings/department-settings.component';
+import { UserRolesComponent } from './departments/user-roles/user-roles.component';
+import { AddUserrolesComponent } from './departments/add-userroles/add-userroles.component';
 
 
 
@@ -20,7 +22,9 @@ import { DepartmentSettingsComponent } from './departments/department-settings/d
     DepartmentsListComponent,
     DepartmentsComponent,
     AddDepartmentComponent,
-    DepartmentSettingsComponent
+    DepartmentSettingsComponent,
+    UserRolesComponent,
+    AddUserrolesComponent
   ],
   imports: [
     CommonModule,

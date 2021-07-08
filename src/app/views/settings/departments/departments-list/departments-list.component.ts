@@ -51,7 +51,5 @@ export class DepartmentsListComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  addDepartment(){
-    this.router.navigate(['/settings/departments/adddepartment']);
-  }
+  
 }
