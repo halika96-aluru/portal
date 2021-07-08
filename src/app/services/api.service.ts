@@ -172,5 +172,15 @@ export class ApiService {
     .pipe(
       catchError(this.errorMgmt)
     )
-  }  
+  } 
+  adduserroles(data): Observable<any>{
+    console.log("userroles");
+    let url = `${environment.mockApiUrl}adduserroles`;
+    console.log(url);
+    return this.http.post(url,data)
+    .pipe(
+      catchError(this.errorMgmt)
+    )
+    
+  } 
 }
