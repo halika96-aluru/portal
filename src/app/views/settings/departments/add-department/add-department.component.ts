@@ -40,8 +40,7 @@ export class AddDepartmentComponent implements OnInit {
     return this.departmentForm.get(controlName).hasError(errorName);
   }
 
-  addDepartment() {
-    debugger;
+  addDepartment() {    
     if(this.departmentForm.invalid){
       return;
     }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {AfterViewInit,  ViewChild} from '@angular/core';
+import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { DepartmentsService } from '../../../../services/departments.service';
 import { Department } from '../models/department';
@@ -16,23 +16,23 @@ import { Department } from '../models/department';
 export class DepartmentsListComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['departmentId','departmentPrefix', 'departmentName','departmentDescription', 'createdDate'];
-  departments:Department[] = [];
+  displayedColumns: string[] = ['departmentId', 'departmentPrefix', 'departmentName', 'departmentDescription', 'admins', 'createdDate'];
+  departments: Department[] = [];
   // dataSource = new MatTableDataSource(this.departments);
   dataSource: MatTableDataSource<Department> = new MatTableDataSource(this.departments);
- 
+
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private router: Router, private departmentsService: DepartmentsService) { }
- 
+
 
   ngOnInit(): void {
     this.departmentsService.getDepartments().subscribe(res => {
-      if(res.length){
+      if (res.length) {
         this.departments = res;
-        this.dataSource = new MatTableDataSource(this.departments);        
+        this.dataSource = new MatTableDataSource(this.departments);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       }
@@ -40,7 +40,7 @@ export class DepartmentsListComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-  
+
   }
 
   applyFilter(event: Event) {
@@ -52,7 +52,21 @@ export class DepartmentsListComponent implements OnInit {
     }
   }
 
-  addDepartment(){
+  addDepartment() {
     this.router.navigate(['/settings/departments/adddepartment']);
+  }
+
+  truncateAdminsDisplay(adminsStr: string) {
+
+    if (adminsStr) {
+
+      var adminusers = adminsStr.split(',');
+
+      if (adminusers.length === 1) {
+        return adminusers[0];
+      } else {
+        return adminusers[0] + ' +' + (adminusers.length - 1);
+      }
+    }
   }
 }

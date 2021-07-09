@@ -20,7 +20,8 @@ const app = express();
 
 let cors = require('cors');
 app.use(cors())
-app.user(bodyParser);
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
 // let html_to_pdf = require('html-pdf-node');
 // Prepare server for Bootstrap, jQuery and PowerBI files
 app.use('/js', express.static('./node_modules/bootstrap/dist/js/')); // Redirect bootstrap JS

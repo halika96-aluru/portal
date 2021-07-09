@@ -31,10 +31,16 @@
                 <td mat-cell *matCellDef="let element"> {{element.departmentName}} </td>
             </ng-container>
 
-            <!-- Name Column -->
+            <!-- Description Column -->
             <ng-container matColumnDef="departmentDescription">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
                 <td mat-cell *matCellDef="let element"> {{element.departmentDescription}} </td>
+            </ng-container>
+            
+            <!-- Admin Column -->
+            <ng-container matColumnDef="admins">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Admin </th>
+                <td mat-cell *matCellDef="let element"> {{ truncateAdminsDisplay(element.admins)}} </td>
             </ng-container>
 
             <!-- CreatedOn Column -->

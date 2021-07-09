@@ -2,7 +2,7 @@ export interface Department {
     departmentId: number,
     departmentPrefix:string,
     departmentName:string,
-    departmentDescription: string, 
-    admin: string,
+    departmentDescription: string,  
+    admins: string,
     createdOn: string,  
   }

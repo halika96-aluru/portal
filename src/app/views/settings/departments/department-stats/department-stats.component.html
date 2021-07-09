@@ -1,34 +1,36 @@
-<p>Departments</p>
+<h4 class="dept-title">Departments</h4>
 <div class="row">
-    <div class="col-8">
+    <div class="col-6">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Stats</h5>
-                <p class="card-text">It's a broader card with text below as a natural lead-in to extra content. This
-                    content is a little longer.</p>
-                    <div class="row">
-                        <div class="col-3">
-                            <label for="">Departments</label>
-                        </div>
-                        <div class="col-3">
-                            <label for="">Admins</label>
-                        </div>
-                        <div class="col-3">
-                            <label for="">Roles</label>
-                        </div>
+                <h5 class="card-title font-weight-bold">At a Glance</h5>
+                <div class="row text-center mt-3">
+                    <div class="col-4">
+                        <h5 class="stat-label">Departments</h5>
+                        <div class="stat-val">10</div>
                     </div>
-                
+                    <div class="col-4">
+                        <h5 class="stat-label">Admins</h5>
+                        <div class="stat-val">10</div>
+                    </div>
+                    <div class="col-4">
+                        <h5 class="stat-label">Roles</h5>
+                        <div class="stat-val">10</div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-    <div class="col-4">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Help</h5>
-                <p class="card-text">It's a broader card with text below as a natural lead-in to extra content. This
-                    content is a little longer.</p>
-               
-            </div>
-        </div>
+    <div class="col-3">
+        <mat-card class="px-0">
+            <mat-card-header class="border-bottom">
+                <mat-card-title>Help</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="p-1"> <a mat-flat-button href="/settings/departments">Daily Sales</a> </div>
+                <div class="p-1"> <a mat-flat-button href="/settings/departments">Selling Services</a> </div>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>

@@ -2,17 +2,18 @@ const Sequelize = require('sequelize');
 //
 // Database Setup
 //
-function getContext(){
 
 const sequelize = new Sequelize('PortalDB', 'sa', 'Root@123', {
-    host: '127.0.0.1',
-    dialect: 'mssql',
-    dialectOptions: {
-        options: {
-            encrypt: true,
-        }
-    }
-  });
+  host: '127.0.0.1',
+  dialect: 'mssql',
+  dialectOptions: {
+      options: {
+          encrypt: true,
+      }
+  }
+});
+
+function getContext(){
 
 sequelize.authenticate()
   .then(() => {
@@ -29,3 +30,4 @@ return contex;
 }
 
 exports.getContext = getContext;
+exports.sequelize = sequelize;

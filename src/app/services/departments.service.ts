@@ -19,8 +19,8 @@ export class DepartmentsService {
 
    }
 
-   getDepartments(): Observable<any>{
-    return this.http.get<any>( this.baseApiUrl + "getDepartments");
+   getDepartments(): Observable<Department[]>{
+    return this.http.get<Department[]>( this.baseApiUrl + "getDepartments");
    }
 
    addDepartment(model: Department): Observable<any>{
