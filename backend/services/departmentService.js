@@ -13,8 +13,12 @@ exports.getDepartments = async (req, res) => {
 
 exports.addDepartment = async (req, res) => {
     
-    let departments = await contex.getContext().departments.findAll({
-        where: {   isActive:{ [Op.eq]: true } }       
+
+    let departments = await contex.getContext().departments.create({
+        departmentName:req.body.departmentName,
+        departmentPrefix: req.body.departmentPrefix,
+        departmentDescription: req.body.departmentDescription,
+        isActive: true
     }).then((result) => {
         res.send(result);
        });       

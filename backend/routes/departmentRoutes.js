@@ -6,6 +6,7 @@ const departmentsService = require('../services/departmentService');
 const express = require("express");
 const router = express.Router();
 
+
 router.get('/getDepartments', [
     //ValidationMiddleware.validJWTNeeded,
     // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
@@ -13,10 +14,10 @@ router.get('/getDepartments', [
 
 ]);
 
-router.post('/addDepartment', [
+router.post('/addDepartment', [ 
     //ValidationMiddleware.validJWTNeeded,
     // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
-    departmentsService.getDepartments
+    departmentsService.addDepartment
 
 ]);
 
