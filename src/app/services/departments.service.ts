@@ -27,4 +27,12 @@ export class DepartmentsService {
     return this.http.post<any>( this.baseApiUrl + "addDepartment", model);
    }
 
+   updateDepartment(model: Department): Observable<any>{
+    return this.http.post<any>( this.baseApiUrl + "updateDepartment", model);
+   }
+
+   deleteDepartment(model: Department): Observable<any>{
+    return this.http.post<any>( this.baseApiUrl + `deleteDepartment/${model.departmentId}`, model);
+   }
+
 }

@@ -2,17 +2,17 @@
   
 <mat-card class="example-card col-lg-7 col-md-7 col-sm-10 col-xs-12">
     <mat-card-header class="border-0">       
-        <mat-card-title>Add Departments</mat-card-title>
+        <mat-card-title>{{model.departmentId ?'Edit': 'Add'}} Departments</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <form [formGroup]="departmentForm" (ngSubmit)="addDepartment()" autocomplete="off">       
+        <form [formGroup]="departmentForm" autocomplete="off">       
         <div class="row">
             <div class="col-3">
                 <mat-label>Prefix</mat-label>
                 <mat-form-field appearance="outline">                   
                     <input formControlName = "departmentPrefix" matInput placeholder="Prefix" />   
                     <mat-error *ngIf="hasError('departmentPrefix', 'required')"><strong>Prefix for department is required</strong></mat-error>
-                    <mat-error *ngIf="hasError('departmentPrefix', 'minlength')"><strong>Prefix must be at least 3 characters long</strong></mat-error>
+                    <mat-error *ngIf="hasError('departmentPrefix', 'minlength')"><strong>Prefix must be at least 2 characters long</strong></mat-error>
                     <mat-error *ngIf="hasError('departmentPrefix', 'pattern')"><strong>Invalid format</strong></mat-error>     
                     <mat-error *ngIf="hasError('departmentPrefix', 'alphaNumericError')"><strong>allowed special chars . - ,()</strong></mat-error>   
                                                   
@@ -45,7 +45,8 @@
         </div>
         <div class="d-flex justify-content-center">
             <button type="button" mat-button color="primary" (click)="cancel()">Cancle</button>
-            <button type="submit" [disabled]="departmentForm.invalid" mat-raised-button color="primary">Submit</button>
+            <button type="button" *ngIf="!model.departmentId"  (click)="addDepartment()"  [disabled]="departmentForm.invalid" mat-raised-button color="primary">Submit</button>
+            <button type="button" *ngIf="model.departmentId"  (click)="updateDepartment()" [disabled]="departmentForm.invalid" mat-raised-button color="primary">Update</button>
         </div>
         </form>
     </mat-card-content>

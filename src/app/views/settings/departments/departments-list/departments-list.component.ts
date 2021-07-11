@@ -16,7 +16,7 @@ import { Department } from '../models/department';
 export class DepartmentsListComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['departmentId', 'departmentPrefix', 'departmentName', 'departmentDescription', 'admins', 'createdDate'];
+  displayedColumns: string[] = ['departmentId', 'departmentPrefix', 'departmentName', 'departmentDescription', 'admins', 'createdDate', 'action'];
   departments: Department[] = [];
   // dataSource = new MatTableDataSource(this.departments);
   dataSource: MatTableDataSource<Department> = new MatTableDataSource(this.departments);
@@ -54,6 +54,17 @@ export class DepartmentsListComponent implements OnInit {
 
   addDepartment() {
     this.router.navigate(['/settings/departments/adddepartment']);
+  }
+
+  editDepartment(department: Department){
+    this.router.navigateByUrl('/settings/departments/adddepartment', { state: department });
+  }
+
+  deleteDepartment(department: Department){
+
+
+    
+    this.router.navigateByUrl('/settings/departments/adddepartment', { state: department });
   }
 
   truncateAdminsDisplay(adminsStr: string) {

@@ -17,7 +17,12 @@ export class AddDepartmentComponent implements OnInit {
   model: Department = <Department>{};
   departmentForm: FormGroup;
   isValid = false;
-  constructor(private router: Router, private departmentService: DepartmentsService, private _snackBar: MatSnackBar) { }
+  constructor(private router: Router, private departmentService: DepartmentsService, private _snackBar: MatSnackBar) { 
+
+    if(this.router.getCurrentNavigation().extras.state) {
+      this.model = <Department>this.router.getCurrentNavigation().extras.state;
+    }
+  }
 
   ngOnInit(): void {
     this.createForm();
@@ -29,14 +34,18 @@ export class AddDepartmentComponent implements OnInit {
   createForm():void {    
     this.departmentForm = new FormGroup({
       departmentId: new FormControl(''),
-      departmentPrefix: new FormControl('', [Validators.required,  Validators.minLength(3), this.alphaNumericValidator]),
+      departmentPrefix: new FormControl('', [Validators.required,  Validators.minLength(2), this.alphaNumericValidator]),
       departmentName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern('^[a-zA-Z0-9\.\, \-\']+'), this.alphaNumericValidator]),
       departmentDescription: new FormControl(''),      
     });
+    if(this.model.departmentId){
+      this.departmentForm.patchValue(this.model);
+    }
   }
 
-  public hasError = (controlName: string, errorName: string) => {
-    console.log(this.departmentForm.get(controlName));
+
+
+  public hasError = (controlName: string, errorName: string) => {    
     return this.departmentForm.get(controlName).hasError(errorName);
   }
 
@@ -53,6 +62,27 @@ export class AddDepartmentComponent implements OnInit {
     },
       err => {
         this._snackBar.open('Error in saving department', '', {
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+          duration: 3000,
+        });
+      }
+    );
+  }
+
+  updateDepartment(){
+    if(this.departmentForm.invalid){
+      return;
+    }
+    this.departmentService.updateDepartment(this.departmentForm.value).subscribe(res => {
+      this._snackBar.open('Department updated successfully', '', {
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+        duration: 3000,
+      });
+    },
+      err => {
+        this._snackBar.open('Error in updating department', '', {
           horizontalPosition: 'center',
           verticalPosition: 'top',
           duration: 3000,
