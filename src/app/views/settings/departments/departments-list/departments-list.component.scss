@@ -3,3 +3,16 @@
     overflow: hidden; 
     white-space: nowrap;
 }
+table.departments-table{
+
+        table-layout: fixed;
+
+    .col-description{
+        width: 350px;
+    }
+    .col-admins {
+        width:300px;
+    }
+
+
+}

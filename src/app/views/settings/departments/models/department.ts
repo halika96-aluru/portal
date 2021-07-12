@@ -3,6 +3,6 @@ export interface Department {
     departmentPrefix:string,
     departmentName:string,
     departmentDescription: string,  
-    admins: string,
+    admins: string[],
     createdOn: string,  
   }

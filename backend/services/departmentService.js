@@ -21,6 +21,11 @@ exports.getDepartments = async (req, res) => {
     ds.department_prefix, 
     ds.created_date
     `, { type: QueryTypes.SELECT }).then((result) => {
+        result.forEach(element => {
+            if(element.admins){
+            element.admins = element.admins.split(',');
+            }
+        });        
         res.send(result);
     });;
 

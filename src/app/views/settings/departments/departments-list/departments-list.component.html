@@ -11,7 +11,7 @@
 
 
     
-        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort class="departments-table">
 
             <!-- Position Column -->
             <ng-container matColumnDef="departmentId">
@@ -33,7 +33,7 @@
 
             <!-- Description Column -->
             <ng-container matColumnDef="departmentDescription">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+                <th class="col-description" mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
                 <td mat-cell *matCellDef="let element">
                     <span class="truncate-text"> {{element.departmentDescription}} </span>
                 </td>
@@ -41,8 +41,10 @@
             
             <!-- Admin Column -->
             <ng-container matColumnDef="admins">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Admin </th>
-                <td mat-cell *matCellDef="let element"> {{ truncateAdminsDisplay(element.admins)}} </td>
+                <th class="col-admins"  mat-header-cell *matHeaderCellDef mat-sort-header> Admin </th>
+                <td mat-cell *matCellDef="let element"> {{ (element.admins && element.admins.length ? element.admins[0] : '' )}}
+                    <strong> {{ ((element.admins && element.admins.length > 1) ? '+' + (element.admins.length -1) : '' )}}</strong>
+                </td>
             </ng-container>
 
             <!-- CreatedOn Column -->
