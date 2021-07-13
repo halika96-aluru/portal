@@ -17,13 +17,18 @@ export class ConfirmDialogComponent implements OnInit {
       confirmText: string,
       moreInfo: any
     }
-  ) { }
+  ) {    
+   }
 
   ngOnInit() {
   }
 
   onNoClick():void{
     this.dialogRef.close();
+  }
+
+  onYesClick():void{
+    this.dialogRef.close({confirm:true});
   }
 
 }

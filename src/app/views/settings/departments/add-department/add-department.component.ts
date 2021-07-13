@@ -54,6 +54,7 @@ export class AddDepartmentComponent implements OnInit {
       return;
     }
     this.departmentService.addDepartment(this.departmentForm.value).subscribe(res => {
+      this.router.navigate(['/settings/departments']);
       this._snackBar.open('Department added successfully', '', {
         horizontalPosition: 'center',
         verticalPosition: 'top',
@@ -75,6 +76,7 @@ export class AddDepartmentComponent implements OnInit {
       return;
     }
     this.departmentService.updateDepartment(this.departmentForm.value).subscribe(res => {
+      this.router.navigate(['/settings/departments']);
       this._snackBar.open('Department updated successfully', '', {
         horizontalPosition: 'center',
         verticalPosition: 'top',

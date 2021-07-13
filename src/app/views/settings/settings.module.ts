@@ -28,6 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     SharedModule,
     SettingsRoutingModule
-  ]
+  ],
+  entryComponents: [DepartmentsListComponent]
 })
 export class SettingsModule { }

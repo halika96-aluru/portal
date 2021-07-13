@@ -32,7 +32,7 @@ export class DepartmentsService {
    }
 
    deleteDepartment(model: Department): Observable<any>{
-    return this.http.post<any>( this.baseApiUrl + `deleteDepartment/${model.departmentId}`, model);
+    return this.http.get<any>( this.baseApiUrl + `deleteDepartment/${model.departmentId}`);
    }
 
 }

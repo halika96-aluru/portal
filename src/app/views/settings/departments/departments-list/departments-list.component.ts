@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AfterViewInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material';
+import { MatDialog, MatDialogRef, MatPaginator, MatSnackBar } from '@angular/material';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { DepartmentsService } from '../../../../services/departments.service';
+import { ConfirmDialogComponent } from '../../../../shared/confirm-dialog/confirm-dialog.component';
 import { Department } from '../models/department';
 
 
@@ -25,10 +26,18 @@ export class DepartmentsListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private router: Router, private departmentsService: DepartmentsService) { }
+  constructor(private router: Router, private departmentsService: DepartmentsService, private dialog: MatDialog,  private _snackBar: MatSnackBar) { }
 
 
   ngOnInit(): void {
+    this.loadDepartments();
+  }
+
+  ngAfterViewInit() {
+
+  }
+
+  loadDepartments(){
     this.departmentsService.getDepartments().subscribe(res => {
       if (res.length) {
         this.departments = res;
@@ -37,10 +46,6 @@ export class DepartmentsListComponent implements OnInit {
         this.dataSource.sort = this.sort;
       }
     })
-  }
-
-  ngAfterViewInit() {
-
   }
 
   applyFilter(event: Event) {
@@ -62,9 +67,33 @@ export class DepartmentsListComponent implements OnInit {
 
   deleteDepartment(department: Department){
 
-
     
-    this.router.navigateByUrl('/settings/departments/adddepartment', { state: department });
+    let dialogRef: MatDialogRef<ConfirmDialogComponent, any> = this.dialog.open(ConfirmDialogComponent, {  disableClose: true, data: {message: 'Are you sure you want to delete this item'}});
+
+    dialogRef.afterClosed().subscribe(res => {      
+      if(res.confirm){
+
+        this.departmentsService.deleteDepartment(department).subscribe(res => {
+          this.loadDepartments();
+          this._snackBar.open('Department deleted successfully', '', {
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+            duration: 3000,
+          });
+
+        },
+          err => {
+            this._snackBar.open('Error in deleting department', '', {
+              horizontalPosition: 'center',
+              verticalPosition: 'top',
+              duration: 3000,
+            });
+          }
+        );
+
+      }
+    })
+   
   }
 
   truncateAdminsDisplay(adminsStr: string) {
