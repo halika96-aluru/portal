@@ -24,7 +24,7 @@ export class DefaultLayoutComponent implements OnDestroy {
   private router: Router;
   public filterdData : any [];
   public lstNavs = [];
-  public profile={};
+  public profile={name: ''};
   
 
   constructor(private authService: AuthenticationService, private broadcastService : MsalBroadcastService,

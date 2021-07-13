@@ -22,7 +22,7 @@ app.use('/js', express.static('./node_modules/jquery/dist/')); // Redirect JS jQ
 app.use('/js', express.static('./node_modules/powerbi-client/dist/')) // Redirect JS PowerBI
 app.use('/css', express.static('./node_modules/bootstrap/dist/css/')); // Redirect CSS bootstrap
 app.use('/public', express.static('./public/')); // Use custom JS and CSS files
-app.use(express.static(__dirname + '/../views'));
+app.use(express.static(__dirname + '/views/'));
 
 const port = process.env.PORT || 8080;
 
@@ -38,8 +38,8 @@ app.use('/api/reports', reportRoutes);
 
 
 
-app.get('/', function (req, res) {   
-    res.sendFile(path.join(__dirname + '/../views/index.html'));
+app.get('/', function (req, res) {     
+    res.sendFile(path.join(__dirname + '/views/index.html'));
     //res.sendFile(path.join(__dirname + '/../templates/index.html'));
 
 });
@@ -93,3 +93,5 @@ app.use(function(req, res, next) {
   });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
+
+module.exports = app;

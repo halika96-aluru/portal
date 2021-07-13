@@ -34,7 +34,7 @@ export const routes: Routes = [
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
-        path: 'reports',canActivateChild: [MsalGuard],
+        path: 'reports',
         loadChildren: () => import('./views/reports/reports.module').then(m => m.ReportsModule)
       },
       {

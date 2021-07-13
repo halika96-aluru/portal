@@ -19,8 +19,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "prodstart": "node ./backend/server.js",
-    "build:client": "ng build --prod --aot --buildOptimizer --commonChunk --vendorChunk --optimization --progress",
+    "prodstart": "node ./server.js",
+    "build:client": "ng build --prod --output-path ./backend/views --aot --buildOptimizer --commonChunk --vendorChunk --optimization --progress",
     "test:client": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -31,7 +31,7 @@
     "devstart": "nodemon --inspect ./backend/server.js",
     "dev": "npm run buildclient & concurrently --kill-others \"npm run runclient\" \"npm run devstart\"",
     "startapp": "concurrently --kill-others \"npm run runclient\" \"npm run devstart\"",
-    "start": "concurrently --kill-others \"npm run runclient\" \"npm run devstart\""
+    "start": "node ./server.js"
   },
   "private": true,
   "dependencies": {

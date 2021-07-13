@@ -13,7 +13,7 @@ const sequelize = new Sequelize('PortalDB', 'PortalAdmin', 'Portal@123', {
         }
     }
   });
-
+try {
 sequelize.authenticate()
   .then(() => {
     console.log('Connection has been established successfully.');
@@ -21,7 +21,9 @@ sequelize.authenticate()
   .catch(err => {
     console.error('Unable to connect to the database:', err);    
   });
-
+}catch(e){
+  throw e;
+}
 var initModels = require("../models/init-models");
 
 var contex = initModels(sequelize);
