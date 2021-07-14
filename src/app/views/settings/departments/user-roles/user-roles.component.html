@@ -6,7 +6,6 @@
         <input  matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>      
-      <button type="button" mat-button color="primary">Assign Admin</button>
       <button type="button" mat-flat-button color="primary" (click)="addUserRoles()">Add User Roles</button>
     </div>  
     </div>
@@ -15,27 +14,48 @@
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
     <!-- Position Column -->
-    <ng-container matColumnDef="position">
+    <ng-container matColumnDef="accessLevelId">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.accessLevelId}} </td>
     </ng-container>
 
     <!-- Name Column -->
-    <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    <ng-container matColumnDef="accessLevelName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Role Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.accessLevelName}} </td>
     </ng-container>
 
     <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight </th>
-        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
-        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    <ng-container matColumnDef="canView">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> View </th>
+        <td mat-cell *matCellDef="let element"><mat-icon *ngIf="element.canView">check</mat-icon> {{element.canView}} </td>
+    </ng-container>
+    <ng-container matColumnDef="canSubscribe">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Subscribe </th>
+        <td mat-cell *matCellDef="let element"><mat-icon *ngIf="element.canSubscribe">check</mat-icon> {{element.canSubscribe}} </td>
+    </ng-container>
+    <ng-container matColumnDef="canShare">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Share </th>
+        <td mat-cell *matCellDef="let element"> <mat-icon *ngIf="element.canShare">check</mat-icon>{{element.canShare}} </td>
+    </ng-container>
+    <ng-container matColumnDef="canApprove">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Approve </th>
+        <td mat-cell *matCellDef="let element"> <mat-icon *ngIf="!element.canApprove">check</mat-icon>{{element.canApprove}} </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="accent" aria-label="Edit department" (click)="editUserRoles(element)">
+                <mat-icon>edit</mat-icon>
+              </button>
+       
+        </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

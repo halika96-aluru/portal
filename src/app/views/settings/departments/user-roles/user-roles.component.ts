@@ -1,34 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import {AfterViewInit,  ViewChild} from '@angular/core';
+import { MatDialog, MatDialogRef, MatPaginator, MatSnackBar } from '@angular/material';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+
 import { Router } from '@angular/router';
+import { UserRolesService } from '../../../../services/userRoles.service';
+import { userRoles } from '../models/userRoles';
 
 export interface UserRoles {
-  departmentPrefix:string,
-  userroleName:string,
-  description: string,
-  admin: string,
-  createdOn: string,
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-
-
+ 
 }
-const ELEMENT_DATA: any[] = [
-  { UserroleName: 'abx', position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  { UserroleName: 'abx', position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  { UserroleName: 'abx', position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  { UserroleName: 'abx', position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  { UserroleName: 'abx', position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  { UserroleName: 'abx', position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  { UserroleName: 'abx', position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  { UserroleName: 'abx', position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  { UserroleName: 'abx', position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  { UserroleName: 'abx', position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+
 
 @Component({
   selector: 'app-user-roles',
@@ -38,16 +21,51 @@ const ELEMENT_DATA: any[] = [
 export class UserRolesComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string[] = ['accessLevelId','accessLevelName', 'description', 'canView','canSubscribe','canShare','canApprove','action'];
+  userRoles: userRoles[] = [];
+  dataSource: MatTableDataSource<userRoles> = new MatTableDataSource(this.userRoles);
 
+
+
+  
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  constructor(private router: Router) { }
- 
 
-  ngOnInit(): void {
+  constructor(private router: Router, private userRolesService: UserRolesService,private _snackBar: MatSnackBar) { 
+
+    
+    if(this.router.getCurrentNavigation().extras.state) {
+      
+    }
   }
 
+  
+
+  ngOnInit(): void {
+
+    this.loadUserRoles();
+
+  }
+    loadUserRoles(){
+      this.userRolesService.getUserRoles().subscribe(res => {
+        if (res.length) {
+          this.userRoles = res;
+          this.dataSource = new MatTableDataSource(this.userRoles);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        }
+      })
+    }
+  
+    applyFilter(event: Event) {
+      const filterValue = (event.target as HTMLInputElement).value;
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+  
+      if (this.dataSource.paginator) {
+        this.dataSource.paginator.firstPage();
+      }
+    }
+  
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
   }
@@ -55,4 +73,9 @@ export class UserRolesComponent implements OnInit {
   addUserRoles(){
      this.router.navigate(['/settings/departments/adduserroles']);
   }
+
+  editUserRoles(userRoles: userRoles){
+    this.router.navigateByUrl('/settings/departments/addUserRoles', { state: userRoles });
+  }
+
 }
