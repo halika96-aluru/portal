@@ -10,7 +10,7 @@ import { userRoles } from '../views/settings/departments/models/userRoles';
 })
 export class UserRolesService {
 
-  baseApiUrl:string = `${environment.baseApiUrl}userRoles/`;
+  baseApiUrl: string = `${environment.baseApiUrl}userRoles/`;
   headers: HttpHeaders;
   constructor(private http: HttpClient) {
     this.headers = new HttpHeaders({
@@ -18,15 +18,22 @@ export class UserRolesService {
       'Access-Control-Allow-Origin': '*'
     });
 
-   }
-
-   getUserRoles(): Observable<userRoles[]>{
-    return this.http.get<userRoles[]>( this.baseApiUrl + "getUserRoles");
   }
 
-    addUserRoles(model: userRoles): Observable<any>{
-   return this.http.post<any>( this.baseApiUrl + "addUserRoles", model);
-   }
+  getUserRoles(): Observable<userRoles[]> {
+    return this.http.get<userRoles[]>(this.baseApiUrl + "getUserRoles");
+  }
 
+  addUserRoles(model: userRoles): Observable<any> {
+    return this.http.post<any>(this.baseApiUrl + "addUserRole", model);
+  }
+
+  updateUserRoles(model: userRoles): Observable<any> {
+    return this.http.put<any>(this.baseApiUrl + "updateUserRole", model);
+  }
+
+  deleteUserRoles(model: userRoles): Observable<any> {
+    return this.http.delete<any>(this.baseApiUrl + `deleteUserRole/ ${model.accessLevelId}`);
+  }
 
 }

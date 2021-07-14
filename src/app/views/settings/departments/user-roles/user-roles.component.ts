@@ -32,11 +32,6 @@ export class UserRolesComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private router: Router, private userRolesService: UserRolesService,private _snackBar: MatSnackBar) { 
-
-    
-    if(this.router.getCurrentNavigation().extras.state) {
-      
-    }
   }
 
   

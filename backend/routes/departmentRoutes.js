@@ -14,14 +14,14 @@ router.get('/getDepartments', [
 
 ]);
 
-router.post('/updateDepartment', [ 
+router.put('/updateDepartment', [ 
     //ValidationMiddleware.validJWTNeeded,
     // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
     departmentsService.updateDepartment
 
 ]);
 
-router.get('/deleteDepartment/:departmentId', [ 
+router.delete('/deleteDepartment/:departmentId', [ 
     //ValidationMiddleware.validJWTNeeded,
     // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
     departmentsService.deleteDepartment

@@ -177,3 +177,28 @@ a{
 button:focus {
   outline: none !important;
 }
+
+.required-label:after {
+  color: #e32;
+  content: ' *';
+  display:inline;
+}
+
+/** ERP overwrites **/
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: #CC0000;
+  // height: 2.5px;;
+}
+.mat-button.mat-primary, .mat-icon-button.mat-primary, .mat-stroked-button.mat-primary {
+  color: #007299;;
+}
+.mat-fab.mat-primary, .mat-flat-button.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary   
+{
+  background-color: #007299;
+  border-radius: 0px;
+}
+
+.mat-button, .mat-flat-button, .mat-icon-button, .mat-stroked-button {
+  border-radius: 0px;
+}

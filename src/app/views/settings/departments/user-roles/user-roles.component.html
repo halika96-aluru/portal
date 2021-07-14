@@ -1,3 +1,4 @@
+<div class="user-roles-list">
 <div>
     <div class="row justify-content-end">
       <div class="col-7 flex-direction-row">
@@ -53,11 +54,11 @@
         <td mat-cell *matCellDef="let element">
             <button mat-icon-button color="accent" aria-label="Edit department" (click)="editUserRoles(element)">
                 <mat-icon>edit</mat-icon>
-              </button>
-       
+              </button>       
         </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+</div>     

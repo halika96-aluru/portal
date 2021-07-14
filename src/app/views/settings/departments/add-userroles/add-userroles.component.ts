@@ -19,11 +19,16 @@ export class AddUserrolesComponent implements OnInit {
   model: userRoles=<userRoles>{};
   userRolesForm: FormGroup;
   isValid = false;
-  constructor(private router: Router, private userRolesService: UserRolesService, private dialog: MatDialog,  private _snackBar: MatSnackBar) { 
+  constructor(private router: Router, private userRolesService: UserRolesService, private dialog: MatDialog,  private _snackBar: MatSnackBar) {     
     if(this.router.getCurrentNavigation().extras.state) {
       this.model = <userRoles>this.router.getCurrentNavigation().extras.state;
     }
   }
+
+  ngOnInit(): void {
+    this.createForm();           
+  }
+
   createForm():void {    
     this.userRolesForm = new FormGroup({
       accessLevelId: new FormControl(''),
@@ -65,10 +70,31 @@ export class AddUserrolesComponent implements OnInit {
     );
   }
 
+  updateUserRoles() {    
+    if(this.userRolesForm.invalid){
+      return;
+    }
+    this.userRolesService.addUserRoles(this.userRolesForm.value).subscribe(res => {
+      this._snackBar.open('User Roles added successfully', '', {
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+        duration: 3000,
+      });
+    },
+      err => {
+        this._snackBar.open('Error in saving User Roles', '', {
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+          duration: 3000,
+        });
+      }
+    );
+  }
+
   
 
   cancel(){
-    this.router.navigate(['/settings/departments/addUserRoles']);
+    this.router.navigate(['/settings/departments']);
   }
 
 
@@ -77,7 +103,5 @@ alphaNumericValidator(control: FormControl): ValidationErrors | null {
     return ALPHA_NUMERIC_REGEX.test(control.value) ? null : ALPHA_NUMERIC_VALIDATION_ERROR;
 }
 
-ngOnInit(): void {
-}
 
 }
