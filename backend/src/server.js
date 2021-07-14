@@ -12,6 +12,7 @@ const deprtmentRoutes = require("../routes/departmentRoutes");
 const feedbackRoutes = require("../routes/feedbackRoutes");
 const reportRoutes = require("../routes/reportRoutes");
 const requestRoutes = require("../routes/requestRoutes");
+const userRolesRoutes = require("../routes/userRolesRoutes");
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
@@ -46,7 +47,7 @@ app.use('/requests', requestRoutes);
 app.use('/feedbacks', feedbackRoutes);
 app.use('/api/departments', deprtmentRoutes);
 
-
+app.use('/api/userroles', userRolesRoutes);
 
 
 app.get('/', function (req, res) {   

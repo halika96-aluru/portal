@@ -11,6 +11,8 @@ import { AddDepartmentComponent } from './departments/add-department/add-departm
 import { DepartmentStatsComponent } from './departments/department-stats/department-stats.component';
 import { DepartmentSettingsComponent } from './departments/department-settings/department-settings.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserRolesComponent } from './departments/user-roles/user-roles.component';
+import { AddUserrolesComponent } from './departments/add-userroles/add-userroles.component';
 
 
 
@@ -21,7 +23,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     DepartmentsListComponent,
     DepartmentsComponent,
     AddDepartmentComponent,
-    DepartmentSettingsComponent
+    DepartmentSettingsComponent,
+    UserRolesComponent,
+    AddUserrolesComponent
   ],
   imports: [
     CommonModule,
