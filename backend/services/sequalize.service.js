@@ -3,8 +3,8 @@ const Sequelize = require('sequelize');
 // Database Setup
 //
 
-const sequelize = new Sequelize('PortalDB', 'sa', 'Root@123', {
-  host: '127.0.0.1',
+const sequelize = new Sequelize('PortalDB', 'PortalAdmin', 'Portal@123', {
+  host: 'rcoedemodb.database.windows.net',
   dialect: 'mssql',
   dialectOptions: {
       options: {
