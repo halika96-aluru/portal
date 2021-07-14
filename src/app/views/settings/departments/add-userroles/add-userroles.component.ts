@@ -19,7 +19,11 @@ export class AddUserrolesComponent implements OnInit {
   model: userRoles=<userRoles>{};
   userRolesForm: FormGroup;
   isValid = false;
-  constructor(private router: Router, private userRolesService: UserRolesService, private dialog: MatDialog,  private _snackBar: MatSnackBar) { }
+  constructor(private router: Router, private userRolesService: UserRolesService, private dialog: MatDialog,  private _snackBar: MatSnackBar) { 
+    if(this.router.getCurrentNavigation().extras.state) {
+      this.model = <userRoles>this.router.getCurrentNavigation().extras.state;
+    }
+  }
   createForm():void {    
     this.userRolesForm = new FormGroup({
       accessLevelId: new FormControl(''),

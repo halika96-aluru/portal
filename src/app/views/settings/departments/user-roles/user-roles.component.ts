@@ -75,7 +75,7 @@ export class UserRolesComponent implements OnInit {
   }
 
   editUserRoles(userRoles: userRoles){
-    this.router.navigateByUrl('/settings/departments/addUserRoles', { state: userRoles });
+    this.router.navigateByUrl('/settings/departments/adduserroles', { state: userRoles });
   }
 
 }
