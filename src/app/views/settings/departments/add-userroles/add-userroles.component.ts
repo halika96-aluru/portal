@@ -49,11 +49,12 @@ export class AddUserrolesComponent implements OnInit {
     return this.userRolesForm.get(controlName).hasError(errorName);
   }
 
-  addUserRoles() {    
+  addUserRole() {    
     if(this.userRolesForm.invalid){
       return;
     }
-    this.userRolesService.addUserRoles(this.userRolesForm.value).subscribe(res => {
+    this.userRolesService.addUserRole(this.userRolesForm.value).subscribe(res => {
+      this.router.navigate(['/settings/departments']);
       this._snackBar.open('User Roles added successfully', '', {
         horizontalPosition: 'center',
         verticalPosition: 'top',
@@ -70,19 +71,20 @@ export class AddUserrolesComponent implements OnInit {
     );
   }
 
-  updateUserRoles() {    
+  updateUserRole() {    
     if(this.userRolesForm.invalid){
       return;
     }
-    this.userRolesService.addUserRoles(this.userRolesForm.value).subscribe(res => {
-      this._snackBar.open('User Roles added successfully', '', {
+    this.userRolesService.updateUserRole(this.userRolesForm.value).subscribe(res => {
+      this.router.navigate(['/settings/departments']);
+      this._snackBar.open('User Roles updated successfully', '', {
         horizontalPosition: 'center',
         verticalPosition: 'top',
         duration: 3000,
       });
     },
       err => {
-        this._snackBar.open('Error in saving User Roles', '', {
+        this._snackBar.open('Error in updated User Roles', '', {
           horizontalPosition: 'center',
           verticalPosition: 'top',
           duration: 3000,

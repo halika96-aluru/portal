@@ -24,15 +24,15 @@ export class UserRolesService {
     return this.http.get<userRoles[]>(this.baseApiUrl + "getUserRoles");
   }
 
-  addUserRoles(model: userRoles): Observable<any> {
+  addUserRole(model: userRoles): Observable<any> {
     return this.http.post<any>(this.baseApiUrl + "addUserRole", model);
   }
 
-  updateUserRoles(model: userRoles): Observable<any> {
+  updateUserRole(model: userRoles): Observable<any> {
     return this.http.put<any>(this.baseApiUrl + "updateUserRole", model);
   }
 
-  deleteUserRoles(model: userRoles): Observable<any> {
+  deleteUserRole(model: userRoles): Observable<any> {
     return this.http.delete<any>(this.baseApiUrl + `deleteUserRole/ ${model.accessLevelId}`);
   }
 

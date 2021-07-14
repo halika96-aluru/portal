@@ -8,7 +8,7 @@
         <form [formGroup]="departmentForm" autocomplete="off">       
         <div class="row">
             <div class="col-3">
-                <mat-label>Prefix</mat-label>
+                <mat-label class="required-label">Prefix</mat-label>
                 <mat-form-field appearance="outline">                   
                     <input formControlName = "departmentPrefix" matInput placeholder="Prefix" />   
                     <mat-error *ngIf="hasError('departmentPrefix', 'required')"><strong>Prefix for department is required</strong></mat-error>
@@ -19,7 +19,7 @@
                 </mat-form-field>
             </div>
             <div class="col-3">
-                <mat-label>Name</mat-label>
+                <mat-label class="required-label">Name</mat-label>
                 <mat-form-field appearance="outline">                    
                     <input formControlName = "departmentName"  matInput placeholder="Name" />    
                     <mat-error *ngIf="hasError('departmentName', 'required')"><strong>Department is required</strong></mat-error>
@@ -44,7 +44,7 @@
               </mat-form-field>
         </div>
         <div class="d-flex justify-content-center">
-            <button type="button" mat-button color="primary" (click)="cancel()">Cancle</button>
+            <button type="button" mat-button color="primary" (click)="cancel()">Cancel</button>
             <button type="button" *ngIf="!model.departmentId"  (click)="addDepartment()"  [disabled]="departmentForm.invalid" mat-raised-button color="primary">Submit</button>
             <button type="button" *ngIf="model.departmentId"  (click)="updateDepartment()" [disabled]="departmentForm.invalid" mat-raised-button color="primary">Update</button>
         </div>

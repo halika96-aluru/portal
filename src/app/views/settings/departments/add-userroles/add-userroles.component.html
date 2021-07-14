@@ -58,9 +58,9 @@
   </div>
   <mat-card-actions>  
     <div class="d-flex justify-content-center">
-      <button type="button" mat-button color="primary" (click)="cancel()">Cancle</button>
-      <button type="button" *ngIf="!model.accessLevelId"  (click)="addUserRoles()"  [disabled]="userRolesForm.invalid" mat-raised-button color="primary">Submit</button>
-      <button type="button" *ngIf="model.accessLevelId"  (click)="updateDepartment()" [disabled]="userRolesForm.invalid" mat-raised-button color="primary">Update</button>
+      <button type="button" mat-button color="primary" (click)="cancel()">Cancel</button>
+      <button type="button" *ngIf="!model.accessLevelId"  (click)="addUserRole()"  [disabled]="userRolesForm.invalid" mat-raised-button color="primary">Submit</button>
+      <button type="button" *ngIf="model.accessLevelId"  (click)="updateUserRole()" [disabled]="userRolesForm.invalid" mat-raised-button color="primary">Update</button>
   </div>
   </mat-card-actions>
 </mat-card>

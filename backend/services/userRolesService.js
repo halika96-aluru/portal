@@ -12,10 +12,10 @@ exports.getUserRoles =async (req, res) => {
 
 exports.addUserRole = async (req, res) => {
 
-
+    console.log('*********desc *****', req.body.description);
     contex.getContext().accessLevel.create({
         accessLevelName: req.body.accessLevelName,       
-        description: req.body.departmentDescription,
+        description: req.body.description,
         isActive: true,
         canView: req.body.canView,
         canShare: req.body.canShare,
@@ -30,7 +30,7 @@ exports.addUserRole = async (req, res) => {
 exports.deleteUserRole = async (req, res) => {
     contex.getContext().accessLevel.update(
         { isActive: false },
-        { where: { departmentId: req.params.accessLevelId } }
+        { where: { accessLevelId: req.params.accessLevelId } }
     )
         .then(result => {
             res.send(result);
@@ -43,9 +43,10 @@ exports.deleteUserRole = async (req, res) => {
 };
 
 exports.updateUserRole = async (req, res) => {
-    contex.getContext().departments.update(
+    console.log('*********desc *****', req.body.description);
+    contex.getContext().accessLevel.update(
         req.body,
-        { where: { departmentId: req.body.accessLevelId } }
+        { where: { accessLevelId: req.body.accessLevelId } }
     ).then(result => {
             res.send(result);
         }
