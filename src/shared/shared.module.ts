@@ -5,7 +5,7 @@ import { ConfirmDialogComponent } from '../app/shared/confirm-dialog/confirm-dia
 import { EmbeddedReportComponent } from '../app/views/embedded-report/embedded-report.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { MatButtonModule, MatIconModule, MatCardModule, MatButtonToggleModule, MatTableModule, MatTabsModule, MatOptionModule,
-  MatSelectModule,MatCommonModule, MatInputModule, MatCheckboxModule } from '@angular/material';
+  MatSelectModule,MatCommonModule, MatInputModule, MatCheckboxModule,MatSlideToggleModule,MatSnackBarModule, MatDividerModule} from '@angular/material';
 //import { MatDatepickerModule,MatNativeDateModule,MatFormFieldModule, MatInputModule } from '@angular/material';
 
 @NgModule({
@@ -31,7 +31,10 @@ import { MatButtonModule, MatIconModule, MatCardModule, MatButtonToggleModule, M
     MatIconModule,
     MatOptionModule,
    MatSelectModule,
-   MatCheckboxModule
+   MatCheckboxModule,
+   MatSlideToggleModule,
+   MatSnackBarModule,
+   MatDividerModule,
        // MatDatepickerModule,
     // MatNativeDateModule,
     // MatFormFieldModule,

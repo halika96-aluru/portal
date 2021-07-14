@@ -1,11 +1,11 @@
 var contex = require("./sequalize.service");
 const { Op } = require("sequelize");
 
-exports.getUserRoles = async () => {
+exports.getUserRoles =async (req, res) => {
     
-    let userroles = await contex.getContext().accessLevel.findAll({
+    contex.getContext().accessLevel.findAll({
         where: {   isActive:{ [Op.eq]: true } }       
-    });
-    console.log("items dept", userroles);
-    return userroles;
+    }).then((result) => 
+    { res.send(result);
+});
 };
