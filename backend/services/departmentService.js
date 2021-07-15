@@ -11,9 +11,9 @@ exports.getDepartments = async (req, res) => {
     ds.department_prefix departmentPrefix, 
     ds.created_date createdDate,
      STRING_AGG (us.username, ',') AS admins 
-    from department_admin da
-    join Departments ds on da.department_id = ds.department_id  
-    join Users us on da.user_id =  us.user_id
+    from Departments ds 
+    left join department_admin da  on ds.department_id  =  da.department_id
+    left join Users us on da.user_id =  us.user_id
     where ds.is_active = 1
     group by ds.department_id, 
     ds.department_name , 

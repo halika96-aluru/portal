@@ -14,7 +14,7 @@
                     <mat-error *ngIf="hasError('departmentPrefix', 'required')"><strong>Prefix for department is required</strong></mat-error>
                     <mat-error *ngIf="hasError('departmentPrefix', 'minlength')"><strong>Prefix must be at least 2 characters long</strong></mat-error>
                     <mat-error *ngIf="hasError('departmentPrefix', 'pattern')"><strong>Invalid format</strong></mat-error>     
-                    <mat-error *ngIf="hasError('departmentPrefix', 'alphaNumericError')"><strong>allowed special chars . - ,()</strong></mat-error>   
+                    <mat-error *ngIf="hasError('departmentPrefix', 'alphaNumericError')"><strong>Only Characters allowed</strong></mat-error>   
                                                   
                 </mat-form-field>
             </div>
@@ -24,7 +24,7 @@
                     <input formControlName = "departmentName"  matInput placeholder="Name" />    
                     <mat-error *ngIf="hasError('departmentName', 'required')"><strong>Department is required</strong></mat-error>
                     <mat-error *ngIf="hasError('departmentName', 'minlength')"><strong>Department Nam must be at least 3 characters long</strong></mat-error>
-                    <mat-error *ngIf="hasError('departmentPrefix', 'alphaNumericError')"><strong>allowed special chars . - ,()</strong></mat-error>                                  
+                    <mat-error *ngIf="hasError('departmentPrefix', 'alphaNumericError')"><strong>Only Characters allowed</strong></mat-error>                                  
                 </mat-form-field>
             </div>
             <div class="col-6">

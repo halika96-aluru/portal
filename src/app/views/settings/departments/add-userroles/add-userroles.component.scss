@@ -1,0 +1,18 @@
+.add-user-roles {
+    .permissions {
+    ::ng-deep mat-label {
+        min-width: 300px;
+        display: inline-block;
+    }
+}
+::ng-deep mat-form-field {
+    // Hidden by default
+    mat-error{
+    display: none;
+    }
+  
+   mat-error:first-child {
+    display: block;
+  }
+}
+}

@@ -1,4 +1,4 @@
-<mat-card class="example-card col-lg-7 col-md-7 col-sm-10 col-xs-12">
+<mat-card class="example-card col-lg-7 col-md-7 col-sm-10 col-xs-12 add-user-roles">
   <mat-card-header class="border-0">
     <mat-card-title>Add User Roles</mat-card-title>
   </mat-card-header>
@@ -9,11 +9,10 @@
         <mat-label class="required-label">Role Title</mat-label>
         <mat-form-field appearance="outline">         
           <input formControlName = "accessLevelName" matInput placeholder="Title" />   
-          <mat-error *ngIf="hasError('accessLevelName', 'required')"><strong>Prefix for department is required</strong></mat-error>
-          <mat-error *ngIf="hasError('accessLevelName', 'minlength')"><strong>Prefix must be at least 2 characters long</strong></mat-error>
+          <mat-error *ngIf="hasError('accessLevelName', 'required')"><strong>Role title is required</strong></mat-error>
+          <mat-error *ngIf="hasError('accessLevelName', 'minlength')"><strong>Role title must be at least 2 characters long</strong></mat-error>
           <mat-error *ngIf="hasError('accessLevelName', 'pattern')"><strong>Invalid format</strong></mat-error>     
-          <mat-error *ngIf="hasError('accessLevelName', 'alphaNumericError')"><strong>allowed special chars . - ,()</strong></mat-error>   
-     
+          <mat-error *ngIf="hasError('accessLevelName', 'alphaNumericError')"><strong>Only Characters allowed</strong></mat-error>        
         </mat-form-field>
       </div>
 
@@ -40,12 +39,13 @@
         </select>
       </mat-form-field>
       <div>
-        <mat-label>Description</mat-label>
-        <div>
-          <mat-slide-toggle formControlName = "canView" >View Reports</mat-slide-toggle> <br>
-          <mat-slide-toggle formControlName = "canSubscribe">Schedule report email delivery</mat-slide-toggle><br>
-          <mat-slide-toggle formControlName = "canShare">Share reports</mat-slide-toggle><br>
-          <mat-slide-toggle formControlName = "canApprove">Approve report access</mat-slide-toggle><br>
+        <mat-label>Permissions</mat-label>
+        <div class = "d-flex flex-column permissions">
+         
+          <div>  <mat-label>View Reports</mat-label> <mat-slide-toggle class="align-content-left" formControlName = "canView" > </mat-slide-toggle> </div> 
+          <div>  <mat-label>Schedule report email delivery</mat-label> <mat-slide-toggle class="align-content-left" formControlName = "canSubscribe"></mat-slide-toggle> </div> 
+          <div>  <mat-label>Share reports</mat-label> <mat-slide-toggle class="align-content-left" formControlName = "canShare"></mat-slide-toggle> </div> 
+          <div>  <mat-label>Approve report access</mat-label> <mat-slide-toggle class="align-content-left" formControlName = "canApprove"></mat-slide-toggle> </div> 
         </div>
 
       </div>

@@ -202,3 +202,11 @@ button:focus {
 .mat-button, .mat-flat-button, .mat-icon-button, .mat-stroked-button {
   border-radius: 0px;
 }
+
+.mat-slide-toggle.align-content-left {
+
+  .mat-slide-toggle-bar {
+    order: 2;
+    margin-left: 8px;
+ }
+}
