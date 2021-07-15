@@ -7,7 +7,7 @@ import { UserRolesService } from '../../../../services/userRoles.service';
 import { userRoles } from '../models/userRoles';
 
 
-const ALPHA_NUMERIC_REGEX = /^[a-zA-Z0-9\.\, \( \) \-]+/;
+const ALPHA_NUMERIC_REGEX = /^[a-zA-Z\. \( \) \-]+/;
 const ALPHA_NUMERIC_VALIDATION_ERROR = { alphaNumericError: 'only alpha numeric values are allowed' }
 @Component({
   selector: 'app-add-userroles',
@@ -32,8 +32,8 @@ export class AddUserrolesComponent implements OnInit {
   createForm():void {    
     this.userRolesForm = new FormGroup({
       accessLevelId: new FormControl(''),
-      accessLevelName: new FormControl('', [Validators.required,  Validators.minLength(2), Validators.pattern('^[a-zA-Z0-9\.\, \-\']+'),this.alphaNumericValidator]),
-      description: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern('^[a-zA-Z0-9\.\, \-\']+'), this.alphaNumericValidator]),
+      accessLevelName: new FormControl('', [Validators.required,  Validators.minLength(2), Validators.pattern('^[a-zA-Z\.\, \-\']+'),this.alphaNumericValidator]),
+      description: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern('^[a-zA-Z\.\, \-\']+'), this.alphaNumericValidator]),
       isActive: new FormControl(''),  
       canView:new FormControl(''),
       canApprove:new FormControl(''),

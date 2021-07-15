@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { DepartmentsService } from '../../../../services/departments.service';
 import { Department } from '../models/department';
 
-const ALPHA_NUMERIC_REGEX = /^[a-zA-Z0-9\.\, \( \) \-]+/;
+const ALPHA_NUMERIC_REGEX = /^[a-zA-Z\.\, \( \) \-]+/;
 const ALPHA_NUMERIC_VALIDATION_ERROR = { alphaNumericError: 'only alpha numeric values are allowed' }
 @Component({
   selector: 'app-add-department',
@@ -35,7 +35,7 @@ export class AddDepartmentComponent implements OnInit {
     this.departmentForm = new FormGroup({
       departmentId: new FormControl(''),
       departmentPrefix: new FormControl('', [Validators.required,  Validators.minLength(2), this.alphaNumericValidator]),
-      departmentName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern('^[a-zA-Z0-9\.\, \-\']+'), this.alphaNumericValidator]),
+      departmentName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern('^[a-zA-Z\.\, \-\']+'), this.alphaNumericValidator]),
       departmentDescription: new FormControl(''),      
     });
     if(this.model.departmentId){

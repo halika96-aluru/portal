@@ -45,7 +45,7 @@
         </div>
         <div class="d-flex justify-content-center">
             <button type="button" mat-button color="primary" (click)="cancel()">Cancel</button>
-            <button type="button" *ngIf="!model.departmentId"  (click)="addDepartment()"  [disabled]="departmentForm.invalid" mat-raised-button color="primary">Submit</button>
+            <button type="button" *ngIf="!model.departmentId"  (click)="addDepartment()"  [disabled]="departmentForm.invalid" mat-raised-button color="primary">Save</button>
             <button type="button" *ngIf="model.departmentId"  (click)="updateDepartment()" [disabled]="departmentForm.invalid" mat-raised-button color="primary">Update</button>
         </div>
         </form>
