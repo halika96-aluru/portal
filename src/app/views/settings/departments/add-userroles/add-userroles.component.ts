@@ -38,7 +38,10 @@ export class AddUserrolesComponent implements OnInit {
       canView:new FormControl(''),
       canApprove:new FormControl(''),
       canShare:new FormControl(''),
-      canSubscribe:new FormControl('')
+      canCreateUserGroup: new FormControl(''),
+      canSubscribe:new FormControl(''),
+      assignableAdminType: new FormControl(''),
+      isAdminRoleSelected: new FormControl('')
     });
     if(this.model.accessLevelId){
       this.userRolesForm.patchValue(this.model);

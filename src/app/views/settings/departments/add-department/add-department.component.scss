@@ -1,4 +1,10 @@
 .add-department-component{
+::ng-deep mat-card-header{
+        .mat-card-header-text{
+            margin:0;
+        }
+}
+
 ::ng-deep mat-form-field {
     // Hidden by default
     mat-error{

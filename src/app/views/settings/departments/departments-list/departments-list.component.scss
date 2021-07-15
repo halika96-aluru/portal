@@ -1,8 +1,5 @@
-::ng-deep mat-cell > .truncate-text {
-    text-overflow: ellipsis; 
-    overflow: hidden; 
-    white-space: nowrap;
-}
+
+.settings-department-list {
 table.departments-table{
 
         table-layout: fixed;
@@ -18,4 +15,12 @@ table.departments-table{
    .mat-button.mat-accent, .mat-icon-button.mat-accent, .mat-stroked-button.mat-accent {
         color: #a8a8aa;       
     }
+}
+
+::ng-deep mat-form-field {
+.mat-form-field-wrapper {
+    margin:0;
+    padding-bottom: 0;
+}
+}
 }

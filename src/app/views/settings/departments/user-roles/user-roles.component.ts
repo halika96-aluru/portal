@@ -21,7 +21,7 @@ export interface UserRoles {
 export class UserRolesComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['accessLevelId','accessLevelName', 'description',  'canView','canSubscribe','canShare','canApprove','action'];
+  displayedColumns: string[] = ['accessLevelId','accessLevelName', 'description', 'permissions', 'canView','canSubscribe','canShare','canApprove','action'];
   userRoles: userRoles[] = [];
   dataSource: MatTableDataSource<userRoles> = new MatTableDataSource(this.userRoles);
 

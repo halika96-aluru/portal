@@ -3,64 +3,79 @@
     <mat-card-title>Add User Roles</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form [formGroup]="userRolesForm" autocomplete="off">  
-    <div class="row">
-      <div class="col-3">
-        <mat-label class="required-label">Role Title</mat-label>
-        <mat-form-field appearance="outline">         
-          <input formControlName = "accessLevelName" matInput placeholder="Title" />   
-          <mat-error *ngIf="hasError('accessLevelName', 'required')"><strong>Role title is required</strong></mat-error>
-          <mat-error *ngIf="hasError('accessLevelName', 'minlength')"><strong>Role title must be at least 2 characters long</strong></mat-error>
-          <mat-error *ngIf="hasError('accessLevelName', 'pattern')"><strong>Invalid format</strong></mat-error>     
-          <mat-error *ngIf="hasError('accessLevelName', 'alphaNumericError')"><strong>Only Characters allowed</strong></mat-error>        
-        </mat-form-field>
-      </div>
-
-    </div>
-    <div>
-      <mat-label>Description</mat-label>
-      <mat-form-field class="example-full-width" appearance="outline">
-        <textarea rows="4" formControlName = "description" matInput placeholder="Description of user role"></textarea>
-      </mat-form-field>
-    </div>
-    <div>
-      <section class="example-section">
-        <mat-checkbox class="example-margin">Do not allow this role for creating user groups</mat-checkbox><br>
-        <mat-checkbox class="example-margin" [disabled]="true">This role can only be assigned to selected administrator
-          roles </mat-checkbox>
-      </section>
-
-      <mat-form-field class="col-3">
-        <select matNativeControl required>
-          <option value="Department admin">Department admin</option>
-          <option value="Group admin">Group admin</option>
-          <option value="Special admin">Group admin</option>
-          <option value="special group admin">Group admin</option>
-        </select>
-      </mat-form-field>
-      <div>
-        <mat-label>Permissions</mat-label>
-        <div class = "d-flex flex-column permissions">
-         
-          <div>  <mat-label>View Reports</mat-label> <mat-slide-toggle class="align-content-left" formControlName = "canView" > </mat-slide-toggle> </div> 
-          <div>  <mat-label>Schedule report email delivery</mat-label> <mat-slide-toggle class="align-content-left" formControlName = "canSubscribe"></mat-slide-toggle> </div> 
-          <div>  <mat-label>Share reports</mat-label> <mat-slide-toggle class="align-content-left" formControlName = "canShare"></mat-slide-toggle> </div> 
-          <div>  <mat-label>Approve report access</mat-label> <mat-slide-toggle class="align-content-left" formControlName = "canApprove"></mat-slide-toggle> </div> 
+    <form [formGroup]="userRolesForm" autocomplete="off">
+      <div class="row">
+        <div class="col-3">
+          <mat-label class="required-label">Role Title</mat-label>
+          <mat-form-field appearance="outline">
+            <input formControlName="accessLevelName" matInput placeholder="Title" />
+            <mat-error *ngIf="hasError('accessLevelName', 'required')"><strong>Role title is required</strong>
+            </mat-error>
+            <mat-error *ngIf="hasError('accessLevelName', 'minlength')"><strong>Role title must be at least 2 characters
+                long</strong></mat-error>
+            <mat-error *ngIf="hasError('accessLevelName', 'pattern')"><strong>Invalid format</strong></mat-error>
+            <mat-error *ngIf="hasError('accessLevelName', 'alphaNumericError')"><strong>Only Characters allowed</strong>
+            </mat-error>
+          </mat-form-field>
         </div>
 
       </div>
+      <div>
+        <mat-label>Description</mat-label>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <textarea rows="4" formControlName="description" matInput placeholder="Description of user role"></textarea>
+        </mat-form-field>
+      </div>
+      <div>
+        <section class="example-section">
+          <mat-checkbox class="example-margin" formControlName="canCreateUserGroup" >Do not allow this role for creating user groups</mat-checkbox><br>
+          <mat-checkbox class="example-margin" formControlName="isAdminRoleSelected">This role can only be assigned to selected
+            administrator
+            roles </mat-checkbox>
+        </section>
 
-    </div>
+        <mat-form-field class="col-3" appearance="outline">
+          <mat-select formControlName="assignableAdminType" [disabled]="!userRolesForm.get('isAdminRoleSelected').value" placeholder="Assign Admin Role" >            
+            <mat-option value="Departmentadmin">Department admin</mat-option>
+            <mat-option value="Groupadmin">Group admin</mat-option>                  
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <mat-label>Permissions</mat-label>
+          <div class="d-flex flex-column permissions d-flex">
+            <mat-list class="col-6">            
+              <mat-list-item>
+                <mat-label>View Reports</mat-label>
+                <mat-slide-toggle class="align-content-left" formControlName="canView"> </mat-slide-toggle>
+              </mat-list-item>
+              <mat-list-item>
+                <mat-label>Schedule report email delivery</mat-label>
+                <mat-slide-toggle class="align-content-left" formControlName="canSubscribe"></mat-slide-toggle>
+              </mat-list-item>
+              <mat-list-item>
+                <mat-label>Share reports</mat-label>
+                <mat-slide-toggle class="align-content-left" formControlName="canShare"></mat-slide-toggle>
+              </mat-list-item>
+              <mat-list-item>
+                <mat-label>Approve report access</mat-label>
+                <mat-slide-toggle class="align-content-left" formControlName="canApprove"></mat-slide-toggle>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+      </div>
     </form>
   </mat-card-content>
   <div>
 
   </div>
-  <mat-card-actions>  
+  <mat-card-actions>
     <div class="d-flex justify-content-center">
       <button type="button" mat-button color="primary" (click)="cancel()">Cancel</button>
-      <button type="button" *ngIf="!model.accessLevelId"  (click)="addUserRole()"  [disabled]="userRolesForm.invalid" mat-raised-button color="primary">Save</button>
-      <button type="button" *ngIf="model.accessLevelId"  (click)="updateUserRole()" [disabled]="userRolesForm.invalid" mat-raised-button color="primary">Update</button>
-  </div>
+      <button type="button" *ngIf="!model.accessLevelId" (click)="addUserRole()" [disabled]="userRolesForm.invalid"
+        mat-raised-button color="primary">Save</button>
+      <button type="button" *ngIf="model.accessLevelId" (click)="updateUserRole()" [disabled]="userRolesForm.invalid"
+        mat-raised-button color="primary">Update</button>
+    </div>
   </mat-card-actions>
 </mat-card>

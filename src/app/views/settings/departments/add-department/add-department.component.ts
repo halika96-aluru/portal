@@ -35,7 +35,7 @@ export class AddDepartmentComponent implements OnInit {
     this.departmentForm = new FormGroup({
       departmentId: new FormControl(''),
       departmentPrefix: new FormControl('', [Validators.required,  Validators.minLength(2), this.alphaNumericValidator]),
-      departmentName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern('^[a-zA-Z\.\, \-\']+'), this.alphaNumericValidator]),
+      departmentName: new FormControl('', [Validators.required, Validators.minLength(3), this.alphaNumericValidator]),
       departmentDescription: new FormControl(''),      
     });
     if(this.model.departmentId){
