@@ -28,11 +28,11 @@ export class DepartmentsService {
    }
 
    updateDepartment(model: Department): Observable<any>{
-    return this.http.post<any>( this.baseApiUrl + "updateDepartment", model);
+    return this.http.put<any>( this.baseApiUrl + "updateDepartment", model);
    }
 
    deleteDepartment(model: Department): Observable<any>{
-    return this.http.get<any>( this.baseApiUrl + `deleteDepartment/${model.departmentId}`);
+    return this.http.delete<any>( this.baseApiUrl + `deleteDepartment/${model.departmentId}`);
    }
 
 }

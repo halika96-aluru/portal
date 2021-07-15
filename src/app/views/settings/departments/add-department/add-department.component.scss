@@ -1,0 +1,12 @@
+.add-department-component{
+::ng-deep mat-form-field {
+    // Hidden by default
+    mat-error{
+    display: none;
+    }
+  
+   mat-error:first-child {
+    display: block;
+  }
+}
+}
