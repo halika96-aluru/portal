@@ -32,7 +32,7 @@ export class AddUserrolesComponent implements OnInit {
   createForm():void {    
     this.userRolesForm = new FormGroup({
       accessLevelId: new FormControl(''),
-      accessLevelName: new FormControl('', [Validators.required,  Validators.minLength(2),this.alphaNumericValidator]),
+      accessLevelName: new FormControl('', [Validators.required,  Validators.minLength(3),this.alphaNumericValidator]),
       description: new FormControl(''),
       isActive: new FormControl(''),  
       canView:new FormControl(''),

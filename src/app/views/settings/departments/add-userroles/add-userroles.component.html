@@ -5,13 +5,13 @@
   <mat-card-content>
     <form [formGroup]="userRolesForm" autocomplete="off">
       <div class="row">
-        <div class="col-3">
+        <div class="col-5">
           <mat-label class="required-label">Role Title</mat-label>
-          <mat-form-field appearance="outline">
+          <mat-form-field appearance="outline" class="mat-form-filed-sm">
             <input formControlName="accessLevelName" matInput placeholder="Title" />
             <mat-error *ngIf="hasError('accessLevelName', 'required')"><strong>Role title is required</strong>
             </mat-error>
-            <mat-error *ngIf="hasError('accessLevelName', 'minlength')"><strong>Role title must be at least 2 characters
+            <mat-error *ngIf="hasError('accessLevelName', 'minlength')"><strong>Role title must be at least 3 characters
                 long</strong></mat-error>
             <mat-error *ngIf="hasError('accessLevelName', 'pattern')"><strong>Invalid format</strong></mat-error>
             <mat-error *ngIf="hasError('accessLevelName', 'alphaNumericError')"><strong>Only Characters allowed</strong>
@@ -20,7 +20,7 @@
         </div>
 
       </div>
-      <div>
+      <div class="mt-4">
         <mat-label>Description</mat-label>
         <mat-form-field class="example-full-width" appearance="outline">
           <textarea rows="3" formControlName="description" matInput placeholder="Description of user role"></textarea>
@@ -40,9 +40,9 @@
             <mat-option value="Groupadmin">Group admin</mat-option>                  
           </mat-select>
         </mat-form-field>
-        <div>
-          <mat-label>Permissions</mat-label>
-          <div class="d-flex flex-column permissions d-flex">
+        <div class="permissions">
+          <mat-label class="heading">Permissions</mat-label>
+          <div class="d-flex flex-column d-flex">
             <mat-list class="col-6">            
               <mat-list-item>
                 <mat-label>View Reports</mat-label>
