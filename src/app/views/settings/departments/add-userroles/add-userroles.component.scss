@@ -29,4 +29,35 @@
     justify-content: space-between;
     padding: 0;
 }
+
+::ng-deep mat-slide-toggle {
+
+.mat-slide-toggle-thumb {
+    height: 14px;
+    width: 14px; 
+}
+
+.mat-slide-toggle-thumb-container {
+    width: 12px;
+    height: 11px;
+    top: -2px;
+}
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: rgba(255,64,129,.54);
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: #ff4081;
+}
+
+.mat-slide-toggle-bar {    
+    width: 29px;
+    height: 11px;
+}
+
+
+
+
+}
+
 }

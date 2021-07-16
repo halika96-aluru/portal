@@ -35,7 +35,7 @@ export class DepartmentsListComponent implements OnInit {
 
   ngAfterViewInit() {
 
-  }
+  } 
 
   loadDepartments(){
     this.departmentsService.getDepartments().subscribe(res => {

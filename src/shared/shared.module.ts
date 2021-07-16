@@ -4,6 +4,7 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
 import { ConfirmDialogComponent } from '../app/shared/confirm-dialog/confirm-dialog.component';
 import { EmbeddedReportComponent } from '../app/views/embedded-report/embedded-report.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { MdePopoverModule } from '@material-extended/mde';
 import { MatDialogModule, MatListModule, MatButtonModule, MatIconModule, MatPaginatorModule, MatSnackBarModule, MatOptionModule, MatSelectModule, MatCheckboxModule, MatSortModule, MatCardModule, MatButtonToggleModule, MatTableModule, MatTabsModule, MatCommonModule, MatInputModule, MatCard, MatSlideToggleModule, MatDividerModule } from '@angular/material';
 //import { MatDatepickerModule,MatNativeDateModule,MatFormFieldModule, MatInputModule } from '@angular/material';
 
@@ -32,6 +33,7 @@ import { MatDialogModule, MatListModule, MatButtonModule, MatIconModule, MatPagi
     MatSlideToggleModule,
     MatSnackBarModule,
     MatDividerModule,
+    MdePopoverModule
     // MatDatepickerModule,
     // MatNativeDateModule,
     // MatFormFieldModule,
@@ -62,6 +64,7 @@ import { MatDialogModule, MatListModule, MatButtonModule, MatIconModule, MatPagi
     MatSlideToggleModule,
     MatSnackBarModule,
     MatDividerModule,
+    MdePopoverModule
     // MatDatepickerModule,
     // MatNativeDateModule,
     // MatFormFieldModule,
