@@ -2,14 +2,14 @@
   
 <mat-card class="example-card col-lg-7 col-md-7 col-sm-10 col-xs-12">
     <mat-card-header class="border-0">       
-        <mat-card-title>{{model.departmentId ?'Edit': 'Add'}} Departments</mat-card-title>
+        <mat-card-title>{{model.departmentId ?'Edit': 'Add'}} Department</mat-card-title>
     </mat-card-header>
     <mat-card-content>
         <form [formGroup]="departmentForm" autocomplete="off">       
         <div class="row">
             <div class="col-3">
-                <mat-label class="required-label">Prefix</mat-label>
-                <mat-form-field appearance="outline">                   
+                <mat-label class="required-label form-label">Dept.Prefix</mat-label>
+                <mat-form-field appearance="outline" class="mat-form-filed-sm ">                   
                     <input formControlName = "departmentPrefix" matInput placeholder="Prefix" />   
                     <mat-error *ngIf="hasError('departmentPrefix', 'required')"><strong>Prefix for department is required</strong></mat-error>
                     <mat-error *ngIf="hasError('departmentPrefix', 'minlength')"><strong>Prefix must be at least 2 characters long</strong></mat-error>                   
@@ -18,8 +18,8 @@
                 </mat-form-field>
             </div>
             <div class="col-3">
-                <mat-label class="required-label">Name</mat-label>
-                <mat-form-field appearance="outline">                    
+                <mat-label class="required-label form-label">Dept.Name</mat-label>
+                <mat-form-field appearance="outline" class="mat-form-filed-sm">                   
                     <input formControlName = "departmentName"  matInput placeholder="Name" />    
                     <mat-error *ngIf="hasError('departmentName', 'required')"><strong>Department is required</strong></mat-error>
                     <mat-error *ngIf="hasError('departmentName', 'minlength')"><strong>Department Nam must be at least 3 characters long</strong></mat-error>
@@ -27,21 +27,22 @@
                 </mat-form-field>
             </div>
             <div class="col-6">
-                <mat-label>Correspondng department from CDW Directory</mat-label>
-                <mat-form-field appearance="outline">                                      
+                <mat-label class="form-label">Correspondng department from CDW Directory</mat-label>
+                <mat-form-field appearance="outline" class="mat-form-filed-sm mat-form-field-select">                                      
                     <mat-select>
                         <mat-option value="one">First option</mat-option>
                         <mat-option value="two">Second option</mat-option>
                       </mat-select>                                   
                 </mat-form-field>
             </div>
+            <div class="col-12 mt-5">
+                <mat-label class="form-label">Description</mat-label>
+                <mat-form-field class="example-full-width" appearance="outline">               
+                    <textarea rows="5" formControlName = "departmentDescription"  matInput placeholder="Description of Department"></textarea>
+                  </mat-form-field>
+            </div>
         </div>
-        <div>
-            <mat-label>Description</mat-label>
-            <mat-form-field class="example-full-width" appearance="outline">               
-                <textarea rows="5" formControlName = "departmentDescription"  matInput placeholder="Description of Department"></textarea>
-              </mat-form-field>
-        </div>
+       
         <div class="d-flex justify-content-center">
             <button type="button" mat-button color="primary" (click)="cancel()">Cancel</button>
             <button type="button" *ngIf="!model.departmentId"  (click)="addDepartment()"  [disabled]="departmentForm.invalid" mat-raised-button color="primary">Save</button>

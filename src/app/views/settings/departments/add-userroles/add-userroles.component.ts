@@ -7,7 +7,7 @@ import { UserRolesService } from '../../../../services/userRoles.service';
 import { userRoles } from '../models/userRoles';
 
 
-const ALPHA_NUMERIC_REGEX = /^[a-zA-Z\. \( \) \-]+/;
+const ALPHA_NUMERIC_REGEX = /^[a-zA-Z\. \( \) \-]+$/;
 const ALPHA_NUMERIC_VALIDATION_ERROR = { alphaNumericError: 'only alpha numeric values are allowed' }
 @Component({
   selector: 'app-add-userroles',

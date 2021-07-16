@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { DepartmentsService } from '../../../../services/departments.service';
 import { Department } from '../models/department';
 
-const ALPHA_NUMERIC_REGEX = /^[a-zA-Z\.\, \( \) \-]+/;
+const ALPHA_NUMERIC_REGEX = /^[a-zA-Z\.\, \( \) \-]+$/;
 const ALPHA_NUMERIC_VALIDATION_ERROR = { alphaNumericError: 'only alpha numeric values are allowed' }
 @Component({
   selector: 'app-add-department',
