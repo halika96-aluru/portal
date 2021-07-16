@@ -1,18 +1,27 @@
 <div class="department-settings">
-<app-department-stats></app-department-stats>
-<div class="row mt-3">
-    <div class="col-12">
-        <div class="card ">
-            <div class="card-body cw-mat-tab-group p-0">
-                <mat-tab-group animationDuration="0ms">
-                    <mat-tab label="Departments" class="px-3" >                                                                     
-                    <app-departments-list></app-departments-list>
-                    </mat-tab>
-                    <mat-tab label="User Roles"> <app-user-roles></app-user-roles> </mat-tab>
-                    <mat-tab label="Admin Roles"> Content 3 </mat-tab>
-                  </mat-tab-group>
+    <app-department-stats></app-department-stats>
+    <div class="row">
+        <div class="col-12">
+            <div class="card ">
+                <div class="card-body cw-mat-tab-group p-0">
+                    <mat-tab-group animationDuration="0ms"  [(selectedIndex)]="activeTabIndex">
+                        <mat-tab label="Departments" class="px-3">
+                            <app-departments-list></app-departments-list>
+                        </mat-tab>
+                        <mat-tab label="User Roles">
+                            <app-user-roles></app-user-roles>
+                        </mat-tab>
+                        <mat-tab label="Admin Roles">
+                            <mat-card class="example-card" style="min-height: 300px;">
+                                <mat-card-header>
+                                </mat-card-header>
+                                <mat-card-content>
+                                </mat-card-content>
+                            </mat-card>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>

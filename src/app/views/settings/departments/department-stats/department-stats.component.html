@@ -24,12 +24,13 @@
     </div>
     <div class="col-3">
         <mat-card class="px-0">
-            <mat-card-header class="border-bottom">
-                <mat-card-title>Help</mat-card-title>
-            </mat-card-header>
             <mat-card-content>
-                <div class="p-1"> <a mat-flat-button href="/settings/departments">Daily Sales</a> </div>
-                <div class="p-1"> <a mat-flat-button href="/settings/departments">Selling Services</a> </div>
+                <h4 class="px-2">Help</h4>
+                <mat-divider></mat-divider>
+                <div class="d-flex flex-column p-2">
+                    <a class="pt-1" routerLink="/settings/departments">Daily Sales</a>
+                    <a class="pt-1" routerLink="/settings/departments">Selling Services</a>
+                </div>
             </mat-card-content>
         </mat-card>
     </div>

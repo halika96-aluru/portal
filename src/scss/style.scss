@@ -208,3 +208,7 @@ button:focus {
     margin-left: 8px;
  }
 }
+
+.disable-mouse-interaction {
+  pointer-events: none;
+}

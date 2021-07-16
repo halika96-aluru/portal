@@ -57,7 +57,7 @@ export class AddUserrolesComponent implements OnInit {
       return;
     }
     this.userRolesService.addUserRole(this.userRolesForm.value).subscribe(res => {
-      this.router.navigate(['/settings/departments']);
+      this.router.navigate(['/settings/departments'], {state: {activeTabIndex: 2}});
       this._snackBar.open('User Roles added successfully', '', {
         horizontalPosition: 'center',
         verticalPosition: 'top',
@@ -79,7 +79,7 @@ export class AddUserrolesComponent implements OnInit {
       return;
     }
     this.userRolesService.updateUserRole(this.userRolesForm.value).subscribe(res => {
-      this.router.navigate(['/settings/departments']);
+      this.router.navigate(['/settings/departments'], {state: {activeTabIndex: 1}});
       this._snackBar.open('User Roles updated successfully', '', {
         horizontalPosition: 'center',
         verticalPosition: 'top',
@@ -99,7 +99,8 @@ export class AddUserrolesComponent implements OnInit {
   
 
   cancel(){
-    this.router.navigate(['/settings/departments']);
+    this.router.navigate(['/settings/departments'], {state: {activeTabIndex: 1}});
+    //this.router.navigate(['/settings/departments']);
   }
 
 

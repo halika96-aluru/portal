@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-department-settings',
@@ -6,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./department-settings.component.scss']
 })
 export class DepartmentSettingsComponent implements OnInit {
-
-  constructor() { }
+  activeTabIndex = 0;
+  constructor(private router: Router) {
+    if(this.router.getCurrentNavigation().extras.state) {
+      this.activeTabIndex = <number>this.router.getCurrentNavigation().extras.state.activeTabIndex;
+    }
+   }
 
   ngOnInit(): void {
   }

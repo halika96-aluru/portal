@@ -79,7 +79,7 @@
 
                 <!-- CreatedOn Column -->
                 <ng-container matColumnDef="action">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="disable-mouse-interaction"> Action </th>
                     <td mat-cell *matCellDef="let element">
                         <button mat-icon-button color="accent" aria-label="Edit department"
                             (click)="editDepartment(element)">

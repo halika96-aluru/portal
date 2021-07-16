@@ -2,7 +2,7 @@
 .settings-department-list {
 table.departments-table{
 
-        table-layout: fixed;
+    table-layout: fixed;
 
     .col-description{
         width: 350px;
@@ -10,7 +10,6 @@ table.departments-table{
     .col-admins {
         width:300px;
     }
-
 
    .mat-button.mat-accent, .mat-icon-button.mat-accent, .mat-stroked-button.mat-accent {
         color: #a8a8aa;       
@@ -31,10 +30,10 @@ table.departments-table{
     .mat-form-field-infix { 
         padding-left: 1em;
     }
-}
-.mat-form-field-wrapper {
-    margin:0;
-    padding-bottom: 0;
+    .mat-form-field-wrapper {
+        margin:0;
+        padding-bottom: 0;
+    }
 }
 }
 

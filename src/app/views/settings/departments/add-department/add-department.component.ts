@@ -54,7 +54,7 @@ export class AddDepartmentComponent implements OnInit {
       return;
     }
     this.departmentService.addDepartment(this.departmentForm.value).subscribe(res => {
-      this.router.navigate(['/settings/departments']);
+      this.router.navigate(['/settings/departments'], {state: {activeTabIndex: 0}});
       this._snackBar.open('Department added successfully', '', {
         horizontalPosition: 'center',
         verticalPosition: 'top',
@@ -76,7 +76,7 @@ export class AddDepartmentComponent implements OnInit {
       return;
     }
     this.departmentService.updateDepartment(this.departmentForm.value).subscribe(res => {
-      this.router.navigate(['/settings/departments']);
+      this.router.navigate(['/settings/departments'], {state: {activeTabIndex: 0}});
       this._snackBar.open('Department updated successfully', '', {
         horizontalPosition: 'center',
         verticalPosition: 'top',
@@ -94,10 +94,8 @@ export class AddDepartmentComponent implements OnInit {
   }
 
   cancel(){
-    this.router.navigate(['/settings/departments']);
+    this.router.navigate(['/settings/departments'], {state: {activeTabIndex: 0}});
   }
-
-
 
 alphaNumericValidator(control: FormControl): ValidationErrors | null {
     return ALPHA_NUMERIC_REGEX.test(control.value) ? null : ALPHA_NUMERIC_VALIDATION_ERROR;
