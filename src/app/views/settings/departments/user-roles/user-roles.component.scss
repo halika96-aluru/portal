@@ -1,13 +1,32 @@
 .user-roles-list { 
+    table {
+        box-shadow: none;
+    }
     .mat-button.mat-accent, .mat-icon-button.mat-accent, .mat-stroked-button.mat-accent {
         color: #a8a8aa;       
     }
 
-    
-::ng-deep mat-form-field {
-    .mat-form-field-wrapper {
-        margin:0;
-        padding-bottom: 0;
-    }
-    }
+    ::ng-deep mat-form-field {
+        &.mat-form-filed-sm {
+            width:350px;    
+            font-size: 7px;
+            .mat-form-field-infix input, .mat-form-field-suffix {
+                font-size: 15px;
+            }    
+            .mat-form-field-outline-start, .mat-form-field-outline-end {
+                border-radius: 0;
+            } 
+            .mat-form-field-infix { 
+                padding-left: 1em;
+            }
+        }
+        .mat-form-field-wrapper {
+            margin:0;
+            padding-bottom: 0;
+        }
+        }
+        
+        ::ng-deep mat-divider.table-header-divider {
+            top:72px;
+        }
 }
