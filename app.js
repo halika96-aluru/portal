@@ -4,9 +4,9 @@
 // ----------------------------------------------------------------------------
 
 let path = require('path');
-const utils = require("./utils.js");
-const powerbiRouter = require("./routes/powerbiEmbedRoutes");
-const reportRoutes = require("./routes/reportRoutes");
+const utils = require("./backend/utils.js");
+const powerbiRouter = require("./backend/routes/powerbiEmbedRoutes");
+const reportRoutes = require("./backend/routes/reportRoutes");
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
@@ -21,8 +21,8 @@ app.use('/js', express.static('./node_modules/bootstrap/dist/js/')); // Redirect
 app.use('/js', express.static('./node_modules/jquery/dist/')); // Redirect JS jQuery
 app.use('/js', express.static('./node_modules/powerbi-client/dist/')) // Redirect JS PowerBI
 app.use('/css', express.static('./node_modules/bootstrap/dist/css/')); // Redirect CSS bootstrap
-app.use('/public', express.static('./public/')); // Use custom JS and CSS files
-app.use(express.static(__dirname + '/views/'));
+app.use('/public', express.static('./backend/public/')); // Use custom JS and CSS files
+app.use(express.static(path.join(__dirname, 'backend/views')));
 
 const port = process.env.PORT || 8080;
 
@@ -91,7 +91,5 @@ app.use(function(req, res, next) {
     res.status(err.status || 500);
     res.send(err);   
   });
-
-app.listen(port, () => console.log(`Listening on port ${port}`));
 
 module.exports = app;

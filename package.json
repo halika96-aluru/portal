@@ -30,8 +30,8 @@
     "runclient": "ng serve --proxy-config proxy.conf.json",
     "devstart": "nodemon --inspect ./backend/server.js",
     "dev": "npm run buildclient & concurrently --kill-others \"npm run runclient\" \"npm run devstart\"",
-    "startapp": "concurrently --kill-others \"npm run runclient\" \"npm run devstart\"",
-    "start": "node ./server.js"
+    "startapp": "concurrently --kill-others \"npm run runclient\" \"npm run devstart\"",    
+    "start": "node server.js"
   },
   "private": true,
   "dependencies": {
