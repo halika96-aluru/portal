@@ -37,6 +37,7 @@ import { LoginComponent } from './views/login/login.component';
 
 import { CanActivateMainRoute } from './services/CanActivateMainRoute';
 import { environment } from '../environments/environment';
+import { DepartmentsListComponent } from './views/settings/departments/departments-list/departments-list.component';
 
 //import { ConfirmDialogComponent } from '../shared/confirm-dialog/confirm-dialog.component';
 // import { DashboardComponent } from './views/dashboard/dashboard.component';

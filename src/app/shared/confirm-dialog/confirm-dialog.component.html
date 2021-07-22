@@ -1,7 +1,15 @@
-
+<!-- 
 <h4 mat-dialog-title align="center">Confirm</h4>
 <div mat-dialog-content>{{data.message}}</div>
 <div mat-dialog-action align="center">
     <button type="button" color="primary" mat-button mat-dialog-close>Yes</button>&nbsp;
     <button type="button" color="warn" mat-button (click)="onNoClick()">NO</button>
+    <button mat-button mat-dialog-close>Close</button>
+</div> -->
+
+<h1 mat-dialog-title>Confirm delete</h1>
+<div mat-dialog-content> {{data.message }}.</div>
+<div mat-dialog-actions class="float-right mt-3">    
+    <button mat-raised-button mat-dialog-close>NO</button>
+    <button mat-raised-button color="primary"  (click)="onYesClick()" >Yes</button>
 </div>

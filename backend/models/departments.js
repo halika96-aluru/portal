@@ -41,6 +41,16 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: Sequelize.Sequelize.fn('getutcdate'),
       field: 'modified_date'
+    },
+    departmentPrefix: {
+      type: DataTypes.STRING(256),
+      allowNull: true,
+      field: 'department_prefix'
+    },
+    departmentDescription: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+      field: 'department_description'
     }
   }, {
     sequelize,

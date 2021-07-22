@@ -7,6 +7,8 @@ let path = require('path');
 const utils = require("./backend/utils.js");
 const powerbiRouter = require("./backend/routes/powerbiEmbedRoutes");
 const reportRoutes = require("./backend/routes/reportRoutes");
+const deprtmentRoutes = require("./backend//routes/departmentRoutes");
+const userRolesRoutes = require("./backend/routes/userRolesRoutes");
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
@@ -15,6 +17,8 @@ const app = express();
 
 let cors = require('cors');
 app.use(cors())
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
 // let html_to_pdf = require('html-pdf-node');
 // Prepare server for Bootstrap, jQuery and PowerBI files
 app.use('/js', express.static('./node_modules/bootstrap/dist/js/')); // Redirect bootstrap JS
@@ -34,8 +38,8 @@ const port = process.env.PORT || 8080;
 
 app.use('/api/powerbi', powerbiRouter);
 app.use('/api/reports', reportRoutes);
-
-
+app.use('/api/departments', deprtmentRoutes);
+app.use('/api/userroles', userRolesRoutes);
 
 
 app.get('/', function (req, res) {     

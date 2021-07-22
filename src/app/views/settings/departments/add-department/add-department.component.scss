@@ -1,0 +1,52 @@
+.add-department-component{
+::ng-deep mat-card-header{
+        .mat-card-header-text{
+            margin:0;
+        }
+}
+
+::ng-deep mat-label{
+    &.form-label {
+        font-size: 12px;
+        font-weight: 500;
+        padding-bottom: 5px;
+        display: inline-block;
+    }
+}
+
+::ng-deep mat-form-field {
+    // Hidden by default
+    mat-error{
+    display: none;
+    }
+  
+   mat-error:first-child {
+    display: block;
+  }
+    &.mat-form-filed-sm {         
+        font-size: 7px;
+        &.mat-form-field-select {
+            font-size: 6px;
+        }
+        .mat-form-field-infix input, .mat-form-field-infix mat-select, .mat-form-field-suffix, .mat-select-panel .mat-optgroup-label, .mat-select-panel .mat-option {
+            font-size: 13px;
+        }    
+        // .mat-form-field-outline-start, .mat-form-field-outline-end {
+        //    //  border-radius: 0;
+        // } 
+        .mat-form-field-infix { 
+            padding-left: 1em;
+        }
+        .mat-form-field-wrapper {
+            margin:0;
+            padding-bottom: 0;
+        }
+
+        .mat-form-field-subscript-wrapper {
+            padding: 0 1em;
+            margin-top: 2em;
+            font-size: 12px;
+        }
+    }
+}
+}

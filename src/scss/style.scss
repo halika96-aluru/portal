@@ -104,7 +104,7 @@ table{
 }
 tr.mat-header-row, th.mat-header-cell{
   height: 48px;
-  background-color: wheat;
+  // background-color: wheat;
   // $maincolor;
   
 }
@@ -123,14 +123,14 @@ td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:
   padding-left: 10px !important;
   white-space: nowrap;
 }
-tr.mat-row{
-  &:nth-child(even){
-    background:#f2f2f2;
-  }
-  &:nth-child(odd){
-    background:#fff;
-  }
-}
+// tr.mat-row{
+//   &:nth-child(even){
+//     background:#f2f2f2;
+//   }
+//   &:nth-child(odd){
+//     background:#fff;
+//   }
+// }
 .roles{
   width:500px;
   mat-form-field{
@@ -156,4 +156,63 @@ a{
 .sidebar .nav-link:hover{
   background-color: $maincolor !important;
   color:$textcolor !important;
+}
+
+.cw-mat-tab-group {
+    
+  mat-tab-group {   
+  .mat-tab-header {
+      background: #fff !important;
+  }
+  
+  }   
+}
+
+.cdk-overlay-container { 
+  z-index: 1021;
+}
+
+button:focus {
+  outline: none !important;
+}
+
+.required-label:after {
+  color: #e32;
+  content: ' *';
+  display:inline;
+}
+
+/** ERP overwrites **/
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: #CC0000;
+  // height: 2.5px;;
+}
+.mat-button.mat-primary, .mat-icon-button.mat-primary, .mat-stroked-button.mat-primary {
+  color: #007299;;
+}
+.mat-fab.mat-primary, .mat-flat-button.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary   
+{
+  background-color: #007299;
+  border-radius: 0px;
+}
+
+.mat-button, .mat-flat-button, .mat-icon-button, .mat-stroked-button {
+  border-radius: 0px;
+}
+
+.mat-slide-toggle.align-content-left {
+
+  .mat-slide-toggle-bar {
+    order: 2;
+    margin-left: 8px;
+ }
+}
+
+.disable-mouse-interaction {
+  pointer-events: none;
+}
+
+.mat-select-panel .mat-optgroup-label, .mat-select-panel .mat-option { 
+  font-size: 12px !important
 }

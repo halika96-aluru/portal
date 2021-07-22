@@ -71,8 +71,7 @@ export class LoginComponent implements OnInit, AfterViewInit, OnChanges {
      * To use active account set here, subscribe to inProgress$ first in your component
      * Note: Basic usage demonstrated. Your app may require more complicated account selection logic
      */
-    let activeAccount = this.authService.instance.getActiveAccount();
-    debugger;
+    let activeAccount = this.authService.instance.getActiveAccount();    
     console.log(activeAccount);
     if (!activeAccount && this.authService.instance.getAllAccounts().length > 0) {
       let accounts = this.authService.instance.getAllAccounts();

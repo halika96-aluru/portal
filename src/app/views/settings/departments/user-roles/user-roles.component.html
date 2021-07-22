@@ -1,0 +1,88 @@
+<div class="user-roles-list">
+    <div>
+        <div class="d-flex justify-content-end align-items-center my-2">
+            <div class="col-auto flex-direction-row">
+                <mat-form-field appearance="outline" class="mat-form-filed-sm">
+                    <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+                    <mat-icon matSuffix>search</mat-icon>
+                </mat-form-field>
+            </div>
+            <div class="col-auto mx-0 px-0">
+                <button type="button" mat-flat-button color="primary" class="mx-3" (click)="addUserRoles()">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <mat-card>
+        <mat-divider class="table-header-divider"></mat-divider>
+        <mat-card-content>
+            <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="accessLevelId">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+                    <td mat-cell *matCellDef="let element"> {{element.accessLevelId}} </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="accessLevelName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Role Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.accessLevelName}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="description">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+                    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="permissions">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="disable-mouse-interaction report-permission-header"> Report Permissions: </th>
+                    <td mat-cell *matCellDef="let element"></td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="canView">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> View </th>
+                    <td mat-cell *matCellDef="let element">
+                        <mat-icon *ngIf="element.canView">check</mat-icon>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="canSubscribe">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Subscribe </th>
+                    <td mat-cell *matCellDef="let element">
+                        <mat-icon *ngIf="element.canSubscribe">check</mat-icon>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="canShare">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Share </th>
+                    <td mat-cell *matCellDef="let element">
+                        <mat-icon *ngIf="element.canShare">check</mat-icon>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="canApprove">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Approve </th>
+                    <td mat-cell *matCellDef="let element">
+                        <mat-icon *ngIf="element.canApprove">check</mat-icon>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="disable-mouse-interaction"> Action </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-icon-button color="accent" aria-label="Edit department"
+                            (click)="editUserRoles(element)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </mat-card-content>
+    </mat-card>
+
+
+</div>

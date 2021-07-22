@@ -38,6 +38,10 @@ export const routes: Routes = [
         loadChildren: () => import('./views/reports/reports.module').then(m => m.ReportsModule)
       },
       {
+        path: 'settings',
+        loadChildren: () => import('./views/settings/settings.module').then(m => m.SettingsModule)
+      },
+      {
         path: '', redirectTo: '/dashboard', pathMatch: 'full',
       },
       {

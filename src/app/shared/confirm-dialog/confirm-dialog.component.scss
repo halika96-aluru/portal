@@ -1,12 +1,14 @@
-.mat-dialog-action{
-    &[align="end"]{
-        justify-content: flex-end;
-    }
-    &[align="center"]{
-        justify-content: center;
-    }
-}
+// .mat-dialog-action{
+//     &[align="end"]{
+//         justify-content: flex-end;
+//     }
+//     &[align="center"]{
+//         justify-content: center;
+//     }
+// }
 
-.mat-dialog-title{
-    font-size: initial !important;
-}
+// .mat-dialog-title{
+//     font-size: initial !important;
+//}
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
