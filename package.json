@@ -20,7 +20,7 @@
   "scripts": {
     "ng": "ng",
     "prodstart": "node ./server.js",
-    "build:client": "ng build --prod --output-path ./backend/views --aot --buildOptimizer --commonChunk --vendorChunk --optimization --progress",
+    "build": "ng build --prod --output-path ./backend/views --aot --buildOptimizer --commonChunk --vendorChunk --optimization --progress",
     "test:client": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
