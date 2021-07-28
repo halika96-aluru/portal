@@ -1,34 +1,30 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('helpIndexes', {
-    helpIndexId: {
+  return sequelize.define('adminRoleTypes', {
+    adminRoleTypeId: {
+      autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
-      field: 'help_index_id'
+      field: 'admin_role_type_id'
     },
-    helpSectionId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      field: 'help_section_id'
-    },
-    title: {
+    adminRoleTypeName: {
       type: DataTypes.STRING(256),
-      allowNull: false
+      allowNull: true,
+      field: 'admin_role_type_name'
     },
-    helpContent: {
+    entity: {
       type: DataTypes.STRING(256),
-      allowNull: false,
-      field: 'help_content'
+      allowNull: true
     },
     isActive: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+      defaultValue: false,
       field: 'is_active'
     },
     createdBy: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.STRING(256),
       allowNull: false,
       defaultValue: Sequelize.Sequelize.fn('suser_sname'),
       field: 'created_by'
@@ -40,7 +36,7 @@ module.exports = function(sequelize, DataTypes) {
       field: 'created_date'
     },
     modifiedBy: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.STRING(256),
       allowNull: false,
       defaultValue: Sequelize.Sequelize.fn('suser_sname'),
       field: 'modified_by'
@@ -53,15 +49,15 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     sequelize,
-    tableName: 'help_indexes',
+    tableName: 'admin_role_types',
     schema: 'dbo',
     timestamps: false,
     indexes: [
       {
-        name: "pk_help_indexes",
+        name: "PK_admin_role_type",
         unique: true,
         fields: [
-          { name: "help_index_id" },
+          { name: "admin_role_type_id" },
         ]
       },
     ]

@@ -5,8 +5,8 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 
 import { Router } from '@angular/router';
-import { UserRolesService } from '../../../../services/userRoles.service';
-import { userRoles } from '../models/userRoles';
+import { UserRolesService } from '../../../services/userRoles.service';
+import { userRoles } from '../departments/models/userRoles';
 
 export interface UserRoles {
  

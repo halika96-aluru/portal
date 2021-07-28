@@ -7,6 +7,10 @@ router.get('/getUserRoles', [
     userrolesService.getUserRoles
 ]);
 
+router.get('/getAdminRoleTypes', [    
+    userrolesService.getAdminRoleTypess
+]);
+
 router.put('/updateUserRole', [ 
     //ValidationMiddleware.validJWTNeeded,
     // PermissionMiddleware.minimumPermissionLevelRequired(PAID),

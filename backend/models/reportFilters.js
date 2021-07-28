@@ -2,18 +2,14 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('reportFilters', {
     id: {
-      autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      autoIncrement: true
     },
     reportId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'Reports',
-        key: 'id'
-      },
       field: 'report_id'
     },
     filterKey: {

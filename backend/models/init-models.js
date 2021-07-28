@@ -20,6 +20,13 @@ var _userGroups = require("./userGroups");
 var _userActionTypes = require("./userActionTypes");
 var _userActions = require("./userActions");
 var _users = require("./users");
+var _adminPermissionCategory = require("./adminPermissionCategory");
+var _adminPermissionCategoryConfiguration = require("./adminPermissionCategoryConfiguration");
+var _adminPermissions = require("./adminPermissions");
+var _adminRolePermissions = require("./adminRolePermissions");
+var _adminRoleTypePermissionConfiguration = require("./adminRoleTypePermissionConfiguration");
+var _adminRoleTypes = require("./adminRoleTypes");
+var _adminRoles = require("./adminRoles");
 var _departmentAdmin = require("./departmentAdmin");
 var _feedbackTopics = require("./feedbackTopics");
 var _groupAdmin = require("./groupAdmin");
@@ -48,6 +55,13 @@ function initModels(sequelize) {
   var userActionTypes = _userActionTypes(sequelize, DataTypes);
   var userActions = _userActions(sequelize, DataTypes);
   var users = _users(sequelize, DataTypes);
+  var adminPermissionCategory = _adminPermissionCategory(sequelize, DataTypes);
+  var adminPermissionCategoryConfiguration = _adminPermissionCategoryConfiguration(sequelize, DataTypes);
+  var adminPermissions = _adminPermissions(sequelize, DataTypes);
+  var adminRolePermissions = _adminRolePermissions(sequelize, DataTypes);
+  var adminRoleTypePermissionConfiguration = _adminRoleTypePermissionConfiguration(sequelize, DataTypes);
+  var adminRoleTypes = _adminRoleTypes(sequelize, DataTypes);
+  var adminRoles = _adminRoles(sequelize, DataTypes);
   var departmentAdmin = _departmentAdmin(sequelize, DataTypes);
   var feedbackTopics = _feedbackTopics(sequelize, DataTypes);
   var groupAdmin = _groupAdmin(sequelize, DataTypes);
@@ -60,48 +74,28 @@ function initModels(sequelize) {
   departments.hasMany(accessLevelDesignations, { as: "accessLevelDesignations", foreignKey: "departmentId"});
   feedback.belongsTo(departments, { as: "department", foreignKey: "departmentId"});
   departments.hasMany(feedback, { as: "feedbacks", foreignKey: "departmentId"});
-  reportAccess.belongsTo(departments, { as: "department", foreignKey: "departmentId"});
-  departments.hasMany(reportAccess, { as: "reportAccesses", foreignKey: "departmentId"});
   reportCategory.belongsTo(departments, { as: "department", foreignKey: "departmentId"});
   departments.hasMany(reportCategory, { as: "reportCategories", foreignKey: "departmentId"});
-  reports.belongsTo(departments, { as: "department", foreignKey: "departmentId"});
-  departments.hasMany(reports, { as: "reports", foreignKey: "departmentId"});
   userGroups.belongsTo(departments, { as: "dept", foreignKey: "deptId"});
   departments.hasMany(userGroups, { as: "userGroups", foreignKey: "deptId"});
   users.belongsTo(departments, { as: "department", foreignKey: "departmentId"});
   departments.hasMany(users, { as: "users", foreignKey: "departmentId"});
-  reports.belongsTo(reportCategory, { as: "category", foreignKey: "categoryId"});
-  reportCategory.hasMany(reports, { as: "reports", foreignKey: "categoryId"});
   reportSubscriptionLogs.belongsTo(reportSubscription, { as: "reportSubscription", foreignKey: "reportSubscriptionId"});
   reportSubscription.hasMany(reportSubscriptionLogs, { as: "reportSubscriptionLogs", foreignKey: "reportSubscriptionId"});
   approvalMaster.belongsTo(reports, { as: "report", foreignKey: "reportId"});
   reports.hasMany(approvalMaster, { as: "approvalMasters", foreignKey: "reportId"});
-  reportAccess.belongsTo(reports, { as: "report", foreignKey: "reportId"});
-  reports.hasMany(reportAccess, { as: "reportAccesses", foreignKey: "reportId"});
-  reportFilters.belongsTo(reports, { as: "report", foreignKey: "reportId"});
-  reports.hasMany(reportFilters, { as: "reportFilters", foreignKey: "reportId"});
   reportMoreInfo.belongsTo(reports, { as: "report", foreignKey: "reportId"});
   reports.hasMany(reportMoreInfo, { as: "reportMoreInfos", foreignKey: "reportId"});
   reportRequests.belongsTo(reports, { as: "report", foreignKey: "reportId"});
   reports.hasMany(reportRequests, { as: "reportRequests", foreignKey: "reportId"});
-  reportSubscription.belongsTo(reports, { as: "report", foreignKey: "reportId"});
-  reports.hasMany(reportSubscription, { as: "reportSubscriptions", foreignKey: "reportId"});
   userActions.belongsTo(reports, { as: "report", foreignKey: "reportId"});
   reports.hasMany(userActions, { as: "userActions", foreignKey: "reportId"});
   groupMembers.belongsTo(userGroups, { as: "userGroup", foreignKey: "userGroupId"});
   userGroups.hasMany(groupMembers, { as: "groupMembers", foreignKey: "userGroupId"});
-  reportAccess.belongsTo(userGroups, { as: "team", foreignKey: "teamId"});
-  userGroups.hasMany(reportAccess, { as: "reportAccesses", foreignKey: "teamId"});
-  userActions.belongsTo(userActionTypes, { as: "actionTypeUserActionType", foreignKey: "actionType"});
-  userActionTypes.hasMany(userActions, { as: "userActions", foreignKey: "actionType"});
+  userActions.belongsTo(userActionTypes, { as: "userActionType", foreignKey: "userActionTypeId"});
+  userActionTypes.hasMany(userActions, { as: "userActions", foreignKey: "userActionTypeId"});
   groupMembers.belongsTo(users, { as: "user", foreignKey: "userId"});
   users.hasMany(groupMembers, { as: "groupMembers", foreignKey: "userId"});
-  reportAccess.belongsTo(users, { as: "user", foreignKey: "userId"});
-  users.hasMany(reportAccess, { as: "reportAccesses", foreignKey: "userId"});
-  reportSubscription.belongsTo(users, { as: "useridEmailUser", foreignKey: "useridEmail"});
-  users.hasMany(reportSubscription, { as: "reportSubscriptions", foreignKey: "useridEmail"});
-  helpIndexes.belongsTo(helpSection, { as: "helpSection", foreignKey: "helpSectionId"});
-  helpSection.hasMany(helpIndexes, { as: "helpIndices", foreignKey: "helpSectionId"});
 
   return {
     accessLevel,
@@ -125,6 +119,13 @@ function initModels(sequelize) {
     userActionTypes,
     userActions,
     users,
+    adminPermissionCategory,
+    adminPermissionCategoryConfiguration,
+    adminPermissions,
+    adminRolePermissions,
+    adminRoleTypePermissionConfiguration,
+    adminRoleTypes,
+    adminRoles,
     departmentAdmin,
     feedbackTopics,
     groupAdmin,

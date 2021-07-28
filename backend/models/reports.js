@@ -2,10 +2,10 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('reports', {
     id: {
-      autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      autoIncrement: true
     },
     pbiReportId: {
       type: DataTypes.STRING(256),
@@ -35,19 +35,11 @@ module.exports = function(sequelize, DataTypes) {
     departmentId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'Departments',
-        key: 'department_id'
-      },
       field: 'department_id'
     },
     categoryId: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      references: {
-        model: 'ReportCategory',
-        key: 'category_id'
-      },
       field: 'category_id'
     },
     reportDescription: {

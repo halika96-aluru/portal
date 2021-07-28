@@ -50,6 +50,12 @@ export const navItems: NavData[] = [
     ]
   },
   {
+    name: 'User Management',
+    url: '/usermanagement',
+    icon: 'fa fa-users',
+    
+  },
+  {
     name: 'Settings',
     url: '/settings',
     icon: 'fa fa-wrench',

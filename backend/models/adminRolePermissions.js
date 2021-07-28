@@ -1,34 +1,56 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('helpIndexes', {
-    helpIndexId: {
+  return sequelize.define('adminRolePermissions', {
+    adminRolePermissionId: {
+      autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
-      field: 'help_index_id'
+      field: 'admin_role_permission_id'
     },
-    helpSectionId: {
+    adminRoleId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      field: 'help_section_id'
+      field: 'admin_role_id'
     },
-    title: {
-      type: DataTypes.STRING(256),
-      allowNull: false
-    },
-    helpContent: {
-      type: DataTypes.STRING(256),
+    adminRoleTypeId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
-      field: 'help_content'
+      field: 'admin_role_type_id'
+    },
+    adminPermissionId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'admin_permission_id'
+    },
+    isAdd: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      field: 'is_add'
+    },
+    isEdit: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      field: 'is_edit'
+    },
+    isView: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      field: 'is_view'
+    },
+    isDelete: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      field: 'is_delete'
     },
     isActive: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+      defaultValue: false,
       field: 'is_active'
     },
     createdBy: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.STRING(256),
       allowNull: false,
       defaultValue: Sequelize.Sequelize.fn('suser_sname'),
       field: 'created_by'
@@ -40,7 +62,7 @@ module.exports = function(sequelize, DataTypes) {
       field: 'created_date'
     },
     modifiedBy: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.STRING(256),
       allowNull: false,
       defaultValue: Sequelize.Sequelize.fn('suser_sname'),
       field: 'modified_by'
@@ -53,15 +75,15 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     sequelize,
-    tableName: 'help_indexes',
+    tableName: 'admin_role_permissions',
     schema: 'dbo',
     timestamps: false,
     indexes: [
       {
-        name: "pk_help_indexes",
+        name: "pk_admin_role_permission_id",
         unique: true,
         fields: [
-          { name: "help_index_id" },
+          { name: "admin_role_permission_id" },
         ]
       },
     ]

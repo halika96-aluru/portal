@@ -1,21 +1,22 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('userActionTypes', {
-    id: {
+    userActionTypeId: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      field: 'user_action_type_id'
     },
-    actionName: {
+    actionType: {
       type: DataTypes.STRING(256),
       allowNull: true,
-      field: 'action_name'
+      field: 'action_type'
     },
-    actionDesc: {
+    actionTypeDesc: {
       type: DataTypes.STRING(256),
       allowNull: true,
-      field: 'action_desc'
+      field: 'action_type_desc'
     },
     isActive: {
       type: DataTypes.BOOLEAN,
@@ -56,7 +57,7 @@ module.exports = function(sequelize, DataTypes) {
         name: "PK_User_action_types",
         unique: true,
         fields: [
-          { name: "id" },
+          { name: "user_action_type_id" },
         ]
       },
     ]

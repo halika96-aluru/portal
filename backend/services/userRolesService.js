@@ -10,6 +10,15 @@ exports.getUserRoles =async (req, res) => {
 });
 };
 
+exports.getAdminRoleTypess =async (req, res) => {
+    
+    contex.getContext().adminRoleTypes.findAll({
+        where: {   isActive:{ [Op.eq]: true } }       
+    }).then((result) => 
+    { res.send(result);
+});
+};
+
 exports.addUserRole = async (req, res) => {
 
     console.log('*********desc *****', req.body.description);

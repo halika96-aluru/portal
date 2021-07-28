@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { userRoles } from '../views/settings/departments/models/userRoles';
+import { userRoles } from '../views/configurations/departments/models/userRoles';
 
 
 @Injectable({
@@ -23,6 +23,11 @@ export class UserRolesService {
   getUserRoles(): Observable<userRoles[]> {
     return this.http.get<userRoles[]>(this.baseApiUrl + "getUserRoles");
   }
+
+  getAdminRoleTypess(): Observable<userRoles[]> {
+    return this.http.get<userRoles[]>(this.baseApiUrl + "getAdminRoleTypes");
+  }
+  
 
   addUserRole(model: userRoles): Observable<any> {
     return this.http.post<any>(this.baseApiUrl + "addUserRole", model);

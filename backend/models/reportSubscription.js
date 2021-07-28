@@ -2,28 +2,20 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('reportSubscription', {
     reportSubscriptionId: {
-      autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
+      autoIncrement: true,
       field: 'report_subscription_id'
     },
     reportId: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      references: {
-        model: 'Reports',
-        key: 'id'
-      },
       field: 'report_id'
     },
     useridEmail: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      references: {
-        model: 'Users',
-        key: 'user_id'
-      },
       field: 'userid_email'
     },
     frequency: {

@@ -2,36 +2,24 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('reportAccess', {
     id: {
-      autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      autoIncrement: true
     },
     reportId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'Reports',
-        key: 'id'
-      },
       field: 'report_id'
     },
     departmentId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'Departments',
-        key: 'department_id'
-      },
       field: 'department_id'
     },
     teamId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'UserGroups',
-        key: 'user_group_id'
-      },
       field: 'team_id'
     },
     accessLevelId: {
@@ -42,10 +30,6 @@ module.exports = function(sequelize, DataTypes) {
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'Users',
-        key: 'user_id'
-      },
       field: 'user_id'
     },
     isShare: {

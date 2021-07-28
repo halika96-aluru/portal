@@ -21,14 +21,14 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true,
       field: 'page_name'
     },
-    actionType: {
+    userActionTypeId: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: 'User_action_types',
-        key: 'id'
+        key: 'user_action_type_id'
       },
-      field: 'action_type'
+      field: 'user_action_type_id'
     },
     actionDesc: {
       type: DataTypes.STRING(256),

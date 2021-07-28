@@ -38,8 +38,12 @@ export const routes: Routes = [
         loadChildren: () => import('./views/reports/reports.module').then(m => m.ReportsModule)
       },
       {
+        path: 'usermanagement',
+        loadChildren: () => import('./views/configurations/user-management/user-management.module').then(m => m.UserManagementModule)
+      },
+      {
         path: 'settings',
-        loadChildren: () => import('./views/settings/settings.module').then(m => m.SettingsModule)
+        loadChildren: () => import('./views/configurations/settings/settings.module').then(m => m.SettingsModule)
       },
       {
         path: '', redirectTo: '/dashboard', pathMatch: 'full',

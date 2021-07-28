@@ -3,8 +3,8 @@ import { FormControl, FormGroup, ValidationErrors, Validators } from '@angular/f
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatDialog,MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
-import { UserRolesService } from '../../../../services/userRoles.service';
-import { userRoles } from '../models/userRoles';
+import { UserRolesService } from '../../../services/userRoles.service';
+import { userRoles } from '../departments/models/userRoles';
 
 
 const ALPHA_NUMERIC_REGEX = /^[a-zA-Z\. \( \) \-]+$/;
