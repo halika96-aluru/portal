@@ -1,5 +1,5 @@
 var contex = require("./sequalize.service");
-const { Op } = require("sequelize");
+const { Op, QueryTypes } = require("sequelize");
 
 exports.getUserRoles =async (req, res) => {
     
@@ -11,12 +11,18 @@ exports.getUserRoles =async (req, res) => {
 };
 
 exports.getAdminRoles =async (req, res) => {
+
     
-    contex.getContext().adminRoles.findAll({
-        where: {   isActive:{ [Op.eq]: true } }       
-    }).then((result) => 
-    { res.send(result);
-});
+    contex.sequelize.query(`
+    SELECT ar.admin_role_id adminRoleId, ar. admin_role_name adminRoleName, ar.admin_role_description adminRoleDescription, art.admin_role_type_name roleType, count(au.user_id) assignedUsers
+    FROM admin_roles ar
+    left join admin_role_types art on ar.admin_role_type_id = art.admin_role_type_id
+    left join admin_users au on ar.admin_role_id = au.admin_role_id
+    where ar.is_active =1
+    group by ar.admin_role_id, ar. admin_role_name, ar.admin_role_description, art.admin_role_type_name
+    `, { type: QueryTypes.SELECT }).then((result) => {              
+        res.send(result);
+    });  
 };
 
 exports.getAdminRoleTypess =async (req, res) => {

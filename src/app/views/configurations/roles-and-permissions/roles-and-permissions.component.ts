@@ -15,7 +15,7 @@ import { userRoles } from '../departments/models/userRoles';
 })
 export class RolesAndPermissionsComponent implements OnInit {
 
-  displayedColumns: string[] = ['adminRoleId','adminRoleName', 'adminRoleDescription', 'roletype', 'assignedUsers'];
+  displayedColumns: string[] = ['adminRoleId','adminRoleName', 'adminRoleDescription', 'roleType', 'assignedUsers'];
   userRoles: userRoles[] = [];
   dataSource: MatTableDataSource<userRoles> = new MatTableDataSource(this.userRoles);
 

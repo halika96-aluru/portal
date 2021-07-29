@@ -2,6 +2,7 @@ var DataTypes = require("sequelize").DataTypes;
 var _accessLevel = require("./accessLevel");
 var _accessLevelDesignations = require("./accessLevelDesignations");
 var _adminTypes = require("./adminTypes");
+var _adminUsers = require("./adminUsers");
 var _approvalMaster = require("./approvalMaster");
 var _constants = require("./constants");
 var _departments = require("./departments");
@@ -37,6 +38,7 @@ function initModels(sequelize) {
   var accessLevel = _accessLevel(sequelize, DataTypes);
   var accessLevelDesignations = _accessLevelDesignations(sequelize, DataTypes);
   var adminTypes = _adminTypes(sequelize, DataTypes);
+  var adminUsers = _adminUsers(sequelize, DataTypes);
   var approvalMaster = _approvalMaster(sequelize, DataTypes);
   var constants = _constants(sequelize, DataTypes);
   var departments = _departments(sequelize, DataTypes);
@@ -101,6 +103,7 @@ function initModels(sequelize) {
     accessLevel,
     accessLevelDesignations,
     adminTypes,
+    adminUsers,
     approvalMaster,
     constants,
     departments,
