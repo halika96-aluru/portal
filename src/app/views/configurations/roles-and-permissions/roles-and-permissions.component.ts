@@ -15,7 +15,7 @@ import { userRoles } from '../departments/models/userRoles';
 })
 export class RolesAndPermissionsComponent implements OnInit {
 
-  displayedColumns: string[] = ['accessLevelId','accessLevelName', 'description', 'permissions', 'canView','canSubscribe','canShare','canApprove','action'];
+  displayedColumns: string[] = ['adminRoleId','adminRoleName', 'adminRoleDescription', 'roletype', 'assignedUsers'];
   userRoles: userRoles[] = [];
   dataSource: MatTableDataSource<userRoles> = new MatTableDataSource(this.userRoles);
 
@@ -36,7 +36,7 @@ export class RolesAndPermissionsComponent implements OnInit {
 
   }
     loadUserRoles(){
-      this.userRolesService.getUserRoles().subscribe(res => {
+      this.userRolesService.getAdminRoles().subscribe(res => {
         if (res.length) {
           this.userRoles = res;
           this.dataSource = new MatTableDataSource(this.userRoles);

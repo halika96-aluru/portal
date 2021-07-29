@@ -24,6 +24,10 @@ export class UserRolesService {
     return this.http.get<userRoles[]>(this.baseApiUrl + "getUserRoles");
   }
 
+  getAdminRoles(): Observable<any[]> {
+    return this.http.get<any[]>(this.baseApiUrl + "getAdminRoles");
+  }
+
   getAdminRoleTypess(): Observable<userRoles[]> {
     return this.http.get<userRoles[]>(this.baseApiUrl + "getAdminRoleTypes");
   }
