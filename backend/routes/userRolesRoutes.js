@@ -7,6 +7,10 @@ router.get('/getUserRoles', [
     userrolesService.getUserRoles
 ]);
 
+router.get('/getAdminRoles', [    
+    userrolesService.getAdminRoles
+]);
+
 router.get('/getAdminRoleTypes', [    
     userrolesService.getAdminRoleTypess
 ]);

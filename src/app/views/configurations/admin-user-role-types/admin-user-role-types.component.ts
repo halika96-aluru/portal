@@ -19,7 +19,7 @@ export interface UserRoles {
 })
 export class AdminUserRoleTypesComponent implements OnInit {
 
-  displayedColumns: string[] = ['adminRoleTypeId' , 'adminRoleTypeName', 'entity','action'];
+  displayedColumns: string[] = ['adminRoleTypeId' , 'adminRoleTypeName', 'entity'];
   userRoles: userRoles[] = [];
   dataSource: MatTableDataSource<userRoles> = new MatTableDataSource(this.userRoles);
 
