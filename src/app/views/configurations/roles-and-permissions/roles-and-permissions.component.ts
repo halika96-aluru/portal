@@ -70,5 +70,10 @@ export class RolesAndPermissionsComponent implements OnInit {
   editUserRoles(userRoles: userRoles){
     this.router.navigateByUrl('/settings/adduserroles', { state: userRoles });
   }
+  rolePermissions(userRoles: userRoles){
+    this.router.navigateByUrl('/settings/RolesPermissionsDetailsComponent', { state: userRoles });
+  }
+ 
+
 
 }

@@ -13,6 +13,7 @@ import { AdminUserRoleTypesComponent } from '../admin-user-role-types/admin-user
 import { ReportAccessLevelComponent } from '../report-access-level/report-access-level.component';
 import { SettingsComponent } from './settings.component';
 import { UserRoleSettingsComponent } from './user-role-settings/user-role-settings.component';
+import {RolesPermissionsDetailsComponent  } from '../roles-permissions-details/roles-permissions-details.component';
 
 
 
@@ -28,6 +29,7 @@ import { UserRoleSettingsComponent } from './user-role-settings/user-role-settin
     AdminUserRoleTypesComponent,
     ReportAccessLevelComponent,
     UserRoleSettingsComponent,
+    RolesPermissionsDetailsComponent
     
   ],
   imports: [

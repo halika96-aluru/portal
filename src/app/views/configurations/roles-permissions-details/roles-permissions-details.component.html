@@ -1,1 +1,83 @@
-<p>roles-permissions-details works!</p>
+<div class="roles-permissions-details">
+
+    <div>
+        
+        <div class="row">
+            
+            <div class="col-12">
+                <div class="card ">
+                    
+                    <div class="card-body cw-mat-tab-group p-0">
+                        <mat-tab-group animationDuration="0ms" [(selectedIndex)]="activeTabIndex">
+                            <mat-tab label="Access Users" class="px-3">
+
+                            </mat-tab>
+                            <mat-tab label="Permissions">
+
+                            </mat-tab>
+
+                        </mat-tab-group>
+                        <div class="d-flex justify-content-end align-items-center my-2">
+                           <div>
+                            <mat-form-field appearance="outline" class="mat-form-filed-sm">
+                                <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+                                <mat-icon matSuffix>search</mat-icon>
+                            </mat-form-field>
+                           </div>
+                            <div class="col-auto mx-0 px-0">
+                                <button type="button" mat-flat-button color="primary" class="mx-3"
+                                    (click)="addUserRoles()">Assign</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <mat-card>
+                        <mat-divider class="table-header-divider"></mat-divider>
+                        <mat-card-content>
+                            <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+                                <!-- Position Column -->
+                                <ng-container matColumnDef="adminRoleId">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.adminRoleId}} </td>
+                                </ng-container>
+
+                                <!-- Weight Column -->
+                                <ng-container matColumnDef="adminRoleName">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Admin Name </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.adminRoleName}} </td>
+                                </ng-container>
+                               
+                                       <!-- Symbol Column -->
+                                <!-- <ng-container matColumnDef="permissions">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header class="disable-mouse-interaction report-permission-header"> Report Permissions: </th>
+                                <td mat-cell *matCellDef="let element"></td>
+                            </ng-container> -->
+
+  
+                 
+                                <!-- <ng-container matColumnDef="action">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header class="disable-mouse-interaction"> Action </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <button mat-icon-button color="accent" aria-label="Edit department"
+                                        (click)="editUserRoles(element)">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                </td>
+                            </ng-container> -->
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                            </table>
+                            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>

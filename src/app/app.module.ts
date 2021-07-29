@@ -37,7 +37,7 @@ import { LoginComponent } from './views/login/login.component';
 
 import { CanActivateMainRoute } from './services/CanActivateMainRoute';
 import { environment } from '../environments/environment';
-import { RolesPermissionsDetailsComponent } from './views/configurations/roles-permissions-details/roles-permissions-details.component';
+
 
 //import { ConfirmDialogComponent } from '../shared/confirm-dialog/confirm-dialog.component';
 // import { DashboardComponent } from './views/dashboard/dashboard.component';
@@ -132,7 +132,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     AppComponent,
    ...APP_CONTAINERS,
    LoginComponent,
-   RolesPermissionsDetailsComponent       
+     
   ],
   providers: [{
     provide: LocationStrategy,
